@@ -1,0 +1,91 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.25rem;
+}
+
+.cell {
+  position: relative;
+  grid-column: span 4;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--bg-tertiary);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: block;
+}
+
+.cell.tall {
+  grid-row: span 1;
+}
+
+.cell.wide {
+  grid-column: span 8;
+  aspect-ratio: 16 / 10;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center 25%;
+  transition: transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.35s ease;
+}
+
+.cell:hover .image,
+.cell:focus-visible .image {
+  transform: scale(1.04);
+}
+
+.cell:focus-visible {
+  outline: 1px solid var(--accent-gold);
+  outline-offset: 3px;
+}
+
+.caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1.25rem;
+  background: linear-gradient(to top, rgba(11, 12, 14, 0.75), transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  text-align: left;
+  z-index: 1;
+}
+
+.cell:hover .caption,
+.cell:focus-visible .caption {
+  opacity: 1;
+}
+
+.cat {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+  .cell,
+  .cell.wide {
+    grid-column: span 6;
+    aspect-ratio: 4 / 5;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    gap: 0.75rem;
+  }
+
+  .cell,
+  .cell.wide {
+    grid-column: span 12;
+  }
+
+  .caption {
+    opacity: 1;
+  }
+}

@@ -34,10 +34,10 @@ export const metadata: Metadata = {
     siteName: "XIII Renovation & Design",
     images: [
       {
-        url: "/assets/hero_living_room.png",
-        width: 1200,
-        height: 630,
-        alt: "XIII Renovation & Design Showcase",
+        url: "/image/xiii-12-08-26.png",
+        width: 1080,
+        height: 1350,
+        alt: "XIII Renovation & Design — completed living room project, Singapore",
       },
     ],
     locale: "en_SG",

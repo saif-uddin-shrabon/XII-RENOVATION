@@ -1,0 +1,107 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  cursor: pointer;
+  outline: none;
+  transition: opacity 0.35s ease;
+}
+
+.card:hover .image,
+.card:focus-visible .image {
+  transform: scale(1.03);
+}
+
+.card:focus-visible {
+  outline: 1px solid var(--accent-gold);
+  outline-offset: 4px;
+}
+
+.media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--bg-tertiary);
+}
+
+.cardLarge .media {
+  aspect-ratio: 3 / 4;
+  min-height: 420px;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center 30%;
+  transition: transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(11, 12, 14, 0.35) 0%,
+    transparent 45%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bg-primary);
+  background: var(--accent-gold);
+  padding: 0.4rem 0.75rem;
+  font-weight: 600;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0 0.15rem;
+}
+
+.category {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  font-weight: 600;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.location {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+  font-weight: 300;
+}
+
+.scope {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 0.25rem 0 0;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+  .cardLarge .media {
+    min-height: 320px;
+  }
+}
