@@ -9,7 +9,7 @@ import FeaturedProjects from "@/components/projects/FeaturedProjects";
 import GalleryGrid from "@/components/gallery/GalleryGrid";
 import Lightbox, { useLightbox } from "@/components/gallery/Lightbox";
 import ReelsStrip from "@/components/reels/ReelsStrip";
-import Reveal from "@/components/motion/Reveal";
+import GoogleReviews from "@/components/reviews/GoogleReviews";
 import {
   HERO_IMAGE,
   ABOUT_IMAGE,
@@ -28,11 +28,6 @@ const services = [
       "2D Layout & 3D Visualization",
       "Material & Lighting Selection",
     ],
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-      </svg>
-    ),
   },
   {
     title: "Design & Build Management",
@@ -43,11 +38,6 @@ const services = [
       "Timeline & Budget Control",
       "Authority & MCST Submissions",
     ],
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-      </svg>
-    ),
   },
   {
     title: "Bespoke Custom Joinery",
@@ -58,11 +48,6 @@ const services = [
       "Luxury Walk-In Wardrobes",
       "Bespoke Feature Walls & Storage",
     ],
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.242.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.242.477-4.5 1.253" />
-      </svg>
-    ),
   },
   {
     title: "Premium Construction & Fit-Out",
@@ -73,11 +58,6 @@ const services = [
       "Tiling & Screeding Mastery",
       "Waterproofing & Partition Ceilings",
     ],
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-      </svg>
-    ),
   },
   {
     title: "Licensed MEP & Compliant Works",
@@ -88,11 +68,6 @@ const services = [
       "Licensed Plumbing Execution",
       "Singapore Building Code Adherence",
     ],
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-      </svg>
-    ),
   },
   {
     title: "Aftercare & Finishes Support",
@@ -103,20 +78,48 @@ const services = [
       "Comprehensive Final Inspection",
       "Reliable Post-Completion Support",
     ],
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-      </svg>
-    ),
   },
 ];
 
 const featuredReels = getFeaturedReels();
 
+const WHATSAPP_NUMBER = "6587231313";
+
+/** Primary wayfinding only — gallery, reels, and why-us stay on-page by scroll. */
+const NAV_LINKS = [
+  { href: "#projects", label: "Work" },
+  { href: "#services", label: "Services" },
+  { href: "#about", label: "About" },
+  { href: "#reviews", label: "Reviews" },
+] as const;
+
+function buildWhatsAppUrl(data: {
+  name: string;
+  email: string;
+  phone: string;
+  propertyType: string;
+  message: string;
+}) {
+  const text = [
+    "Hello XIII — I'd like a design consultation.",
+    `Name: ${data.name}`,
+    `Phone: ${data.phone}`,
+    `Email: ${data.email}`,
+    `Property: ${data.propertyType}`,
+    "",
+    data.message,
+  ].join("\n");
+
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+}
+
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formSubmitting, setFormSubmitting] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
+  const [whatsAppUrl, setWhatsAppUrl] = useState<string | null>(null);
   const [activeProject, setActiveProject] = useState<Project | null>(null);
   const [formData, setFormData] = useState({
     name: "",
@@ -130,38 +133,89 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileMenuOpen(false);
+    };
+    const onResize = () => {
+      if (window.innerWidth > 900) setMobileMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    window.addEventListener("resize", onResize);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [mobileMenuOpen]);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    if (formError) setFormError(null);
   };
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setTimeout(() => {
-      setFormSubmitted(true);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        propertyType: "Condominium",
-        message: "",
-      });
-    }, 800);
+    if (formSubmitting) return;
+
+    const name = formData.name.trim();
+    const email = formData.email.trim();
+    const phone = formData.phone.trim();
+    const message = formData.message.trim();
+
+    if (!name || !email || !phone || !message) {
+      setFormError("Please fill in your name, email, phone, and project description.");
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setFormError("Please enter a valid email address.");
+      return;
+    }
+
+    const url = buildWhatsAppUrl({
+      ...formData,
+      name,
+      email,
+      phone,
+      message,
+    });
+
+    setFormSubmitting(true);
+    setFormError(null);
+    setWhatsAppUrl(url);
+
+    // Open WhatsApp as the real handoff — no fake “request received” claim
+    window.open(url, "_blank", "noopener,noreferrer");
+
+    setFormSubmitted(true);
+    setFormSubmitting(false);
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      propertyType: "Condominium",
+      message: "",
+    });
   };
 
   const closeMobile = () => setMobileMenuOpen(false);
 
   return (
     <div className={styles.main}>
+      <a href="#main-content" className={styles.skipLink}>
+        Skip to content
+      </a>
       <header className={`${styles.navbar} ${scrolled ? styles.navbarScrolled : ""}`}>
         <div className={styles.navbarContainer}>
-          <a href="#" className={styles.logoArea}>
+          <a href="#main-content" className={styles.logoArea} onClick={closeMobile}>
             <Image
               src="/logo.jpg"
               alt="XIII Renovation & Design Logo"
@@ -175,41 +229,27 @@ export default function Home() {
             </div>
           </a>
 
-          <nav>
+          <nav className={styles.navPrimary} aria-label="Primary">
             <ul className={styles.navMenu}>
-              <li className={styles.navItem}>
-                <a href="#about">About</a>
-              </li>
-              <li className={styles.navItem}>
-                <a href="#services">Services</a>
-              </li>
-              <li className={styles.navItem}>
-                <a href="#projects">Projects</a>
-              </li>
-              <li className={styles.navItem}>
-                <a href="#gallery">Gallery</a>
-              </li>
-              <li className={styles.navItem}>
-                <a href="#reels">Reels</a>
-              </li>
-              <li className={styles.navItem}>
-                <a href="#why-us">Why Us</a>
-              </li>
-              <li className={styles.navItem}>
-                <a href="#contact">Contact</a>
-              </li>
+              {NAV_LINKS.map((link) => (
+                <li key={link.href} className={styles.navItem}>
+                  <a href={link.href}>{link.label}</a>
+                </li>
+              ))}
             </ul>
           </nav>
 
           <a href="#contact" className={styles.ctaButtonNav}>
-            Get Consultation
+            Contact
           </a>
 
           <button
+            type="button"
             className={styles.mobileMenuBtn}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle Navigation Menu"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-nav"
           >
             {mobileMenuOpen ? (
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -223,32 +263,24 @@ export default function Home() {
           </button>
         </div>
 
-        {mobileMenuOpen && (
-          <nav className={styles.mobileNav} aria-label="Mobile">
-            <a href="#about" onClick={closeMobile}>
-              About
+        <nav
+          id="mobile-nav"
+          className={`${styles.mobileNav} ${mobileMenuOpen ? styles.mobileNavOpen : ""}`}
+          aria-label="Mobile"
+          hidden={!mobileMenuOpen}
+        >
+          {NAV_LINKS.map((link) => (
+            <a key={link.href} href={link.href} onClick={closeMobile}>
+              {link.label}
             </a>
-            <a href="#services" onClick={closeMobile}>
-              Services
-            </a>
-            <a href="#projects" onClick={closeMobile}>
-              Projects
-            </a>
-            <a href="#gallery" onClick={closeMobile}>
-              Gallery
-            </a>
-            <a href="#reels" onClick={closeMobile}>
-              Reels
-            </a>
-            <a href="#why-us" onClick={closeMobile}>
-              Why Us
-            </a>
-            <a href="#contact" onClick={closeMobile}>
-              Contact
-            </a>
-          </nav>
-        )}
+          ))}
+          <a href="#contact" className={styles.mobileNavCta} onClick={closeMobile}>
+            Contact
+          </a>
+        </nav>
       </header>
+
+      <main id="main-content">
 
       {/* Hero — Option A: real living-room cover crop */}
       <section className={styles.hero}>
@@ -266,13 +298,9 @@ export default function Home() {
         </div>
 
         <div className={styles.heroContent}>
-          <span className={styles.heroProof}>Completed Work · Singapore</span>
-          <span className={`${styles.heroSubtitle} animate-fade-in`}>
-            Where Vision Meets Craftsmanship
-          </span>
           <h1 className={`${styles.heroTitle} animate-slide-up`}>
             Crafting Premium <br />
-            <span className="gold-text-gradient font-semibold">Refined Spaces</span>
+            <span className={styles.heroAccent}>Refined Spaces</span>
           </h1>
           <p className={styles.heroDescription}>
             We design and build bespoke high-end interiors across Singapore. From custom
@@ -294,8 +322,7 @@ export default function Home() {
       <section id="about" className={`${styles.section} ${styles.sectionDark}`}>
         <div className={styles.sectionContainer}>
           <div className={styles.aboutGrid}>
-            <Reveal className={styles.aboutTextContent} delay={40}>
-              <span className={styles.sectionTag}>Heritage & Mission</span>
+            <div className={styles.aboutTextContent}>
               <h2 className={styles.sectionTitle}>Transforming Spaces, Refining Lifestyles</h2>
               <p className={styles.aboutHighlight}>
                 Established through word-of-mouth excellence, XIII Renovation & Design balances
@@ -307,24 +334,10 @@ export default function Home() {
                 accountability and eliminating outsourcing on critical phases, we deliver projects
                 from concept to final handover with meticulous precision.
               </p>
+              <p className={styles.aboutMeta}>UEN 53485510E · Sengkang, Singapore</p>
+            </div>
 
-              <div className={styles.statsRow}>
-                <div className={styles.statItem}>
-                  <span className={styles.statNumber}>2+</span>
-                  <span className={styles.statLabel}>Years Active</span>
-                </div>
-                <div className={styles.statItem}>
-                  <span className={styles.statNumber}>100%</span>
-                  <span className={styles.statLabel}>Accountable</span>
-                </div>
-                <div className={styles.statItem}>
-                  <span className={styles.statNumber}>53485510E</span>
-                  <span className={styles.statLabel}>UEN Registered</span>
-                </div>
-              </div>
-            </Reveal>
-
-            <Reveal variant="clip" delay={140} className={styles.aboutVisual}>
+            <div className={styles.aboutVisual}>
               <SafeImage
                 src={ABOUT_IMAGE.src}
                 alt={ABOUT_IMAGE.alt}
@@ -332,7 +345,7 @@ export default function Home() {
                 sizes="(max-width: 900px) 100vw, 45vw"
                 className={styles.aboutImage}
               />
-            </Reveal>
+            </div>
           </div>
         </div>
       </section>
@@ -340,27 +353,25 @@ export default function Home() {
       {/* Services */}
       <section id="services" className={`${styles.section} ${styles.sectionLight}`}>
         <div className={styles.sectionContainer}>
-          <Reveal className={styles.sectionHeader}>
-            <span className={styles.sectionTag}>Expertise</span>
+          <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Bespoke Design & Build Services</h2>
             <p className={styles.sectionSubtitle}>
               From structural fit-outs to the finest custom joinery detail, we execute projects with
               precision.
             </p>
-          </Reveal>
+          </div>
 
           <div className={styles.servicesGrid}>
-            {services.map((service, index) => (
-              <Reveal key={index} delay={index * 70} className={styles.serviceCard}>
-                <div className={styles.serviceIcon}>{service.icon}</div>
+            {services.map((service) => (
+              <article key={service.title} className={styles.serviceCard}>
                 <h3 className={styles.serviceTitle}>{service.title}</h3>
                 <p className={styles.serviceDesc}>{service.description}</p>
                 <ul className={styles.serviceFeatures}>
-                  {service.features.map((feat, i) => (
-                    <li key={i}>{feat}</li>
+                  {service.features.map((feat) => (
+                    <li key={feat}>{feat}</li>
                   ))}
                 </ul>
-              </Reveal>
+              </article>
             ))}
           </div>
         </div>
@@ -369,87 +380,78 @@ export default function Home() {
       <FeaturedProjects onOpen={setActiveProject} />
 
       {/* Gallery */}
-      <section id="gallery" className={`${styles.section} ${styles.sectionLight} ${styles.sectionAfterProjects}`}>
+      <section id="gallery" className={`${styles.section} ${styles.sectionLight}`}>
         <div className={styles.sectionContainer}>
-          <Reveal className={styles.sectionHeader}>
-            <span className={styles.sectionTag}>Our Work</span>
+          <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Project Gallery</h2>
             <p className={styles.sectionSubtitle}>
               An editorial selection of finishes, carpentry, and completed spaces.
             </p>
-          </Reveal>
+          </div>
 
-          <Reveal variant="scale" delay={80}>
-            <GalleryGrid items={galleryItems} onSelect={lightbox.openAt} />
-          </Reveal>
+          <GalleryGrid items={galleryItems} onSelect={lightbox.openAt} />
         </div>
       </section>
 
       {/* Reels */}
       <section id="reels" className={`${styles.section} ${styles.sectionDark}`}>
         <div className={styles.sectionContainer}>
-          <Reveal className={styles.sectionHeader}>
-            <span className={styles.sectionTag}>Project Reels</span>
+          <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Spaces in Motion</h2>
             <p className={styles.sectionSubtitle}>
               Short films from real installations — kitchens, bathrooms, and custom finishes.
             </p>
-          </Reveal>
+          </div>
 
-          <Reveal delay={100}>
-            <ReelsStrip reels={featuredReels} />
-          </Reveal>
+          <ReelsStrip reels={featuredReels} />
         </div>
       </section>
 
       {/* Why Us */}
       <section id="why-us" className={`${styles.section} ${styles.sectionLight}`}>
         <div className={styles.sectionContainer}>
-          <Reveal className={styles.sectionHeader}>
-            <span className={styles.sectionTag}>Why XIII</span>
+          <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>The Craftsmanship Standards</h2>
             <p className={styles.sectionSubtitle}>
               We eliminate common industry anxieties by holding ourselves to rigorous, reliable
               execution structures.
             </p>
-          </Reveal>
+          </div>
 
           <div className={styles.diffGrid}>
-            <Reveal delay={40} className={styles.diffCard}>
-              <div className={styles.diffNum}>01</div>
+            <article className={styles.diffCard}>
               <h3 className={styles.diffTitle}>End-to-End Accountability</h3>
               <p className={styles.diffDesc}>
                 Unlike firms that outsource critical phases, we manage the design, build, carpentry,
                 and finishing under one roof. This guarantees quality consistency.
               </p>
-            </Reveal>
-            <Reveal delay={100} className={styles.diffCard}>
-              <div className={styles.diffNum}>02</div>
+            </article>
+            <article className={styles.diffCard}>
               <h3 className={styles.diffTitle}>Transparent Real-Time Tracking</h3>
               <p className={styles.diffDesc}>
                 From photorealistic 3D visualisations before hacking begins, to transparent budget
                 trackers, we eliminate &quot;renovation anxiety&quot; completely.
               </p>
-            </Reveal>
-            <Reveal delay={160} className={styles.diffCard}>
-              <div className={styles.diffNum}>03</div>
+            </article>
+            <article className={styles.diffCard}>
               <h3 className={styles.diffTitle}>Discerning Client Focus</h3>
               <p className={styles.diffDesc}>
                 We specialise in serving clients who value architectural longevity, detailed
                 planning, and premium materials over temporary, short-lived trends.
               </p>
-            </Reveal>
-            <Reveal delay={220} className={styles.diffCard}>
-              <div className={styles.diffNum}>04</div>
+            </article>
+            <article className={styles.diffCard}>
               <h3 className={styles.diffTitle}>Regulatory Compliance</h3>
               <p className={styles.diffDesc}>
                 Full management of HDB, Condo MCST, and commercial authority approvals, licensed MEP
                 engineering tests, and strict adherence to Singapore regulations.
               </p>
-            </Reveal>
+            </article>
           </div>
         </div>
       </section>
+
+      <GoogleReviews />
 
       {/* Contact */}
       <section id="contact" className={`${styles.section} ${styles.sectionDark}`}>
@@ -457,11 +459,10 @@ export default function Home() {
           <div className={styles.contactGrid}>
             <div className={styles.contactInfoArea}>
               <div>
-                <span className={styles.sectionTag}>Contact</span>
                 <h2 className={styles.sectionTitle}>Begin Your Bespoke Journey</h2>
                 <p className={styles.contactIntro}>
-                  Have an upcoming residential or commercial space? Fill out the form, or reach out
-                  to us directly through our verified business channels.
+                  Have an upcoming residential or commercial space? Reach out on WhatsApp, phone,
+                  or email — or continue below and we will open WhatsApp with your details.
                 </p>
               </div>
 
@@ -575,19 +576,45 @@ export default function Home() {
 
             <div className={styles.formArea}>
               <h3 className={styles.formTitle}>Book a Design Consultation</h3>
+              <p className={styles.formHint}>
+                This opens WhatsApp with your details — we do not store the form on this site.
+                Prefer call or email? Use the channels on the left.
+              </p>
 
               {formSubmitted ? (
-                <div className={styles.successMessage}>
-                  <p style={{ fontWeight: "600", marginBottom: "0.5rem" }}>
-                    Thank you for your interest!
-                  </p>
+                <div className={styles.successMessage} role="status" aria-live="polite">
+                  <strong>WhatsApp should be opening now.</strong>
                   <p>
-                    Your design request has been received. Our team will contact you within 24–48
-                    hours.
+                    If nothing happened, message us on WhatsApp or call{" "}
+                    <a href="tel:+6587231313">+65 8723 1313</a>.
                   </p>
+                  <div className={styles.successActions}>
+                    {whatsAppUrl && (
+                      <a href={whatsAppUrl} target="_blank" rel="noopener noreferrer">
+                        Open WhatsApp again
+                      </a>
+                    )}
+                    <a href="mailto:sales.xiii.reno@gmail.com">Email sales</a>
+                    <button
+                      type="button"
+                      className={styles.formSubmitBtn}
+                      style={{ marginTop: 0 }}
+                      onClick={() => {
+                        setFormSubmitted(false);
+                        setWhatsAppUrl(null);
+                      }}
+                    >
+                      Send another message
+                    </button>
+                  </div>
                 </div>
               ) : (
-                <form className={styles.contactForm} onSubmit={handleFormSubmit}>
+                <form className={styles.contactForm} onSubmit={handleFormSubmit} noValidate>
+                  {formError && (
+                    <p className={styles.formError} role="alert">
+                      {formError}
+                    </p>
+                  )}
                   <div className={styles.formGroup}>
                     <label className={styles.formLabel} htmlFor="name">
                       Your Name
@@ -597,6 +624,8 @@ export default function Home() {
                       id="name"
                       name="name"
                       required
+                      maxLength={80}
+                      autoComplete="name"
                       value={formData.name}
                       onChange={handleInputChange}
                       className={styles.formInput}
@@ -613,6 +642,8 @@ export default function Home() {
                       id="email"
                       name="email"
                       required
+                      maxLength={120}
+                      autoComplete="email"
                       value={formData.email}
                       onChange={handleInputChange}
                       className={styles.formInput}
@@ -629,6 +660,8 @@ export default function Home() {
                       id="phone"
                       name="phone"
                       required
+                      maxLength={30}
+                      autoComplete="tel"
                       value={formData.phone}
                       onChange={handleInputChange}
                       className={styles.formInput}
@@ -663,6 +696,7 @@ export default function Home() {
                       name="message"
                       rows={4}
                       required
+                      maxLength={1200}
                       value={formData.message}
                       onChange={handleInputChange}
                       className={styles.formInput}
@@ -670,8 +704,12 @@ export default function Home() {
                     />
                   </div>
 
-                  <button type="submit" className={styles.formSubmitBtn}>
-                    Request Callback
+                  <button
+                    type="submit"
+                    className={styles.formSubmitBtn}
+                    disabled={formSubmitting}
+                  >
+                    {formSubmitting ? "Opening WhatsApp…" : "Continue on WhatsApp"}
                   </button>
                 </form>
               )}
@@ -679,11 +717,12 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </main>
 
       <footer className={styles.footer}>
         <div className={styles.footerContainer}>
           <div className={styles.footerAbout}>
-            <a href="#" className={styles.logoArea}>
+            <a href="#main-content" className={styles.logoArea}>
               <Image
                 src="/logo.jpg"
                 alt="XIII Renovation & Design Logo"
@@ -707,19 +746,19 @@ export default function Home() {
             <h4 className={styles.footerLinksTitle}>Quick Navigation</h4>
             <ul className={styles.footerLinks}>
               <li>
-                <a href="#about">About Our Heritage</a>
+                <a href="#projects">Work</a>
               </li>
               <li>
-                <a href="#services">Our Design Services</a>
+                <a href="#services">Services</a>
               </li>
               <li>
-                <a href="#projects">Featured Projects</a>
+                <a href="#about">About</a>
               </li>
               <li>
-                <a href="#gallery">Project Gallery</a>
+                <a href="#reviews">Reviews</a>
               </li>
               <li>
-                <a href="#contact">Book Consultation</a>
+                <a href="#contact">Contact</a>
               </li>
             </ul>
           </div>

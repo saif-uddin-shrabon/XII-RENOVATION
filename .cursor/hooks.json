@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "hooks": {
+    "preToolUse": [
+      {
+        "command": "[ ! -f '/Users/mdshrabon/Deve_Project/XII-RENOVATION/.cursor/skills/impeccable/scripts/hook-before-edit.mjs' ] || node '/Users/mdshrabon/Deve_Project/XII-RENOVATION/.cursor/skills/impeccable/scripts/hook-before-edit.mjs'",
+        "timeout": 5
+      }
+    ]
+  }
+}

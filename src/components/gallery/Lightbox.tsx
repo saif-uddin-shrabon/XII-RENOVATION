@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import SafeImage from "@/components/media/SafeImage";
+import { useFocusTrap } from "@/hooks/useFocusTrap";
 import type { galleryItems } from "@/data/projects";
 import styles from "./Lightbox.module.css";
 
@@ -22,7 +23,8 @@ export default function Lightbox({
 }: LightboxProps) {
   const titleId = useId();
   const dialogRef = useRef<HTMLDivElement>(null);
-  const open = index !== null && items[index];
+  const touchStartX = useRef<number | null>(null);
+  const open = index !== null && Boolean(items[index]);
 
   const goPrev = useCallback(() => {
     if (index === null || items.length === 0) return;
@@ -34,21 +36,21 @@ export default function Lightbox({
     onNavigate((index + 1) % items.length);
   }, [index, items.length, onNavigate]);
 
+  useFocusTrap(open, dialogRef, onClose);
+
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
       if (e.key === "ArrowLeft") goPrev();
       if (e.key === "ArrowRight") goNext();
     };
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", onKey);
-    dialogRef.current?.focus();
     return () => {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", onKey);
     };
-  }, [open, onClose, goPrev, goNext]);
+  }, [open, goPrev, goNext]);
 
   if (!open || index === null) return null;
 
@@ -63,6 +65,18 @@ export default function Lightbox({
       ref={dialogRef}
       tabIndex={-1}
       onClick={onClose}
+      onTouchStart={(e) => {
+        touchStartX.current = e.changedTouches[0]?.clientX ?? null;
+      }}
+      onTouchEnd={(e) => {
+        const start = touchStartX.current;
+        touchStartX.current = null;
+        if (start == null) return;
+        const delta = e.changedTouches[0].clientX - start;
+        if (Math.abs(delta) < 48) return;
+        if (delta > 0) goPrev();
+        else goNext();
+      }}
     >
       <button
         type="button"

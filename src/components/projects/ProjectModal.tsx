@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef } from "react";
 import SafeImage from "@/components/media/SafeImage";
+import { useFocusTrap } from "@/hooks/useFocusTrap";
 import type { Project } from "@/data/projects";
 import { getVideoById } from "@/data/projects";
 import styles from "./ProjectModal.module.css";
@@ -14,20 +15,17 @@ interface ProjectModalProps {
 export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   const titleId = useId();
   const ref = useRef<HTMLDivElement>(null);
+  const open = Boolean(project);
+
+  useFocusTrap(open, ref, onClose);
 
   useEffect(() => {
     if (!project) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
     document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", onKey);
-    ref.current?.focus();
     return () => {
       document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKey);
     };
-  }, [project, onClose]);
+  }, [project]);
 
   if (!project) return null;
 
@@ -38,14 +36,15 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   return (
     <div
       className={styles.backdrop}
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby={titleId}
+      role="presentation"
       onClick={onClose}
     >
       <div
         className={styles.panel}
         ref={ref}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
         tabIndex={-1}
         onClick={(e) => e.stopPropagation()}
       >

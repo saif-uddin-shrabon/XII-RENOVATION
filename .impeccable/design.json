@@ -1,0 +1,433 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-04T19:59:00+08:00",
+  "title": "Design System: XIII Renovation & Design",
+  "extensions": {
+    "colorMeta": {
+      "champagne-gilt": {
+        "role": "primary",
+        "displayName": "Champagne gilt",
+        "canonical": "#cfa862",
+        "tonalRamp": [
+          "oklch(15.0% 0.0997 80.9)",
+          "oklch(26.0% 0.0997 80.9)",
+          "oklch(38.0% 0.0997 80.9)",
+          "oklch(50.0% 0.0997 80.9)",
+          "oklch(62.0% 0.0997 80.9)",
+          "oklch(74.0% 0.0997 80.9)",
+          "oklch(85.0% 0.0997 80.9)",
+          "oklch(95.0% 0.0997 80.9)"
+        ]
+      },
+      "gilt-light": {
+        "role": "primary",
+        "displayName": "Gilt light",
+        "canonical": "#e6c587",
+        "tonalRamp": [
+          "oklch(15.0% 0.0878 82.7)",
+          "oklch(26.0% 0.0878 82.7)",
+          "oklch(38.0% 0.0878 82.7)",
+          "oklch(50.0% 0.0878 82.7)",
+          "oklch(62.0% 0.0878 82.7)",
+          "oklch(74.0% 0.0878 82.7)",
+          "oklch(85.0% 0.0878 82.7)",
+          "oklch(95.0% 0.0878 82.7)"
+        ]
+      },
+      "gilt-dark": {
+        "role": "primary",
+        "displayName": "Gilt dark",
+        "canonical": "#a88344",
+        "tonalRamp": [
+          "oklch(15.0% 0.0929 79.1)",
+          "oklch(26.0% 0.0929 79.1)",
+          "oklch(38.0% 0.0929 79.1)",
+          "oklch(50.0% 0.0929 79.1)",
+          "oklch(62.0% 0.0929 79.1)",
+          "oklch(74.0% 0.0929 79.1)",
+          "oklch(85.0% 0.0929 79.1)",
+          "oklch(95.0% 0.0929 79.1)"
+        ]
+      },
+      "gilt-bronze": {
+        "role": "primary",
+        "displayName": "Bronze",
+        "canonical": "#8c6a38",
+        "tonalRamp": [
+          "oklch(15.0% 0.0799 75.4)",
+          "oklch(26.0% 0.0799 75.4)",
+          "oklch(38.0% 0.0799 75.4)",
+          "oklch(50.0% 0.0799 75.4)",
+          "oklch(62.0% 0.0799 75.4)",
+          "oklch(74.0% 0.0799 75.4)",
+          "oklch(85.0% 0.0799 75.4)",
+          "oklch(95.0% 0.0799 75.4)"
+        ]
+      },
+      "lamp-black": {
+        "role": "neutral",
+        "displayName": "Lamp-black",
+        "canonical": "#0b0c0e",
+        "tonalRamp": [
+          "oklch(15.0% 0.0046 264.4)",
+          "oklch(26.0% 0.0046 264.4)",
+          "oklch(38.0% 0.0046 264.4)",
+          "oklch(50.0% 0.0046 264.4)",
+          "oklch(62.0% 0.0046 264.4)",
+          "oklch(74.0% 0.0046 264.4)",
+          "oklch(85.0% 0.0046 264.4)",
+          "oklch(95.0% 0.0046 264.4)"
+        ]
+      },
+      "graphite": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "canonical": "#121418",
+        "tonalRamp": [
+          "oklch(15.0% 0.0087 264.3)",
+          "oklch(26.0% 0.0087 264.3)",
+          "oklch(38.0% 0.0087 264.3)",
+          "oklch(50.0% 0.0087 264.3)",
+          "oklch(62.0% 0.0087 264.3)",
+          "oklch(74.0% 0.0087 264.3)",
+          "oklch(85.0% 0.0087 264.3)",
+          "oklch(95.0% 0.0087 264.3)"
+        ]
+      },
+      "millwork": {
+        "role": "neutral",
+        "displayName": "Millwork",
+        "canonical": "#191c22",
+        "tonalRamp": [
+          "oklch(15.0% 0.0125 264.3)",
+          "oklch(26.0% 0.0125 264.3)",
+          "oklch(38.0% 0.0125 264.3)",
+          "oklch(50.0% 0.0125 264.3)",
+          "oklch(62.0% 0.0125 264.3)",
+          "oklch(74.0% 0.0125 264.3)",
+          "oklch(85.0% 0.0125 264.3)",
+          "oklch(95.0% 0.0125 264.3)"
+        ]
+      },
+      "text-primary": {
+        "role": "neutral",
+        "displayName": "Primary text",
+        "canonical": "#f5f6f8",
+        "tonalRamp": [
+          "oklch(15.0% 0.0029 264.5)",
+          "oklch(26.0% 0.0029 264.5)",
+          "oklch(38.0% 0.0029 264.5)",
+          "oklch(50.0% 0.0029 264.5)",
+          "oklch(62.0% 0.0029 264.5)",
+          "oklch(74.0% 0.0029 264.5)",
+          "oklch(85.0% 0.0029 264.5)",
+          "oklch(95.0% 0.0029 264.5)"
+        ]
+      },
+      "text-secondary": {
+        "role": "neutral",
+        "displayName": "Secondary text",
+        "canonical": "#a0a6b2",
+        "tonalRamp": [
+          "oklch(15.0% 0.0186 264.5)",
+          "oklch(26.0% 0.0186 264.5)",
+          "oklch(38.0% 0.0186 264.5)",
+          "oklch(50.0% 0.0186 264.5)",
+          "oklch(62.0% 0.0186 264.5)",
+          "oklch(74.0% 0.0186 264.5)",
+          "oklch(85.0% 0.0186 264.5)",
+          "oklch(95.0% 0.0186 264.5)"
+        ]
+      },
+      "text-muted": {
+        "role": "neutral",
+        "displayName": "Muted text",
+        "canonical": "#8b929e",
+        "tonalRamp": [
+          "oklch(15.0% 0.0222 262.9)",
+          "oklch(26.0% 0.0222 262.9)",
+          "oklch(38.0% 0.0222 262.9)",
+          "oklch(50.0% 0.0222 262.9)",
+          "oklch(62.0% 0.0222 262.9)",
+          "oklch(74.0% 0.0222 262.9)",
+          "oklch(85.0% 0.0222 262.9)",
+          "oklch(95.0% 0.0222 262.9)"
+        ]
+      },
+      "border-gilt": {
+        "role": "neutral",
+        "displayName": "Gilt hairline",
+        "canonical": "rgba(207, 168, 98, 0.15)",
+        "tonalRamp": [
+          "oklch(15.0% 0.0997 80.9)",
+          "oklch(26.0% 0.0997 80.9)",
+          "oklch(38.0% 0.0997 80.9)",
+          "oklch(50.0% 0.0997 80.9)",
+          "oklch(62.0% 0.0997 80.9)",
+          "oklch(74.0% 0.0997 80.9)",
+          "oklch(85.0% 0.0997 80.9)",
+          "oklch(95.0% 0.0997 80.9)"
+        ]
+      },
+      "border-muted": {
+        "role": "neutral",
+        "displayName": "Muted hairline",
+        "canonical": "rgba(255, 255, 255, 0.05)",
+        "tonalRamp": [
+          "oklch(15.0% 0.0000 264.5)",
+          "oklch(26.0% 0.0000 264.5)",
+          "oklch(38.0% 0.0000 264.5)",
+          "oklch(50.0% 0.0000 264.5)",
+          "oklch(62.0% 0.0000 264.5)",
+          "oklch(74.0% 0.0000 264.5)",
+          "oklch(85.0% 0.0000 264.5)",
+          "oklch(95.0% 0.0000 264.5)"
+        ]
+      },
+      "glass": {
+        "role": "neutral",
+        "displayName": "Glass",
+        "canonical": "rgba(11, 12, 14, 0.75)",
+        "tonalRamp": [
+          "oklch(15.0% 0.0046 264.4)",
+          "oklch(26.0% 0.0046 264.4)",
+          "oklch(38.0% 0.0046 264.4)",
+          "oklch(50.0% 0.0046 264.4)",
+          "oklch(62.0% 0.0046 264.4)",
+          "oklch(74.0% 0.0046 264.4)",
+          "oklch(85.0% 0.0046 264.4)",
+          "oklch(95.0% 0.0046 264.4)"
+        ]
+      },
+      "glass-border": {
+        "role": "neutral",
+        "displayName": "Glass border",
+        "canonical": "rgba(207, 168, 98, 0.1)",
+        "tonalRamp": [
+          "oklch(15.0% 0.0997 80.9)",
+          "oklch(26.0% 0.0997 80.9)",
+          "oklch(38.0% 0.0997 80.9)",
+          "oklch(50.0% 0.0997 80.9)",
+          "oklch(62.0% 0.0997 80.9)",
+          "oklch(74.0% 0.0997 80.9)",
+          "oklch(85.0% 0.0997 80.9)",
+          "oklch(95.0% 0.0997 80.9)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only. A short gilt-gradient phrase may sit inside the line."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles in Playfair Display."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Service names, form titles, mosaic and reel titles; review quotes in Playfair at a slightly smaller size."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Supporting copy in Outfit, secondary text, line-height 1.7."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase tracked UI: buttons, nav links, form labels, photography categories."
+      }
+    },
+    "shadows": [
+      {
+        "name": "glass-nav",
+        "value": "0 4px 30px rgba(0, 0, 0, 0.5)",
+        "purpose": "Scrolled glass navbar veil only."
+      },
+      {
+        "name": "gilt-action",
+        "value": "0 4px 15px rgba(207, 168, 98, 0.2)",
+        "purpose": "Primary button rest glow."
+      },
+      {
+        "name": "gilt-action-hover",
+        "value": "0 6px 25px rgba(207, 168, 98, 0.4)",
+        "purpose": "Primary button hover glow."
+      },
+      {
+        "name": "gilt-halo",
+        "value": "0 0 15px rgba(207, 168, 98, 0.4)",
+        "purpose": "Nav outline CTA hover halo."
+      },
+      {
+        "name": "card-hover-dust",
+        "value": "0 15px 30px rgba(207, 168, 98, 0.08)",
+        "purpose": "Service card hover only; not a rest elevation."
+      },
+      {
+        "name": "input-focus",
+        "value": "0 0 5px rgba(207, 168, 98, 0.2)",
+        "purpose": "Small gilt bloom on focused fields."
+      },
+      {
+        "name": "section-arrival",
+        "value": "inset 0 40px 48px -40px rgba(11, 12, 14, 0.25)",
+        "purpose": "Inset vignette where a dark room follows a lighter one."
+      }
+    ],
+    "motion": [
+      {
+        "name": "smooth",
+        "value": "all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)",
+        "purpose": "Primary state transitions: buttons, cards, nav glass."
+      },
+      {
+        "name": "fast",
+        "value": "all 0.2s ease-out",
+        "purpose": "Nav links, form fields, close controls."
+      },
+      {
+        "name": "reveal",
+        "value": "0.85s cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Entrance fade/slide; honor prefers-reduced-motion."
+      },
+      {
+        "name": "image-zoom",
+        "value": "transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1)",
+        "purpose": "Photography hover scale (~1.03–1.04)."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "split",
+        "value": "1024px"
+      },
+      {
+        "name": "mosaic",
+        "value": "900px"
+      },
+      {
+        "name": "compact",
+        "value": "768px"
+      },
+      {
+        "name": "narrow",
+        "value": "640px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Champagne-gilt fill CTA — rare hardware, not a wash.",
+      "html": "<button class=\"ds-btn-primary\" type=\"button\">View Our Work</button>",
+      "css": ".ds-btn-primary { background: var(--accent-gold); color: var(--bg-primary); border: 1px solid var(--accent-gold); padding: 1rem 2rem; font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; border-radius: 2px; box-shadow: 0 4px 15px rgba(207, 168, 98, 0.2); transition: var(--transition-smooth); cursor: pointer; } .ds-btn-primary:hover { background: var(--accent-gold-light); border-color: var(--accent-gold-light); transform: translateY(-3px); box-shadow: 0 6px 25px rgba(207, 168, 98, 0.4); } .ds-btn-primary:focus-visible { outline: 1px solid var(--accent-gold); outline-offset: 4px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Ghost control: paper hairline on charcoal, no second gold fill.",
+      "html": "<button class=\"ds-btn-secondary\" type=\"button\">Get in Touch</button>",
+      "css": ".ds-btn-secondary { background: transparent; color: var(--text-primary); border: 1px solid rgba(255, 255, 255, 0.2); padding: 1rem 2rem; font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; border-radius: 2px; transition: var(--transition-smooth); cursor: pointer; } .ds-btn-secondary:hover { background: rgba(255, 255, 255, 0.05); border-color: var(--text-primary); transform: translateY(-3px); } .ds-btn-secondary:focus-visible { outline: 1px solid var(--accent-gold); outline-offset: 4px; }"
+    },
+    {
+      "name": "Glass Navbar",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Scrolled glass bar: lamp-black veil, 16px blur, gilt hairline, XIII wordmark.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-brand\" href=\"#\"><span class=\"ds-nav-mark\"></span><span class=\"ds-nav-word\"><span class=\"ds-nav-word-main\">XIII</span><span class=\"ds-nav-word-sub\">Renovation &amp; Design</span></span></a><div class=\"ds-nav-links\"><a href=\"#\">Work</a><a href=\"#\">Contact</a></div><a class=\"ds-btn-nav\" href=\"#\">Consult</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 0.8rem 2rem; background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border-bottom: 1px solid var(--glass-border); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); } .ds-nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: inherit; } .ds-nav-mark { width: 36px; height: 36px; border-radius: 4px; background: var(--bg-tertiary); border: 1px solid var(--border-color); } .ds-nav-word { display: flex; flex-direction: column; } .ds-nav-word-main { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 700; color: var(--text-primary); letter-spacing: 0.1em; line-height: 1.1; } .ds-nav-word-sub { font-family: var(--font-sans); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--accent-gold); } .ds-nav-links { display: flex; gap: 2.5rem; } .ds-nav-links a { text-decoration: none; color: var(--text-secondary); font-family: var(--font-sans); font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; padding: 0.4rem 0; transition: var(--transition-fast); } .ds-nav-links a:hover { color: var(--accent-gold); } .ds-nav-links a:focus-visible { outline: 1px solid var(--accent-gold); outline-offset: 4px; } .ds-btn-nav { border: 1px solid var(--accent-gold); background: transparent; color: var(--accent-gold); padding: 0.6rem 1.25rem; border-radius: 2px; text-transform: uppercase; font-family: var(--font-sans); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-decoration: none; transition: var(--transition-smooth); } .ds-btn-nav:hover { background: var(--accent-gold); color: var(--bg-primary); box-shadow: 0 0 15px rgba(207, 168, 98, 0.4); transform: translateY(-1px); } .ds-btn-nav:focus-visible { outline: 1px solid var(--accent-gold); outline-offset: 4px; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Lamp-black well on graphite; gilt border and bloom on focus.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Name</span><input class=\"ds-input\" type=\"text\" placeholder=\"Your name\" /></label>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 0.5rem; } .ds-field-label { font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); font-weight: 500; } .ds-input { background: var(--bg-primary); border: 1px solid var(--border-muted); padding: 1rem; color: var(--text-primary); font-family: var(--font-sans); font-size: 0.9rem; border-radius: 2px; outline: none; transition: var(--transition-fast); } .ds-input::placeholder { color: var(--text-muted); } .ds-input:hover { border-color: var(--border-muted); } .ds-input:focus, .ds-input:focus-visible { border-color: var(--accent-gold); box-shadow: 0 0 5px rgba(207, 168, 98, 0.2); }"
+    },
+    {
+      "name": "Service Card",
+      "kind": "card",
+      "refersTo": "card-service",
+      "description": "Millwork plane, muted hairline, gilt border and dust on hover.",
+      "html": "<article class=\"ds-card\"><h3 class=\"ds-card-title\">Bespoke Custom Joinery</h3><p class=\"ds-card-body\">Tailored built-in furniture crafted specifically to the room — kitchens, wardrobes, feature walls.</p><ul class=\"ds-card-list\"><li>Custom kitchens</li><li>Walk-in wardrobes</li></ul></article>",
+      "css": ".ds-card { background: var(--bg-tertiary); padding: 3rem 2.5rem; border-radius: 4px; border: 1px solid var(--border-muted); transition: var(--transition-smooth); display: flex; flex-direction: column; } .ds-card:hover { transform: translateY(-8px); border-color: var(--accent-gold); box-shadow: 0 15px 30px rgba(207, 168, 98, 0.08); } .ds-card:focus-visible { outline: 1px solid var(--accent-gold); outline-offset: 4px; } .ds-card-title { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 500; color: var(--text-primary); letter-spacing: -0.02em; margin: 0 0 1rem; } .ds-card-body { font-family: var(--font-sans); font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary); margin: 0 0 1.5rem; } .ds-card-list { list-style: none; margin: auto 0 0; padding: 1.5rem 0 0; border-top: 1px solid var(--border-muted); display: flex; flex-direction: column; gap: 0.5rem; } .ds-card-list li { font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-secondary); display: flex; align-items: center; gap: 0.5rem; } .ds-card-list li::before { content: \"•\"; color: var(--accent-gold); font-weight: bold; }"
+    },
+    {
+      "name": "Gold Display Span",
+      "kind": "custom",
+      "refersTo": "display",
+      "description": "Short Playfair phrase with 135° gilt-light → gilt → gilt-dark text clip. Once per viewport.",
+      "html": "<h1 class=\"ds-display\">Quiet rooms, <span class=\"ds-gilt-span\">finished well</span></h1>",
+      "css": ".ds-display { font-family: var(--font-serif); font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; color: var(--text-primary); margin: 0; } .ds-gilt-span { background: linear-gradient(135deg, var(--accent-gold-light) 0%, var(--accent-gold) 50%, var(--accent-gold-dark) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-weight: 600; } .ds-gilt-span:hover { background: linear-gradient(135deg, var(--accent-gold-light) 0%, var(--accent-gold) 50%, var(--accent-gold-dark) 100%); -webkit-background-clip: text; background-clip: text; } .ds-display:focus-visible { outline: 1px solid var(--accent-gold); outline-offset: 4px; }"
+    },
+    {
+      "name": "Featured Mosaic Tile",
+      "kind": "custom",
+      "refersTo": "card-service",
+      "description": "Flush photograph with under-frame caption: gilt category, Playfair title, muted location.",
+      "html": "<button class=\"ds-tile\" type=\"button\"><span class=\"ds-tile-media\"><span class=\"ds-tile-still\"></span></span><span class=\"ds-tile-caption\"><span class=\"ds-tile-cat\">Joinery</span><span class=\"ds-tile-loc\">Singapore</span><span class=\"ds-tile-title\">Study carpentry</span></span></button>",
+      "css": ".ds-tile { display: flex; flex-direction: column; gap: 0.85rem; width: 100%; padding: 0; border: none; background: transparent; text-align: left; cursor: pointer; color: inherit; } .ds-tile:focus-visible { outline: 1px solid var(--accent-gold); outline-offset: 4px; } .ds-tile-media { position: relative; width: 100%; aspect-ratio: 4 / 5; overflow: hidden; background: var(--bg-tertiary); } .ds-tile-still { display: block; width: 100%; height: 100%; background: linear-gradient(to top, rgba(11, 12, 14, 0.35) 0%, var(--bg-tertiary) 100%); transition: transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1); } .ds-tile:hover .ds-tile-still { transform: scale(1.03); } .ds-tile-caption { display: grid; grid-template-columns: auto 1fr; grid-template-areas: \"cat loc\" \"title title\"; column-gap: 1rem; row-gap: 0.2rem; align-items: baseline; } .ds-tile-cat { grid-area: cat; font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-gold); font-weight: 600; } .ds-tile-title { grid-area: title; font-family: var(--font-serif); font-size: clamp(1.15rem, 1.6vw, 1.45rem); font-weight: 500; color: var(--text-primary); line-height: 1.25; } .ds-tile-loc { grid-area: loc; justify-self: end; font-family: var(--font-sans); font-size: 0.78rem; color: var(--text-muted); font-weight: 300; letter-spacing: 0.04em; }"
+    },
+    {
+      "name": "Lightbox",
+      "kind": "custom",
+      "refersTo": "nav",
+      "description": "Near-black veil; contained still; hairline ghost close and prev/next that gild on hover.",
+      "html": "<div class=\"ds-lightbox\"><button class=\"ds-lightbox-close\" type=\"button\" aria-label=\"Close\">×</button><button class=\"ds-lightbox-nav ds-lightbox-prev\" type=\"button\" aria-label=\"Previous\">‹</button><div class=\"ds-lightbox-frame\"><div class=\"ds-lightbox-still\"></div><div class=\"ds-lightbox-caption\"><p class=\"ds-lightbox-title\">Living room feature wall</p><p class=\"ds-lightbox-meta\">Completed work · Singapore</p></div></div><button class=\"ds-lightbox-nav ds-lightbox-next\" type=\"button\" aria-label=\"Next\">›</button></div>",
+      "css": ".ds-lightbox { position: relative; background: rgba(5, 5, 6, 0.94); padding: 2rem; display: flex; align-items: center; justify-content: center; gap: 1rem; } .ds-lightbox-frame { width: min(420px, 100%); display: flex; flex-direction: column; gap: 1rem; } .ds-lightbox-still { width: 100%; aspect-ratio: 4 / 5; background: #0a0a0b; } .ds-lightbox-caption { text-align: center; } .ds-lightbox-title { font-family: var(--font-serif); font-size: 1.1rem; color: var(--text-primary); margin: 0 0 0.35rem; } .ds-lightbox-meta { font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin: 0; } .ds-lightbox-close { position: absolute; top: 1.25rem; right: 1.5rem; background: transparent; border: none; color: var(--text-primary); font-size: 2rem; line-height: 1; cursor: pointer; opacity: 0.7; transition: opacity 0.2s ease, color 0.2s ease; } .ds-lightbox-close:hover { opacity: 1; color: var(--accent-gold); } .ds-lightbox-close:focus-visible { outline: 1px solid var(--accent-gold); outline-offset: 4px; } .ds-lightbox-nav { background: transparent; border: 1px solid rgba(255, 255, 255, 0.15); color: var(--text-primary); width: 3rem; height: 3rem; font-size: 1.75rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: border-color 0.2s ease, color 0.2s ease; } .ds-lightbox-nav:hover { border-color: var(--accent-gold); color: var(--accent-gold); } .ds-lightbox-nav:focus-visible { outline: 1px solid var(--accent-gold); outline-offset: 4px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Night Atelier",
+    "overview": "The Night Atelier is a dark workshop-showroom. Finished joinery and completed rooms emerge from charcoal, lit like a private viewing. Champagne-gilt metal is rare. Real interior photography carries the luxury; the UI stays quiet, refined, and restrained.\n\nSurfaces are tonal rooms — lamp-black, graphite, millwork — not lifted cards. Depth comes from a change of plane, a glass navbar, a gilt glow on a primary action, and inset vignettes on photography. Corners stay near-sharp. Controls feel like hardware on dark millwork, not like software chrome.\n\nThe pairing is Playfair Display for the viewing-room voice and Outfit for wayfinding and body. Gilt appears as a latch: a primary button, a caption category, a short phrase in a headline. Confirmed visual rejections: yellow gold, Material raised-card shadows as a system, and UI that competes with the photographs.",
+    "keyCharacteristics": [
+      "Lamp-black ground with graphite and millwork as alternating rooms",
+      "Champagne gilt used like hardware, never as a wash",
+      "Playfair Display headlines; Outfit for UI and body",
+      "Near-sharp corners: 2px on controls, 4px on surfaces",
+      "Photography as the luxury surface; glass and gilt glow as rare depth"
+    ],
+    "rules": [
+      {
+        "name": "The Champagne Hardware Rule",
+        "body": "Champagne gilt is metal hardware: a latch, a caption, a primary action. It is never a fill for rooms or large surfaces.",
+        "section": "colors"
+      },
+      {
+        "name": "The Photography Carries Luxury Rule",
+        "body": "Completed-work photographs hold the luxury. UI color stays out of the way.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Voice Rule",
+        "body": "Playfair Display speaks for titles, stats, and quoted review lines. Outfit speaks for everything else. Do not introduce a third family.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tonal Room Rule",
+        "body": "Depth is a change of plane (lamp-black / graphite / millwork), not a drop shadow under a card. Gilt glow and glass are rare hardware.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep gilt rare — hardware on charcoal, not a wash.",
+      "Do let completed-work photography carry luxury; keep UI quiet around it.",
+      "Do alternate lamp-black and graphite rooms instead of raising cards.",
+      "Do pair Playfair (titles, stats, quotes) with Outfit (UI, body, labels).",
+      "Do use 2px on buttons and fields, 4px on copy surfaces, and sharp rectangles on photographs.",
+      "Do give primary actions a gilt glow; give ghost actions a paper hairline, not a second gold fill."
+    ],
+    "donts": [
+      "Don't use yellow gold or flood a screen with gilt.",
+      "Don't build elevation from offset drop shadows under cards.",
+      "Don't introduce a third type family.",
+      "Don't round buttons, fields, or cards past 4px.",
+      "Don't let UI chrome, badges, or icon systems compete with the photographs.",
+      "Don't treat glass blur or gilt glow as decoration on every surface — they are rare hardware."
+    ]
+  }
+}

@@ -33,7 +33,7 @@
 
 .cell:hover .image,
 .cell:focus-visible .image {
-  transform: scale(1.04);
+  transform: scale(1.02);
 }
 
 .cell:focus-visible {
@@ -87,5 +87,19 @@
 
   .caption {
     opacity: 1;
+  }
+
+  .cell {
+    min-height: 0;
+  }
+}
+
+@media (hover: none) {
+  .caption {
+    opacity: 1;
+  }
+
+  .cell:hover .image {
+    transform: none;
   }
 }
