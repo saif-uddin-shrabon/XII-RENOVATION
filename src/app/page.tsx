@@ -9,6 +9,7 @@ import FeaturedProjects from "@/components/projects/FeaturedProjects";
 import GalleryGrid from "@/components/gallery/GalleryGrid";
 import Lightbox, { useLightbox } from "@/components/gallery/Lightbox";
 import ReelsStrip from "@/components/reels/ReelsStrip";
+import GoogleReviews from "@/components/reviews/GoogleReviews";
 import Reveal from "@/components/motion/Reveal";
 import {
   HERO_IMAGE,
@@ -196,6 +197,9 @@ export default function Home() {
                 <a href="#why-us">Why Us</a>
               </li>
               <li className={styles.navItem}>
+                <a href="#reviews">Reviews</a>
+              </li>
+              <li className={styles.navItem}>
                 <a href="#contact">Contact</a>
               </li>
             </ul>
@@ -242,6 +246,9 @@ export default function Home() {
             </a>
             <a href="#why-us" onClick={closeMobile}>
               Why Us
+            </a>
+            <a href="#reviews" onClick={closeMobile}>
+              Reviews
             </a>
             <a href="#contact" onClick={closeMobile}>
               Contact
@@ -450,6 +457,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <GoogleReviews />
 
       {/* Contact */}
       <section id="contact" className={`${styles.section} ${styles.sectionDark}`}>
@@ -717,6 +726,9 @@ export default function Home() {
               </li>
               <li>
                 <a href="#gallery">Project Gallery</a>
+              </li>
+              <li>
+                <a href="#reviews">Google Reviews</a>
               </li>
               <li>
                 <a href="#contact">Book Consultation</a>
