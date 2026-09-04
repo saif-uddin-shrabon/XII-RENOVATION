@@ -54,6 +54,8 @@
   top: 1.25rem;
   right: 1.5rem;
   z-index: 2;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
   background: transparent;
   border: none;
   color: var(--text-primary);
@@ -67,6 +69,13 @@
 .close:hover {
   opacity: 1;
   color: var(--accent-gold);
+}
+
+.close:focus-visible,
+.nav:focus-visible {
+  outline: 1px solid var(--accent-gold);
+  outline-offset: 4px;
+  opacity: 1;
 }
 
 .nav {
@@ -103,13 +112,33 @@
 @media (max-width: 768px) {
   .backdrop {
     padding: 1rem;
+    padding-bottom: max(4.5rem, env(safe-area-inset-bottom, 0px));
+    padding-left: max(1rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1rem, env(safe-area-inset-right, 0px));
   }
 
   .nav {
-    display: none;
+    top: auto;
+    bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+    transform: none;
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .prev {
+    left: max(1rem, env(safe-area-inset-left, 0px));
+  }
+
+  .next {
+    right: max(1rem, env(safe-area-inset-right, 0px));
   }
 
   .imageWrap {
     aspect-ratio: 3 / 4;
+  }
+
+  .close {
+    top: max(1rem, env(safe-area-inset-top, 0px));
+    right: max(1rem, env(safe-area-inset-right, 0px));
   }
 }

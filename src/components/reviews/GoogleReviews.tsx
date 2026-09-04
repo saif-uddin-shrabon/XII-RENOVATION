@@ -1,7 +1,6 @@
 "use client";
 
 import SafeImage from "@/components/media/SafeImage";
-import Reveal from "@/components/motion/Reveal";
 import {
   GOOGLE_PROFILE_URL,
   GOOGLE_REVIEW_URL,
@@ -58,21 +57,14 @@ export default function GoogleReviews() {
       <div className={styles.inner}>
         <div className={styles.top}>
           <header className={styles.header}>
-            <Reveal delay={0}>
-              <span className={styles.tag}>Client Voices</span>
-            </Reveal>
-            <Reveal delay={70}>
-              <h2 className={styles.heading}>Trusted on Google</h2>
-            </Reveal>
-            <Reveal delay={120}>
-              <p className={styles.sub}>
-                Real feedback from completed renovation projects — curated from our Google Business
-                Profile.
-              </p>
-            </Reveal>
+            <h2 className={styles.heading}>Trusted on Google</h2>
+            <p className={styles.sub}>
+              Real feedback from completed renovation projects — curated from our Google Business
+              Profile.
+            </p>
           </header>
 
-          <Reveal delay={100} className={styles.summary}>
+          <div className={styles.summary}>
             <div className={styles.summaryScore}>
               <span className={styles.ratingNum}>{googleSummary.rating.toFixed(1)}</span>
               <div className={styles.summaryMeta}>
@@ -101,17 +93,15 @@ export default function GoogleReviews() {
                 Leave a review
               </a>
             </div>
-          </Reveal>
+          </div>
         </div>
 
         <div className={styles.grid}>
-          {googleReviews.map((review, index) => {
+          {googleReviews.map((review) => {
             const hasImages = Boolean(review.images?.length);
             return (
-              <Reveal
+              <article
                 key={review.id}
-                delay={80 + index * 100}
-                variant="clip"
                 className={`${styles.card} ${hasImages ? styles.cardWithImage : ""}`}
               >
                 {hasImages && (
@@ -156,7 +146,7 @@ export default function GoogleReviews() {
                     </div>
                   </footer>
                 </div>
-              </Reveal>
+              </article>
             );
           })}
         </div>

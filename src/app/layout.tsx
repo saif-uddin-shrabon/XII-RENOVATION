@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Outfit } from "next/font/google";
 import "./globals.css";
 
@@ -43,6 +43,12 @@ export const metadata: Metadata = {
     locale: "en_SG",
     type: "website",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({

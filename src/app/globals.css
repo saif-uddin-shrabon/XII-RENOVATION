@@ -13,7 +13,8 @@
   
   --text-primary: #f5f6f8;
   --text-secondary: #a0a6b2;
-  --text-muted: #646b78;
+  /* #8b929e ≈ 5.2:1 on lamp-black — meets WCAG AA for meta/labels */
+  --text-muted: #8b929e;
   
   --border-color: rgba(207, 168, 98, 0.15);
   --border-muted: rgba(255, 255, 255, 0.05);
@@ -37,6 +38,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Fixed header + notch — hash links land below the bar */
+  scroll-padding-top: calc(4.75rem + env(safe-area-inset-top, 0px));
   background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-sans);
@@ -92,7 +95,7 @@ p {
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -119,27 +122,15 @@ p {
   animation: slideUp 0.8s forwards cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* Utility Classes */
-.gold-text-gradient {
-  background: linear-gradient(135deg, var(--accent-gold-light) 0%, var(--accent-gold) 50%, var(--accent-gold-dark) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-slide-up {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 
-.gold-border-gradient {
-  position: relative;
-}
-
-.gold-border-gradient::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, var(--accent-gold-light) 0%, rgba(207, 168, 98, 0.2) 50%, var(--accent-gold-dark) 100%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
+  html {
+    scroll-behavior: auto;
+  }
 }

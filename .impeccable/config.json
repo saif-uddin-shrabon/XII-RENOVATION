@@ -1,3 +1,180 @@
 {
-  "buildPath": "comp"
+  "buildPath": "comp",
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font-size",
+        "value": "0.65rem",
+        "createdAt": "2026-09-04T12:13:55.134Z",
+        "reason": "DESIGN.md label hierarchy: category ticks ~0.65–0.7rem"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "0.7rem",
+        "createdAt": "2026-09-04T12:13:55.171Z",
+        "reason": "DESIGN.md label hierarchy: category ticks ~0.65–0.7rem"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "0.75rem",
+        "createdAt": "2026-09-04T12:13:55.201Z",
+        "reason": "DESIGN.md: form labels and nav outline type use 0.75rem"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "0.85rem",
+        "createdAt": "2026-09-04T12:13:55.234Z",
+        "reason": "DESIGN.md label role: buttons/nav at 0.85rem"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "0.9rem",
+        "createdAt": "2026-09-04T12:13:55.266Z",
+        "reason": "DESIGN.md: body support / form field size used in incumbent"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "0.95rem",
+        "createdAt": "2026-09-04T12:13:55.297Z",
+        "reason": "DESIGN.md incumbent support sizes"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.05rem",
+        "createdAt": "2026-09-04T12:13:55.331Z",
+        "reason": "DESIGN.md body role"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.1rem",
+        "createdAt": "2026-09-04T12:13:55.371Z",
+        "reason": "DESIGN.md lightbox caption / footer titles in incumbent"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.15rem",
+        "createdAt": "2026-09-04T12:13:55.405Z",
+        "reason": "DESIGN.md about highlight support size"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.25rem",
+        "createdAt": "2026-09-04T12:13:55.437Z",
+        "reason": "DESIGN.md review quote / video title size"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.3rem",
+        "createdAt": "2026-09-04T12:13:55.467Z",
+        "reason": "DESIGN.md wordmark XIII at 1.3rem"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.5rem",
+        "createdAt": "2026-09-04T12:13:55.498Z",
+        "reason": "DESIGN.md title role"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.75rem",
+        "createdAt": "2026-09-04T12:13:55.527Z",
+        "reason": "DESIGN.md lightbox nav glyph / modal title clamp endpoint"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.8rem",
+        "createdAt": "2026-09-04T12:13:55.557Z",
+        "reason": "DESIGN.md stats number size in about"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1rem",
+        "createdAt": "2026-09-04T12:13:55.586Z",
+        "reason": "DESIGN.md hero support clamp endpoint"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.2rem",
+        "createdAt": "2026-09-04T12:13:55.616Z",
+        "reason": "DESIGN.md hero support clamp endpoint"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#000",
+        "createdAt": "2026-09-04T12:13:55.645Z",
+        "reason": "Replaced with token; legacy video letterbox if any remains"
+      },
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "src/app/globals.css"
+        ],
+        "createdAt": "2026-09-04T12:13:58.869Z",
+        "reason": "DESIGN.md Gold display span: intentional champagne-gilt metal gradient clipped to text"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "0.8rem",
+        "createdAt": "2026-09-04T12:14:41.872Z",
+        "reason": "DESIGN.md incumbent footer UEN / legal meta size"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "0.68rem",
+        "createdAt": "2026-09-04T12:22:19.952Z",
+        "reason": "DESIGN.md category ticks on photography ~0.65–0.7rem"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "0.78rem",
+        "createdAt": "2026-09-04T12:22:19.992Z",
+        "reason": "DESIGN.md photography caption meta in FeaturedProjects"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "0.72rem",
+        "createdAt": "2026-09-04T12:22:20.036Z",
+        "reason": "DESIGN.md category ticks / review meta"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "3.75rem",
+        "createdAt": "2026-09-04T12:22:20.070Z",
+        "reason": "Quieter pass: will reduce Google rating display; ignore if residual"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(0, 0, 0, 0.28)",
+        "createdAt": "2026-09-04T12:28:20.727Z",
+        "reason": "DESIGN.md glass nav shadow — quieter soft offset veil"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "2.75rem",
+        "createdAt": "2026-09-04T12:33:01.576Z",
+        "reason": "Adapt: mobile hero clamp max at phone width"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.4rem",
+        "createdAt": "2026-09-04T12:33:01.619Z",
+        "reason": "Adapt: mobile form title scale"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.6rem",
+        "createdAt": "2026-09-04T12:33:01.659Z",
+        "reason": "Adapt: landscape hero title floor"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "3px",
+        "createdAt": "2026-09-04T12:33:01.690Z",
+        "reason": "Incumbent thin scrollbar thumb; near surface 4px"
+      }
+    ]
+  }
 }

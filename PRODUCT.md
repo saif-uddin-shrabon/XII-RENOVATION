@@ -37,7 +37,7 @@ Currently offered on the site (design and build for Singapore homes):
 - Licensed MEP and Singapore-code-compliant works
 - Aftercare and finishes support
 
-The consultation form is UI-only (success state with no send). Do not claim it emails or notifies anyone until it is wired. Direct channels are the live conversion path.
+The consultation form opens WhatsApp (`wa.me`) with the visitor’s details prefilled. It does not email or store leads on this site. Direct channels (WhatsApp, phone, email) remain the live conversion path.
 
 Repo folder and npm package still use "XII" / `xii-app`. Public identity is XIII — do not let the repo name leak into visitor-facing copy.
 

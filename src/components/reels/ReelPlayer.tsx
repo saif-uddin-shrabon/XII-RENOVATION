@@ -42,7 +42,11 @@ export default function ReelPlayer({
     const node = videoRef.current;
     if (!node || !shouldLoad) return;
 
-    if (autoPlayWhenVisible && inView) {
+    const reduceMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (autoPlayWhenVisible && inView && !reduceMotion) {
       node.muted = true;
       const playPromise = node.play();
       if (playPromise) {
@@ -50,7 +54,7 @@ export default function ReelPlayer({
           .then(() => setPlaying(true))
           .catch(() => setPlaying(false));
       }
-    } else if (!inView) {
+    } else if (!inView || reduceMotion) {
       node.pause();
       setPlaying(false);
     }
