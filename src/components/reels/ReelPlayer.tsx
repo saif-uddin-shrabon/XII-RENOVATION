@@ -50,13 +50,10 @@ export default function ReelPlayer({
       node.muted = true;
       const playPromise = node.play();
       if (playPromise) {
-        playPromise
-          .then(() => setPlaying(true))
-          .catch(() => setPlaying(false));
+        playPromise.catch(() => {});
       }
     } else if (!inView || reduceMotion) {
       node.pause();
-      setPlaying(false);
     }
   }, [autoPlayWhenVisible, inView, shouldLoad]);
 
@@ -68,10 +65,9 @@ export default function ReelPlayer({
     }
     if (node.paused) {
       node.muted = true;
-      node.play().then(() => setPlaying(true)).catch(() => {});
+      node.play().catch(() => {});
     } else {
       node.pause();
-      setPlaying(false);
     }
   };
 
@@ -97,6 +93,8 @@ export default function ReelPlayer({
             loop
             preload="none"
             onClick={togglePlay}
+            onPlay={() => setPlaying(true)}
+            onPause={() => setPlaying(false)}
           >
             <source src={video.src} type="video/mp4" />
           </video>

@@ -15,8 +15,8 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "XIII Renovation & Design | Premium Interior Design & Renovation Singapore",
-  description: "Singapore-based interior design and renovation contractor dedicated to transforming spaces into functional, aesthetically refined environments. Over 2 years of proven, word-of-mouth craftsmanship.",
+  title: "XIII Renovation & Design | Interior Design & Renovation Singapore",
+  description: "Thoughtful interior design, custom joinery, and accountable renovation delivery for Singapore homes.",
   keywords: [
     "Interior Design Singapore",
     "Renovation Contractor Singapore",
@@ -28,8 +28,8 @@ export const metadata: Metadata = {
     "HDB Renovation Singapore"
   ],
   openGraph: {
-    title: "XIII Renovation & Design | Where Vision Meets Craftsmanship",
-    description: "Bespoke luxury interior design and renovation services in Singapore. Crafting functional, refined spaces.",
+    title: "XIII Renovation & Design | Singapore Homes, Considered End to End",
+    description: "Interior design, custom joinery, and coordinated renovation delivery by one accountable Singapore team.",
     url: "https://www.facebook.com/XIIIRND",
     siteName: "XIII Renovation & Design",
     images: [
