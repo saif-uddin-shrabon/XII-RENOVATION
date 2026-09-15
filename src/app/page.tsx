@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Reveal from "@/components/motion/Reveal";
-import { googleReviews } from "@/data/reviews";
+import { GOOGLE_PROFILE_URL, googleReviews } from "@/data/reviews";
+import { useScrollComposition } from "@/hooks/useScrollComposition";
 import styles from "./page.module.css";
 
 const NAV_LINKS = [
@@ -117,10 +118,50 @@ const faqItems = [
 const whatsappUrl = (message: string) =>
   `https://wa.me/6587231313?text=${encodeURIComponent(message)}`;
 
-function Mark({ inverse = false }: { inverse?: boolean }) {
+const socialLinks = [
+  { label: "Facebook", href: "https://www.facebook.com/XIIIRND/", icon: "facebook" },
+  { label: "Instagram", href: "https://www.instagram.com/xiii_renovation_design/", icon: "instagram" },
+  { label: "Google", href: GOOGLE_PROFILE_URL, icon: "google" },
+] as const;
+
+function SocialIcon({ icon }: { icon: (typeof socialLinks)[number]["icon"] }) {
+  if (icon === "facebook") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M14.2 8.2V6.7c0-.7.5-.9 1-.9h2.7V2.1L14.7 2c-3.4 0-5 2-5 4.7v1.5H7v4.2h2.7V22h4.5v-9.6h3.3l.5-4.2h-3.8Z" />
+      </svg>
+    );
+  }
+
+  if (icon === "instagram") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="5" />
+        <circle cx="12" cy="12" r="4.2" />
+        <circle cx="17.5" cy="6.7" r="1" className={styles.iconFill} />
+      </svg>
+    );
+  }
+
   return (
-    <span className={`${styles.mark} ${inverse ? styles.markInverse : ""}`} aria-hidden="true">
-      XIII
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20 10.2c0 5.9-8 11.3-8 11.3S4 16.1 4 10.2a8 8 0 1 1 16 0Z" />
+      <circle cx="12" cy="10" r="2.6" />
+    </svg>
+  );
+}
+
+function Mark() {
+  return (
+    <span className={styles.mark} aria-hidden="true">
+      <Image
+        className={styles.markImage}
+        src="/assets/xiii-logo-transparent-512.png"
+        alt=""
+        width={512}
+        height={512}
+        sizes="(max-width: 700px) 32px, 37px"
+      />
     </span>
   );
 }
@@ -129,6 +170,8 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [reviewStart, setReviewStart] = useState(0);
+
+  useScrollComposition();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 32);
@@ -158,7 +201,7 @@ export default function Home() {
       <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ""}`}>
         <div className={styles.navInner}>
           <a href="#main-content" className={styles.brand} onClick={() => setMenuOpen(false)}>
-            <Mark inverse={!scrolled} />
+            <Mark />
             <span className={styles.brandName}>
               XIII
               <small>Renovation &amp; Design</small>
@@ -206,7 +249,7 @@ export default function Home() {
               <h2>Complete interior solutions for every home</h2>
               <p>From the first layout study to final finishing, our team coordinates the parts that make a renovation feel considered and complete.</p>
               <a className={styles.textButton} href="#contact">Discuss your scope <span aria-hidden="true">↗</span></a>
-              <div className={styles.servicePortrait}>
+              <div className={styles.servicePortrait} data-scroll-motion data-scroll-depth="-24">
                 <Image src="/image/xiii-12-08-26.png" alt="XIII herringbone living room feature wall" fill sizes="(max-width: 860px) 100vw, 38vw" />
               </div>
             </Reveal>
@@ -239,12 +282,12 @@ export default function Home() {
             </Reveal>
 
             <Reveal className={styles.imageMosaic} variant="clip">
-              <figure className={`${styles.mosaicTile} ${styles.tileA}`}><Image src="/image/xiii-21-08-26.png" alt="Warm modern living room" fill sizes="22vw" /></figure>
-              <figure className={`${styles.mosaicTile} ${styles.tileB}`}><Image src="/image/xiii-14-08-26.png" alt="Custom study joinery" fill sizes="18vw" /></figure>
-              <figure className={`${styles.mosaicTile} ${styles.tileC}`}><Image src="/image/xiii-10-08-26.png" alt="Bedroom interior" fill sizes="22vw" /></figure>
-              <figure className={`${styles.mosaicTile} ${styles.tileD}`}><Image src="/image/xiii-19-08-26.png" alt="Display storage carpentry" fill sizes="16vw" /></figure>
-              <figure className={`${styles.mosaicTile} ${styles.tileE}`}><Image src="/image/kitchen-utility-mustard.jpg" alt="Custom kitchen and utility joinery" fill sizes="18vw" /></figure>
-              <figure className={`${styles.mosaicTile} ${styles.tileF}`}><Image src="/image/bathroom-vanity.jpg" alt="Bathroom vanity" fill sizes="16vw" /></figure>
+              <figure className={`${styles.mosaicTile} ${styles.tileA}`} data-scroll-motion data-scroll-depth="-34"><Image src="/image/xiii-21-08-26.png" alt="Warm modern living room" fill sizes="22vw" /></figure>
+              <figure className={`${styles.mosaicTile} ${styles.tileB}`} data-scroll-motion data-scroll-depth="22"><Image src="/image/xiii-14-08-26.png" alt="Custom study joinery" fill sizes="18vw" /></figure>
+              <figure className={`${styles.mosaicTile} ${styles.tileC}`} data-scroll-motion data-scroll-depth="-18"><Image src="/image/xiii-10-08-26.png" alt="Bedroom interior" fill sizes="22vw" /></figure>
+              <figure className={`${styles.mosaicTile} ${styles.tileD}`} data-scroll-motion data-scroll-depth="28"><Image src="/image/xiii-19-08-26.png" alt="Display storage carpentry" fill sizes="16vw" /></figure>
+              <figure className={`${styles.mosaicTile} ${styles.tileE}`} data-scroll-motion data-scroll-depth="-26"><Image src="/image/kitchen-utility-mustard.jpg" alt="Custom kitchen and utility joinery" fill sizes="18vw" /></figure>
+              <figure className={`${styles.mosaicTile} ${styles.tileF}`} data-scroll-motion data-scroll-depth="18"><Image src="/image/bathroom-vanity.jpg" alt="Bathroom vanity" fill sizes="16vw" /></figure>
             </Reveal>
           </div>
         </section>
@@ -258,7 +301,7 @@ export default function Home() {
           <div className={styles.reasonGrid}>
             {reasons.map((reason, index) => (
               <Reveal key={reason.number} delay={index * 70} className={styles.reasonReveal}>
-                <article className={styles.reasonCard}>
+                <article className={styles.reasonCard} data-scroll-motion data-scroll-depth={String(16 + index * 7)}>
                   <div className={styles.reasonImage}><Image src={reason.image} alt={reason.alt} fill sizes="(max-width: 720px) 85vw, 24vw" /></div>
                   <h3>{reason.title}</h3>
                   <p>{reason.description}</p>
@@ -278,7 +321,7 @@ export default function Home() {
           <div className={styles.scopeGrid}>
             {scopeCards.map((card, index) => (
               <Reveal key={card.title} delay={index * 90} className={styles.scopeReveal}>
-                <article className={styles.scopeCard}>
+                <article className={styles.scopeCard} data-scroll-motion data-scroll-depth={String(index === 1 ? -18 : 18)}>
                   <div className={styles.scopeImage}><Image src={card.image} alt={card.alt} fill sizes="(max-width: 760px) 100vw, 33vw" /></div>
                   <div className={styles.scopeBody}>
                     <h3>{card.title}</h3><p>{card.description}</p>
@@ -293,7 +336,14 @@ export default function Home() {
         <section id="reviews" className={styles.reviewsSection}>
           <div className={styles.splitHeading}>
             <Reveal><h2>What our homeowners are saying</h2></Reveal>
-            <Reveal delay={100}><p>These are real Google reviews from clients who trusted XIII with their homes, reproduced here without invented ratings or names.</p></Reveal>
+            <Reveal delay={100} className={styles.reviewHeadingAside}>
+              <p>These are real Google reviews from clients who trusted XIII with their homes, reproduced here without invented ratings or names.</p>
+              <a className={styles.googleProfileLink} href={GOOGLE_PROFILE_URL} target="_blank" rel="noopener noreferrer">
+                <span className={styles.googleIcon}><SocialIcon icon="google" /></span>
+                <span><strong>Google Business Profile</strong><small>View reviews and project updates</small></span>
+                <svg className={styles.externalArrow} viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" /></svg>
+              </a>
+            </Reveal>
           </div>
 
           <div className={styles.reviewLayout}>
@@ -311,13 +361,13 @@ export default function Home() {
               </div>
             </div>
 
-            <Reveal className={styles.orbit} variant="scale">
+            <div className={styles.orbit} data-scroll-motion data-scroll-turn="28">
               <div className={styles.orbitRing} />
               {["xiii-12-08-26.png", "xiii-14-08-26.png", "xiii-19-08-26.png", "graj1.webp", "graj2.webp"].map((image, index) => (
                 <span key={image} className={styles[`orbit${index + 1}`]}><Image src={`/image/${image}`} alt="" fill sizes="72px" /></span>
               ))}
               <div className={styles.orbitWord}>Real<br />work</div>
-            </Reveal>
+            </div>
           </div>
         </section>
 
@@ -339,18 +389,22 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className={styles.footer}>
+      <footer className={styles.footer} data-scroll-motion data-scroll-range="enter">
         <svg className={styles.footerLine} viewBox="0 0 1440 210" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M-40 130 C150 -30 310 34 492 112 S820 220 1010 124 S1260 72 1490 154" />
-          <path className={styles.footerLineSoft} d="M830 168 C980 54 1132 78 1490 160" />
+          <path pathLength="1" d="M-40 130 C150 -30 310 34 492 112 S820 220 1010 124 S1260 72 1490 154" />
+          <path pathLength="1" className={styles.footerLineSoft} d="M830 168 C980 54 1132 78 1490 160" />
         </svg>
         <div className={styles.footerInner}>
           <div className={styles.footerBrand}>
             <div className={styles.footerBrandRow}><Mark /><strong>XIII Renovation &amp; Design</strong></div>
             <p>Thoughtful Singapore interiors, designed and built with one accountable team.</p>
-            <div className={styles.socialLinks}>
-              <a href="https://www.facebook.com/XIIIRND" target="_blank" rel="noopener noreferrer">Facebook</a>
-              <a href="https://www.instagram.com/xiii_renovation_design/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <div className={styles.socialLinks} aria-label="XIII social profiles">
+              {socialLinks.map((social) => (
+                <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={`Visit XIII on ${social.label}`}>
+                  <span><SocialIcon icon={social.icon} /></span>
+                  {social.label}
+                </a>
+              ))}
             </div>
           </div>
 

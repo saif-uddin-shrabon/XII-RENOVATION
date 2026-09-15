@@ -59,6 +59,10 @@ The website reads like a beautifully edited residential design folio: warm paper
 ## Motion
 
 - The authored entrance is the hero: a slow photographic settle paired with clipped copy arrival.
+- Scrolling separates the hero copy from the room photograph, reinforcing foreground and spatial depth before the next section arrives.
+- The completed-work mosaic moves as six fitted photographic planes with subtly different scroll depth, echoing assembled joinery rather than generic parallax.
+- Proof and property cards settle at restrained individual depths; the review orbit turns with the visitor instead of autoplaying.
+- The header amber rule communicates page progress, and the footer line is progressively drawn by the footer entering view.
 - The vertical scroll cue runs continuously but disappears on mobile.
 - Content reveals are restrained and staggered by group; reduced-motion preference disables them.
 - Project imagery gently scales only on intentional hover.

@@ -44,6 +44,18 @@
   transition: background 280ms ease, color 280ms ease, border-color 280ms ease, box-shadow 280ms ease;
 }
 
+.header::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  background: var(--brand);
+  transform: scaleX(var(--page-progress, 0));
+  transform-origin: left center;
+}
+
 .headerScrolled {
   color: var(--ink);
   background: rgba(251, 248, 243, 0.94);
@@ -79,16 +91,16 @@
   flex: 0 0 auto;
   border: 1px solid var(--brand);
   border-radius: 50%;
-  color: var(--brand-dark);
-  font-family: var(--font-serif);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: -0.05em;
+  overflow: hidden;
+  padding: 0.2rem;
+  background: rgba(255, 253, 249, 0.96);
+  box-shadow: 0 0.35rem 1rem rgba(15, 12, 9, 0.16);
 }
 
-.markInverse {
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.72);
+.markImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .brandName {
@@ -179,7 +191,9 @@
 .heroImage {
   object-fit: cover;
   object-position: center 50%;
+  transform: translate3d(0, var(--hero-image-y, 0px), 0);
   scale: 1.035;
+  will-change: transform;
   animation: heroSettle 1.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -189,6 +203,7 @@
   background:
     linear-gradient(90deg, rgba(15, 13, 10, 0.84) 0%, rgba(15, 13, 10, 0.59) 43%, rgba(15, 13, 10, 0.18) 73%),
     linear-gradient(0deg, rgba(10, 8, 6, 0.4), transparent 45%);
+  opacity: var(--hero-shade-opacity, 1);
 }
 
 .heroInner {
@@ -196,6 +211,9 @@
   z-index: 1;
   width: min(1200px, calc(100% - 3rem));
   margin: 3.5rem auto 0;
+  opacity: var(--hero-copy-opacity, 1);
+  transform: translate3d(0, var(--hero-copy-y, 0px), 0);
+  will-change: transform, opacity;
 }
 
 .heroLabel {
@@ -297,6 +315,8 @@
   text-decoration: none;
   text-transform: uppercase;
   writing-mode: vertical-rl;
+  opacity: var(--hero-cue-opacity, 1);
+  transform: translate3d(0, var(--hero-cue-y, 0px), 0);
 }
 
 .scrollCue i {
@@ -366,6 +386,13 @@
   margin-top: 1.3rem;
 }
 
+@media (min-width: 981px) {
+  .servicesIntro {
+    position: sticky;
+    top: 116px;
+  }
+}
+
 .textButton {
   gap: 0.55rem;
   width: max-content;
@@ -394,6 +421,7 @@
   margin-top: 2.6rem;
   overflow: hidden;
   border-radius: 13px;
+  transform: translate3d(0, var(--scroll-y, 0px), 0);
 }
 
 .servicePortrait img,
@@ -540,6 +568,7 @@
   overflow: hidden;
   border-radius: 12px;
   background: var(--sand);
+  transform: translate3d(0, var(--scroll-y, 0px), 0);
 }
 
 .tileA { grid-area: 1 / 1 / 6 / 5; }
@@ -602,6 +631,7 @@
   border-radius: 13px;
   background: var(--paper);
   box-shadow: 0 18px 40px rgba(74, 53, 27, 0.08);
+  transform: translate3d(0, var(--scroll-y, 0px), 0);
 }
 
 .reasonImage {
@@ -652,6 +682,7 @@
   border: 1px solid var(--line);
   border-radius: 14px;
   background: var(--paper);
+  transform: translate3d(0, var(--scroll-y, 0px), 0);
 }
 
 .scopeImage {
@@ -704,6 +735,75 @@
 
 .reviewsSection {
   background: var(--canvas);
+}
+
+.reviewHeadingAside {
+  display: grid;
+  gap: 1.35rem;
+}
+
+.googleProfileLink {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.85rem;
+  max-width: 28rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.googleProfileLink:hover {
+  color: var(--brand-dark);
+  border-color: var(--brand);
+}
+
+.googleIcon {
+  width: 2.35rem;
+  height: 2.35rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--brand);
+  border-radius: 50%;
+  color: var(--brand-dark);
+}
+
+.googleIcon svg,
+.externalArrow {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.googleProfileLink > span:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+}
+
+.googleProfileLink strong {
+  font-size: 0.78rem;
+  font-weight: 650;
+}
+
+.googleProfileLink small {
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+
+.externalArrow {
+  transition: transform 180ms ease;
+}
+
+.googleProfileLink:hover .externalArrow {
+  transform: translate(2px, -2px);
 }
 
 .reviewLayout {
@@ -794,6 +894,8 @@
   width: min(330px, 100%);
   aspect-ratio: 1;
   margin: 0 auto;
+  transform: rotate(var(--scroll-turn, 0deg));
+  transform-origin: center;
 }
 
 .orbitRing {
@@ -948,6 +1050,11 @@
   stroke-linecap: round;
 }
 
+.footerLine path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: var(--scroll-dash, 0);
+}
+
 .footerLineSoft {
   opacity: 0.28;
   stroke-width: 3;
@@ -987,8 +1094,57 @@
 
 .socialLinks {
   display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
+  flex-wrap: wrap;
+  gap: 0.65rem 1rem;
+  margin-top: 1.25rem;
+}
+
+.socialLinks a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.25rem;
+  color: var(--ink);
+  font-weight: 600;
+  transition: color 180ms ease;
+}
+
+.socialLinks a > span {
+  width: 2.1rem;
+  height: 2.1rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(28, 25, 21, 0.2);
+  border-radius: 50%;
+  color: var(--brand-dark);
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.socialLinks a:hover > span {
+  color: #1c1915;
+  border-color: var(--brand);
+  background: var(--brand);
+  transform: translateY(-2px);
+}
+
+.socialLinks svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.socialLinks a:first-child svg {
+  fill: currentColor;
+  stroke: none;
+}
+
+.socialLinks .iconFill {
+  fill: currentColor;
+  stroke: none;
 }
 
 .footerInner h3 {
@@ -1127,6 +1283,7 @@
   .reviewCards { grid-template-columns: 1fr; }
   .reviewCard { padding-right: 0; }
   .reviewLayout { margin-top: 3.5rem; }
+  .googleProfileLink { max-width: none; }
   .faqSection { grid-template-columns: 1fr; gap: 2.5rem; }
   .faqIntro h2 { max-width: 12ch; }
   .footer { padding: 9rem 1rem 1.5rem; }
@@ -1151,4 +1308,25 @@
     animation: none;
   }
   .heroImage { scale: 1.035; }
+
+  .heroImage,
+  .heroInner,
+  .scrollCue,
+  .servicePortrait,
+  .mosaicTile,
+  .reasonCard,
+  .scopeCard,
+  .orbit {
+    transform: none;
+  }
+
+  .heroShade,
+  .heroInner,
+  .scrollCue {
+    opacity: 1;
+  }
+
+  .footerLine path {
+    stroke-dashoffset: 0;
+  }
 }

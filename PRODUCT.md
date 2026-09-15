@@ -53,7 +53,7 @@ Public identity is **XIII Renovation & Design** (not XII).
 - Email: sales.xiii.reno@gmail.com, arjuna.xiii.reno@gmail.com
 - Facebook: https://www.facebook.com/XIIIRND
 - Instagram: https://www.instagram.com/xiii_renovation_design/
-- Logo is referenced at `/logo.jpg` in the live header/footer (file not present in the tracked public tree at init)
+- Official transparent logo: `/assets/xiii-logo-transparent-512.png` (512 × 512), used in the header and footer
 
 Voice currently on the site is premium, accountable, and Singapore-specific. Only the legal identity above was marked as a hard preserve in this interview.
 
@@ -67,7 +67,7 @@ Real completed-work media (toggle `USE_REAL_MEDIA` in `src/data/projects.ts`):
 
 Google proof (manual, two reviews — do not invent more):
 
-- Profile: https://share.google/b3uEl7OLxDK8yafmU
+- Profile: https://maps.app.goo.gl/P1ZmtXUy63UfC3UN7
 - Review link: https://g.page/r/CUkrqaHVdO2OEAI/review
 - Summary currently published: 5.0 from 2 reviews (`src/data/reviews.ts`)
 - MelvinGRaj (living-room feature wall) with photos `public/image/graj1.webp`, `public/image/graj2.webp`

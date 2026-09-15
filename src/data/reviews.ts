@@ -3,7 +3,7 @@
  * Update this file when new reviews arrive. No scraping / paid widgets.
  */
 
-export const GOOGLE_PROFILE_URL = "https://maps.app.goo.gl/LaCkavScgdR3EFam8";
+export const GOOGLE_PROFILE_URL = "https://maps.app.goo.gl/P1ZmtXUy63UfC3UN7";
 export const GOOGLE_REVIEW_URL = "https://g.page/r/CUkrqaHVdO2OEAI/review";
 
 export interface ReviewImage {
