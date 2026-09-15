@@ -3,7 +3,7 @@
  * Update this file when new reviews arrive. No scraping / paid widgets.
  */
 
-export const GOOGLE_PROFILE_URL = "https://share.google/b3uEl7OLxDK8yafmU";
+export const GOOGLE_PROFILE_URL = "https://maps.app.goo.gl/LaCkavScgdR3EFam8";
 export const GOOGLE_REVIEW_URL = "https://g.page/r/CUkrqaHVdO2OEAI/review";
 
 export interface ReviewImage {
@@ -23,7 +23,7 @@ export interface GoogleReview {
 
 export const googleSummary = {
   rating: 5.0,
-  reviewCount: 2,
+  reviewCount: 3,
   source: "Google",
 } as const;
 
@@ -44,6 +44,13 @@ export const googleReviews: GoogleReview[] = [
         alt: "Living room feature wall and seating — MelvinGRaj Google review photo",
       },
     ],
+  },
+  {
+    id: "lekshmi-kitchen",
+    author: "Lekshmi Pria",
+    rating: 5,
+    category: "Full Kitchen Renovation",
+    text: "100% recommend! Had my full kitchen done and absolutely love the results! ID was very patient with our changes in ideas. Brought my vision to life with great suggestions. Reno for my kitchen was done last when the time we moved in (at least 20 years ago) and ID did a smooth process with our concerns as a priority. I truly appreciate mostly the honest feedback with our ideas. Some of it today, we understand it wouldn't have worked and it's very appreciated as it would have been easier to just please us and go ahead but instead advised us with the best long term solutions that would truly help us.",
   },
   {
     id: "puspa-flooring",

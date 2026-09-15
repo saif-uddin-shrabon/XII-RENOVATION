@@ -102,7 +102,7 @@ export default function GoogleReviews() {
             return (
               <article
                 key={review.id}
-                className={`${styles.card} ${hasImages ? styles.cardWithImage : ""}`}
+                className={`${styles.card} ${hasImages ? styles.cardWithImage : styles.cardText}`}
               >
                 {hasImages && (
                   <div
