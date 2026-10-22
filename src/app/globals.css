@@ -86,6 +86,34 @@ p {
   line-height: 1.7;
 }
 
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 3000;
+  padding: 0.75rem 1.25rem;
+  background: var(--accent-gold);
+  color: var(--bg-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+}
+
+.skip-link:focus {
+  top: 1rem;
+  outline: 1px solid var(--accent-gold);
+  outline-offset: 4px;
+}
+
+/* Gallery filter morph (document.startViewTransition) */
+::view-transition-group(*) {
+  animation-duration: 0.55s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 /* Premium Animations */
 @keyframes fadeIn {
   from { opacity: 0; }

@@ -5,125 +5,113 @@ import SafeImage from "@/components/media/SafeImage";
 import type { ProjectVideo } from "@/data/projects";
 import styles from "./ReelPlayer.module.css";
 
-interface ReelPlayerProps {
+interface ReelCardProps {
   video: ProjectVideo;
-  /** Autoplay when intersecting — only first reel by default */
-  autoPlayWhenVisible?: boolean;
+  index: number;
+  /** Muted inline preview should be playing */
+  previewing: boolean;
+  /** Mount the <video> element (only after first preview intent, so no bytes load before) */
+  loadVideo: boolean;
+  onPreviewStart: () => void;
+  onPreviewEnd: () => void;
+  onOpen: () => void;
 }
 
-export default function ReelPlayer({
+function formatDuration(seconds: number): string {
+  const total = Math.round(seconds);
+  return `${Math.floor(total / 60)}:${String(total % 60).padStart(2, "0")}`;
+}
+
+export default function ReelCard({
   video,
-  autoPlayWhenVisible = false,
-}: ReelPlayerProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
+  index,
+  previewing,
+  loadVideo,
+  onPreviewStart,
+  onPreviewEnd,
+  onOpen,
+}: ReelCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [shouldLoad, setShouldLoad] = useState(false);
   const [playing, setPlaying] = useState(false);
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        const visible = entry.isIntersecting && entry.intersectionRatio >= 0.4;
-        setInView(visible);
-        if (visible) setShouldLoad(true);
-      },
-      { threshold: [0, 0.4, 0.6] }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  const [duration, setDuration] = useState<number | null>(null);
 
   useEffect(() => {
     const node = videoRef.current;
-    if (!node || !shouldLoad) return;
-
-    const reduceMotion =
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (autoPlayWhenVisible && inView && !reduceMotion) {
+    if (!node) return;
+    if (previewing) {
       node.muted = true;
-      const playPromise = node.play();
-      if (playPromise) {
-        playPromise
-          .then(() => setPlaying(true))
-          .catch(() => setPlaying(false));
-      }
-    } else if (!inView || reduceMotion) {
-      node.pause();
-      setPlaying(false);
-    }
-  }, [autoPlayWhenVisible, inView, shouldLoad]);
-
-  const togglePlay = () => {
-    const node = videoRef.current;
-    if (!node) {
-      setShouldLoad(true);
-      return;
-    }
-    if (node.paused) {
-      node.muted = true;
-      node.play().then(() => setPlaying(true)).catch(() => {});
+      node.play().catch(() => {});
     } else {
       node.pause();
-      setPlaying(false);
     }
-  };
+  }, [previewing, loadVideo]);
 
   return (
-    <div ref={containerRef} className={styles.reel}>
-      <div className={styles.frame}>
-        {!shouldLoad && (
-          <SafeImage
-            src={video.poster}
-            alt={`${video.title} preview`}
-            fill
-            sizes="(max-width: 768px) 70vw, 280px"
-            className={styles.poster}
-          />
-        )}
-        {shouldLoad && (
+    <button
+      type="button"
+      className={styles.card}
+      data-playing={playing || undefined}
+      onMouseEnter={onPreviewStart}
+      onMouseLeave={onPreviewEnd}
+      onFocus={onPreviewStart}
+      onBlur={onPreviewEnd}
+      onClick={onOpen}
+    >
+      <span className={styles.frame}>
+        <SafeImage
+          src={video.poster}
+          alt=""
+          fill
+          sizes="(max-width: 640px) 68vw, 19rem"
+          className={styles.poster}
+        />
+        {loadVideo && (
           <video
             ref={videoRef}
             className={styles.video}
             poster={video.poster}
-            playsInline
             muted
+            playsInline
             loop
-            preload="none"
-            onClick={togglePlay}
+            preload="auto"
+            aria-hidden
+            tabIndex={-1}
+            onPlay={() => setPlaying(true)}
+            onPause={() => setPlaying(false)}
+            onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)}
           >
             <source src={video.src} type="video/mp4" />
           </video>
         )}
 
-        <button
-          type="button"
-          className={styles.control}
-          onClick={togglePlay}
-          aria-label={playing ? `Pause ${video.title}` : `Play ${video.title}`}
-        >
+        <span className={styles.shade} aria-hidden />
+
+        <span className={styles.index} aria-hidden>
+          {String(index + 1).padStart(2, "0")}
+        </span>
+
+        <span className={styles.badge} aria-hidden>
           {playing ? (
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-              <rect x="6" y="5" width="4" height="14" rx="1" />
-              <rect x="14" y="5" width="4" height="14" rx="1" />
-            </svg>
+            <span className={styles.liveDot} />
           ) : (
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
               <path d="M8 5v14l11-7L8 5z" />
             </svg>
           )}
-        </button>
-      </div>
-      <div className={styles.meta}>
-        <span className={styles.category}>{video.category}</span>
-        <h3 className={styles.title}>{video.title}</h3>
-      </div>
-    </div>
+          {duration ? formatDuration(duration) : "Film"}
+        </span>
+
+        <span className={styles.playRing} aria-hidden>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7L8 5z" />
+          </svg>
+        </span>
+
+        <span className={styles.caption}>
+          <span className={styles.category}>{video.category}</span>
+          <span className={styles.title}>{video.title}</span>
+        </span>
+      </span>
+    </button>
   );
 }

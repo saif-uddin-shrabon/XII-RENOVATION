@@ -11,7 +11,7 @@ import styles from "./GoogleReviews.module.css";
 
 function Stars({ rating }: { rating: number }) {
   return (
-    <span className={styles.stars} aria-label={`${rating} out of 5 stars`}>
+    <span className={styles.stars} role="img" aria-label={`${rating} out of 5 stars`}>
       {Array.from({ length: 5 }, (_, i) => (
         <svg
           key={i}

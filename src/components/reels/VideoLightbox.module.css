@@ -1,0 +1,29 @@
+/* Video controls sit at the bottom of the player, so captions move to the top-left under the counter */
+.root :global(.yarl__slide_title_container) {
+  top: 3.25rem;
+  bottom: auto;
+  padding-bottom: 0;
+  background: none;
+  right: auto;
+  max-width: min(22rem, 40vw);
+}
+
+.root :global(.yarl__slide_description_container) {
+  top: calc(3.25rem + 2.4rem);
+  bottom: auto;
+  right: auto;
+  background: none;
+  max-width: min(22rem, 40vw);
+}
+
+.root :global(.yarl__video_container video) {
+  border-radius: 2px;
+  background: #000;
+}
+
+@media (max-width: 900px) {
+  .root :global(.yarl__slide_title_container),
+  .root :global(.yarl__slide_description_container) {
+    display: none;
+  }
+}

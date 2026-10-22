@@ -14,34 +14,53 @@ Secondary: commercial fit-out enquiries. Do not let commercial messaging crowd t
 
 ## Product Purpose
 
-This is the public website for a Singapore interior design and renovation firm. Its job is to prove real craftsmanship — completed interiors, joinery, and finishes — so a homeowner reaches out on WhatsApp, phone, or email.
+This is the public website for a Singapore renovation contractor. Its job is to win renovation enquiries — kitchens, HDB / full home renovation, carpentry, tiling, hacking, and electrical works — by proving real craftsmanship, so a homeowner reaches out on WhatsApp, phone, or email.
 
 Success: a visitor who believes the work is genuine contacts the firm directly. The on-site consultation form is secondary, not the conversion path.
 
 ## Positioning
 
-Proof of the firm's own Singapore interiors, not a generic contractor brochure. The visitor should be able to see completed residential work and then talk to a person. Neighbouring sites can claim luxury; they cannot truthfully show this firm's jobs.
+A renovation contractor that owns the whole job — one team for every trade — backed by proof of the firm's own Singapore work, not a generic contractor brochure. The visitor should be able to see completed residential work and then talk to a person. Neighbouring sites can claim luxury; they cannot truthfully show this firm's jobs.
 
 ## Operating Context
 
-Homeowners typically compare firms on Google, Instagram, and WhatsApp before calling. The business is based in Sengkang and serves clients island-wide. Contact happens on mobile: tap-to-call, WhatsApp, or email. The current site is a single marketing page (hero, about, services, projects, gallery, reels, reviews, contact).
+Homeowners typically compare firms on Google, Instagram, and WhatsApp before calling, and Google Ads traffic lands on the matching service page rather than the homepage. The business is based in Sengkang and serves clients island-wide. Contact happens on mobile: tap-to-call, WhatsApp, or email (a sticky WhatsApp / Call bar shows on phones).
+
+Site structure:
+
+- `/` — contractor homepage (hero, services, projects, gallery, about, reels, why us, reviews, contact)
+- Service pages, all driven by `src/data/services.ts` and rendered by `src/app/[service]/page.tsx`:
+  - `/kitchen-renovation` — Kitchen Renovation & Kitchen Cabinets
+  - `/hdb-renovation` — HDB & Full Home Renovation
+  - `/carpentry` — Carpentry & Custom Built-in Furniture
+  - `/tiling` — Floor & Wall Tiling Services
+  - `/hacking-demolition` — Hacking & Demolition Services
+  - `/electrical` — Electrical Services & Installation (keyword target not yet validated; keep lean)
+- `/sitemap.xml` and `/robots.txt` are generated from the same data.
 
 ## Capabilities and Constraints
 
-Currently offered on the site (design and build for Singapore homes):
+Currently offered on the site (renovation for Singapore homes): kitchen renovation and cabinets, HDB / condo / landed full renovation, custom carpentry and built-ins, floor and wall tiling, hacking and demolition, electrical works.
 
-- Architectural interior design (planning, 2D/3D, materials and lighting)
-- Design and build management (budget, timeline, authority / MCST submissions)
-- Bespoke custom joinery (kitchens, wardrobes, feature walls, storage)
-- Premium construction and fit-out
-- Licensed MEP and Singapore-code-compliant works
-- Aftercare and finishes support
+No licence or registration has been confirmed. Do not claim "licensed", "certified", "HDB approved", "HDB registered", "BCA registered", or EMA / LEW status anywhere on the site or in ads until the owner confirms it. Explaining HDB / MCST rules is fine; claiming approval status is not.
 
-The consultation form opens WhatsApp (`wa.me`) with the visitor’s details prefilled. It does not email or store leads on this site. Direct channels (WhatsApp, phone, email) remain the live conversion path.
+The enquiry form opens WhatsApp (`wa.me`) with the visitor’s details and chosen service prefilled. It does not email or store leads on this site. Direct channels (WhatsApp, phone, email) remain the live conversion path.
+
+SEO configuration lives in `src/lib/site.ts` and reads two env vars (see `.env.example`):
+
+- `NEXT_PUBLIC_SITE_URL` — live domain; drives canonical URLs, sitemap, robots, and JSON-LD
+- `NEXT_PUBLIC_GSC_VERIFICATION` — Google Search Console HTML-tag code (optional if verifying by DNS)
 
 Repo folder and npm package still use "XII" / `xii-app`. Public identity is XIII — do not let the repo name leak into visitor-facing copy.
 
-Undecided: whether the form should ever become a real lead pipeline; any accessibility standard beyond ordinary web practice; official public website URL (Open Graph currently points at the Facebook page).
+Undecided: whether the form should ever become a real lead pipeline; any accessibility standard beyond ordinary web practice.
+
+Owner follow-ups:
+
+- Set `NEXT_PUBLIC_SITE_URL` to the live domain in the hosting environment.
+- Supply real completed-job photos for tiling, hacking / demolition, and electrical; add them to each service's `photos` array in `src/data/services.ts` (those pages show a "photos coming soon" panel until then).
+- Verify the domain in Google Search Console (HTML tag via `NEXT_PUBLIC_GSC_VERIFICATION`, or DNS), deploy, submit `/sitemap.xml`, and request indexing for `/` and the six service URLs.
+- Run a Singapore-specific Keyword Planner pull for electrical terms before expanding `/electrical`.
 
 ## Brand Commitments
 

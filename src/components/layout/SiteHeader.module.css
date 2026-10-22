@@ -1,0 +1,345 @@
+/* Quiet fixed header — logo | links | quote */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding-top: max(0.9rem, env(safe-area-inset-top, 0px));
+  padding-bottom: 0.9rem;
+  padding-left: max(1.5rem, env(safe-area-inset-left, 0px));
+  padding-right: max(1.5rem, env(safe-area-inset-right, 0px));
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.navbarScrolled {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+}
+
+.navbarMenuOpen {
+  background: var(--bg-primary);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.navbarContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  column-gap: 1.5rem;
+}
+
+.logoArea {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  min-width: 0;
+}
+
+.logoImage {
+  object-fit: contain;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.logoTextMain {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.1em;
+  line-height: 1.1;
+}
+
+.logoTextSub {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent-gold);
+  margin-top: 0.1rem;
+  white-space: nowrap;
+}
+
+.navPrimary {
+  justify-self: center;
+  min-width: 0;
+}
+
+.navMenu {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.25rem 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.navItem {
+  position: relative;
+}
+
+.navItem > a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  transition: color 0.2s ease;
+  position: relative;
+  padding: 0.5rem 0;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.navItem > a:hover {
+  color: var(--accent-gold);
+}
+
+.navItem > a:focus-visible {
+  outline: 1px solid var(--accent-gold);
+  outline-offset: 4px;
+  color: var(--accent-gold);
+}
+
+.navItem > a::after {
+  content: "";
+  position: absolute;
+  bottom: 0.2rem;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--accent-gold);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.2s ease;
+}
+
+.navItem > a:hover::after,
+.navItem > a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Services dropdown — opens on hover and keyboard focus */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 0.25rem);
+  min-width: 15rem;
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0;
+  background: rgba(11, 12, 14, 0.96);
+  border: 1px solid var(--glass-border);
+  border-radius: 4px;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+}
+
+.hasDropdown:hover .dropdown,
+.hasDropdown:focus-within .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0.5rem);
+}
+
+.dropdown a {
+  display: block;
+  padding: 0.65rem 1.25rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.dropdown a:hover,
+.dropdown a:focus-visible,
+.dropdown a[aria-current="page"] {
+  color: var(--accent-gold);
+  background: rgba(207, 168, 98, 0.06);
+  outline: none;
+}
+
+.ctaButtonNav {
+  border: 1px solid var(--accent-gold);
+  background: transparent;
+  color: var(--accent-gold);
+  padding: 0.55rem 1.1rem;
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease;
+  justify-self: end;
+  white-space: nowrap;
+}
+
+.ctaButtonNav:hover {
+  background: var(--accent-gold);
+  color: var(--bg-primary);
+}
+
+.ctaButtonNav:focus-visible {
+  outline: 1px solid var(--accent-gold);
+  outline-offset: 4px;
+}
+
+.mobileMenuBtn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 0.5rem;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  justify-self: end;
+}
+
+.mobileMenuBtn:focus-visible {
+  outline: 1px solid var(--accent-gold);
+  outline-offset: 4px;
+}
+
+.mobileNav {
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.5rem 0 1.25rem;
+  border-top: 1px solid transparent;
+  max-height: calc(100svh - 5rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.mobileNavOpen {
+  display: flex;
+  border-top-color: var(--glass-border);
+}
+
+.mobileNav a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.95rem 0;
+  border-bottom: 1px solid var(--border-muted);
+  transition: color 0.2s ease;
+}
+
+.mobileNav a:hover,
+.mobileNav a:focus-visible,
+.mobileNav a[aria-current="page"] {
+  color: var(--accent-gold);
+}
+
+.mobileNav a:focus-visible {
+  outline: 1px solid var(--accent-gold);
+  outline-offset: 4px;
+}
+
+.mobileGroupLabel {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  padding: 1rem 0 0.25rem;
+}
+
+.mobileNav .mobileSubLink {
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-size: 0.95rem;
+  padding: 0.8rem 0 0.8rem 1rem;
+}
+
+.mobileNav .mobileNavCta {
+  margin-top: 1rem;
+  text-align: center;
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold);
+  padding: 0.9rem 1rem;
+  border-radius: 2px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.mobileNav .mobileNavCta:hover {
+  background: var(--accent-gold);
+  color: var(--bg-primary);
+}
+
+@media (min-width: 901px) {
+  .mobileNav,
+  .mobileNavOpen {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .navbarContainer {
+    grid-template-columns: 1fr auto;
+  }
+
+  .navPrimary,
+  .ctaButtonNav {
+    display: none;
+  }
+
+  .mobileMenuBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navbar {
+    padding-top: max(0.85rem, env(safe-area-inset-top, 0px));
+    padding-bottom: 0.85rem;
+    padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+  }
+}
+
+@media (max-width: 768px) {
+  .logoTextSub {
+    display: none;
+  }
+}
+
+@media (pointer: coarse) and (min-width: 901px) {
+  .navItem > a {
+    padding: 0.65rem 0;
+  }
+
+  .ctaButtonNav {
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+  }
+}

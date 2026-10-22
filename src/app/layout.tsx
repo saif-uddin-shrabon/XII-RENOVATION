@@ -1,5 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Outfit } from "next/font/google";
+import SiteHeader from "@/components/layout/SiteHeader";
+import SiteFooter from "@/components/layout/SiteFooter";
+import MobileCallBar from "@/components/layout/MobileCallBar";
+import JsonLd from "@/components/seo/JsonLd";
+import { BUSINESS, GSC_VERIFICATION, SITE_URL } from "@/lib/site";
+import { businessJsonLd } from "@/lib/structured-data";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -14,24 +20,23 @@ const outfit = Outfit({
   weight: ["300", "400", "500", "600", "700"],
 });
 
+const DEFAULT_TITLE = "Renovation Contractor Singapore | XIII Renovation & Design";
+const DEFAULT_DESCRIPTION =
+  "Renovation contractor in Singapore for HDB flats, condos, and landed homes. Kitchen renovation, custom carpentry, tiling, hacking, and electrical works by one accountable team.";
+
 export const metadata: Metadata = {
-  title: "XIII Renovation & Design | Premium Interior Design & Renovation Singapore",
-  description: "Singapore-based interior design and renovation contractor dedicated to transforming spaces into functional, aesthetically refined environments. Over 2 years of proven, word-of-mouth craftsmanship.",
-  keywords: [
-    "Interior Design Singapore",
-    "Renovation Contractor Singapore",
-    "Luxury Interior Design",
-    "Bespoke Joinery Singapore",
-    "Sengkang Renovation",
-    "Design and Build Singapore",
-    "Condo Renovation Singapore",
-    "HDB Renovation Singapore"
-  ],
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: DEFAULT_TITLE,
+    template: `%s | ${BUSINESS.name}`,
+  },
+  description: DEFAULT_DESCRIPTION,
+  applicationName: BUSINESS.name,
   openGraph: {
-    title: "XIII Renovation & Design | Where Vision Meets Craftsmanship",
-    description: "Bespoke luxury interior design and renovation services in Singapore. Crafting functional, refined spaces.",
-    url: "https://www.facebook.com/XIIIRND",
-    siteName: "XIII Renovation & Design",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    url: "/",
+    siteName: BUSINESS.name,
     images: [
       {
         url: "/image/xiii-12-08-26.png",
@@ -43,12 +48,24 @@ export const metadata: Metadata = {
     locale: "en_SG",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    images: ["/image/xiii-12-08-26.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  ...(GSC_VERIFICATION ? { verification: { google: GSC_VERIFICATION } } : {}),
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
+  themeColor: "#0b0c0e",
 };
 
 export default function RootLayout({
@@ -58,10 +75,19 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="en-SG"
       className={`${playfair.variable} ${outfit.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <a href="#main-content" className="skip-link">
+          Skip to content
+        </a>
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+        <MobileCallBar />
+        <JsonLd data={businessJsonLd()} />
+      </body>
     </html>
   );
 }
