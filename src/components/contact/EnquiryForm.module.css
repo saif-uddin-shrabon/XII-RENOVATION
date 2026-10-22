@@ -1,0 +1,160 @@
+.formArea {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-muted);
+  padding: 3.5rem;
+  border-radius: 4px;
+  min-width: 0;
+}
+
+.formTitle {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.formHint {
+  margin: 0 0 2rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  gap: 1.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.formLabel {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.formInput {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-muted);
+  padding: 1rem;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  /* 16px floor avoids iOS Safari focus zoom that breaks the form layout */
+  font-size: 1rem;
+  border-radius: 2px;
+  outline: none;
+  transition: var(--transition-fast);
+  max-width: 100%;
+  min-width: 0;
+  width: 100%;
+}
+
+.formInput:focus {
+  border-color: var(--accent-gold);
+}
+
+.formInput:focus-visible {
+  outline: 1px solid var(--accent-gold);
+  outline-offset: 2px;
+}
+
+.formSubmitBtn {
+  background: var(--accent-gold);
+  color: var(--bg-primary);
+  border: 1px solid var(--accent-gold);
+  padding: 1.1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  border-radius: 2px;
+  margin-top: 0.5rem;
+  min-height: 2.75rem;
+  font-family: var(--font-sans);
+}
+
+.formSubmitBtn:hover {
+  background: var(--accent-gold-light);
+  border-color: var(--accent-gold-light);
+}
+
+.formSubmitBtn:focus-visible {
+  outline: 1px solid var(--accent-gold);
+  outline-offset: 4px;
+}
+
+.formError {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--accent-gold-light);
+  border: 1px solid rgba(207, 168, 98, 0.35);
+  background: rgba(207, 168, 98, 0.08);
+  padding: 0.75rem 1rem;
+  border-radius: 2px;
+}
+
+.successMessage {
+  padding: 1rem;
+  background: rgba(207, 168, 98, 0.1);
+  border: 1px solid var(--accent-gold);
+  color: var(--text-secondary);
+  border-radius: 2px;
+  font-size: 0.95rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.successMessage strong {
+  color: var(--accent-gold-light);
+  font-weight: 600;
+}
+
+.successMessage a {
+  color: var(--accent-gold);
+}
+
+.successActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.successActions a {
+  color: var(--accent-gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.successActions .formSubmitBtn {
+  margin-top: 0;
+}
+
+@media (max-width: 768px) {
+  .formArea {
+    padding: 1.75rem 1.25rem;
+  }
+  .formTitle {
+    font-size: 1.4rem;
+  }
+  .formHint {
+    margin-bottom: 1.25rem;
+  }
+}

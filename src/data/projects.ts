@@ -317,9 +317,10 @@ export const projects: Project[] = [
   },
 ];
 
-/** Flat gallery list for masonry (deduped by src, strongest first) */
+/** Flat gallery list for the bento mosaic (deduped by src, strongest first — index 0 is the feature tile) */
 export const galleryItems: (ProjectMedia & {
   id: string;
+  title: string;
   category: ProjectCategory;
   projectId: string;
 })[] = [
@@ -327,6 +328,7 @@ export const galleryItems: (ProjectMedia & {
     id: "g-12",
     projectId: "living-feature-wall",
     category: "Living Room",
+    title: "Herringbone Feature Wall",
     src: "/image/xiii-12-08-26.png",
     alt: "Living room herringbone feature wall",
     width: 1080,
@@ -336,6 +338,7 @@ export const galleryItems: (ProjectMedia & {
     id: "g-21",
     projectId: "living-feature-wall",
     category: "Living Room",
+    title: "Custom Media Wall",
     src: "/image/xiii-21-08-26.png",
     alt: "Living room with custom media wall",
     width: 1080,
@@ -345,15 +348,27 @@ export const galleryItems: (ProjectMedia & {
     id: "g-10",
     projectId: "bedroom-suite",
     category: "Bedroom",
+    title: "Bedroom with Balcony View",
     src: "/image/xiii-10-08-26.png",
     alt: "Bedroom renovation with balcony view",
     width: 1080,
     height: 1350,
   },
   {
+    id: "g-kitchen",
+    projectId: "kitchen-utility",
+    category: "Kitchen",
+    title: "Kitchen & Utility Cabinetry",
+    src: "/image/kitchen-utility-mustard.jpg",
+    alt: "Kitchen utility custom cabinetry",
+    width: 1080,
+    height: 1080,
+  },
+  {
     id: "g-28",
     projectId: "bedroom-suite",
     category: "Bedroom",
+    title: "Bedroom Study Joinery",
     src: "/image/xiii-28-08-26.png",
     alt: "Bedroom with study joinery",
     width: 1080,
@@ -363,6 +378,7 @@ export const galleryItems: (ProjectMedia & {
     id: "g-14",
     projectId: "study-carpentry",
     category: "Study",
+    title: "Custom Study Carpentry",
     src: "/image/xiii-14-08-26.png",
     alt: "Custom study carpentry",
     width: 1080,
@@ -372,6 +388,7 @@ export const galleryItems: (ProjectMedia & {
     id: "g-06",
     projectId: "study-carpentry",
     category: "Carpentry",
+    title: "Lit Display Cabinet",
     src: "/image/xiii-06-07-26.png",
     alt: "Display cabinet with LED shelving",
     width: 1080,
@@ -381,6 +398,7 @@ export const galleryItems: (ProjectMedia & {
     id: "g-19",
     projectId: "study-carpentry",
     category: "Carpentry",
+    title: "Japandi Console & Shelving",
     src: "/image/xiii-19-08-26.png",
     alt: "Japandi console and shelving",
     width: 1080,
@@ -390,24 +408,17 @@ export const galleryItems: (ProjectMedia & {
     id: "g-17",
     projectId: "study-carpentry",
     category: "Study",
+    title: "Floating Desk Detail",
     src: "/image/xiii-17-08-26.png",
     alt: "Floating desk joinery detail",
     width: 1080,
     height: 1350,
   },
   {
-    id: "g-kitchen",
-    projectId: "kitchen-utility",
-    category: "Kitchen",
-    src: "/image/kitchen-utility-mustard.jpg",
-    alt: "Kitchen utility custom cabinetry",
-    width: 1080,
-    height: 1080,
-  },
-  {
     id: "g-30",
     projectId: "living-feature-wall",
     category: "Living Room",
+    title: "Completed Living Room",
     src: "/image/xiii-30-07-26.png",
     alt: "Living room completed interior",
     width: 1080,
@@ -418,6 +429,7 @@ export const galleryItems: (ProjectMedia & {
     id: "g-25",
     projectId: "study-carpentry",
     category: "Study",
+    title: "Study Nook",
     src: "/image/xiii-25-08-26.png",
     alt: "Study nook detail",
     width: 1080,
@@ -427,6 +439,7 @@ export const galleryItems: (ProjectMedia & {
     id: "g-bath",
     projectId: "kitchen-utility",
     category: "Bathroom",
+    title: "Bathroom Vanity Finishes",
     src: "/image/bathroom-vanity.jpg",
     alt: "Bathroom vanity finishes",
     width: 1080,

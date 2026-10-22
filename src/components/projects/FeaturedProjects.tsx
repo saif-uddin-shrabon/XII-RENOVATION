@@ -31,7 +31,6 @@ function ProjectTile({
         className={styles.tile}
         onClick={() => onOpen(project)}
         ref={isLead ? parallaxRef : undefined}
-        aria-label={`View project: ${project.title}`}
       >
         <div className={styles.media}>
           <div
@@ -75,14 +74,14 @@ export default function FeaturedProjects({ onOpen }: FeaturedProjectsProps) {
         <header className={styles.header}>
           <h2 className={styles.heading}>Featured Projects</h2>
           <p className={styles.sub}>
-            Real residential interiors — living rooms, bedrooms, studies, and custom joinery —
-            photographed from completed Singapore projects.
+            Completed renovation work — living rooms, bedrooms, studies, kitchens, and custom
+            carpentry — photographed from our own Singapore projects.
           </p>
         </header>
 
         <div className={styles.mosaic}>
           {lead && (
-            <ProjectTile project={lead} layout="lead" onOpen={onOpen} priority />
+            <ProjectTile project={lead} layout="lead" onOpen={onOpen} />
           )}
 
           <div className={styles.cluster}>

@@ -1,0 +1,168 @@
+.footer {
+  background-color: #070709;
+  border-top: 1px solid var(--border-muted);
+  padding: 5rem 2rem 2.5rem 2rem;
+}
+
+.footerContainer {
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 0.8fr 1.2fr;
+  gap: 3rem;
+}
+
+.logoArea {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.logoImage {
+  object-fit: contain;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+}
+
+.logoTextMain {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.1em;
+  line-height: 1.1;
+}
+
+.logoTextSub {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent-gold);
+  margin-top: 0.1rem;
+  white-space: nowrap;
+}
+
+.footerAbout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.footerAboutDesc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.footerUen {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.footerLinksTitle {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+.footerLinks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footerLinks a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  transition: var(--transition-fast);
+  display: inline-block;
+  padding: 0.15rem 0;
+}
+
+.footerLinks a:hover {
+  color: var(--accent-gold);
+  padding-left: 4px;
+}
+
+.footerContact {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footerContactText {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.footerContactText a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.footerContactText a:hover {
+  color: var(--accent-gold);
+}
+
+.footerBottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footerCopyright {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.footerLegalLinks {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footerLegalLinks a {
+  text-decoration: none;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  transition: var(--transition-fast);
+}
+
+.footerLegalLinks a:hover {
+  color: var(--accent-gold);
+}
+
+@media (max-width: 1024px) {
+  .footerContainer {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    /* Leaves room for the sticky mobile call bar on service pages */
+    padding: 3.5rem 1.25rem max(5.5rem, calc(4.5rem + env(safe-area-inset-bottom, 0px)));
+  }
+  .footerContainer {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .footerBottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}

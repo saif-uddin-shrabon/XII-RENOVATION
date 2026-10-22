@@ -26,7 +26,7 @@ const services = [
       "One accountable team for budgeting, scheduling, site supervision, and HDB or MCST submissions through handover.",
   },
   {
-    title: "Bespoke Custom Joinery",
+    title: "One Contractor, Every Trade",
     description:
       "Purpose-built kitchens, wardrobes, feature walls, studies, and storage made precisely for your floor plan.",
   },
