@@ -10,6 +10,7 @@
 .header::after {
   content: "";
   position: absolute;
+  z-index: 1;
   right: 0;
   bottom: -1px;
   left: 0;
@@ -126,9 +127,11 @@
   position: relative;
 }
 
+/* Opens just below the header edge (76px bar, link vertically centred) and above the progress line */
 .dropdown {
   position: absolute;
-  top: calc(100% + 0.6rem);
+  z-index: 2;
+  top: calc(100% + 1.75rem);
   left: 50%;
   min-width: 15.5rem;
   list-style: none;
@@ -143,11 +146,12 @@
   transition: opacity 200ms ease, visibility 200ms ease, transform 200ms ease;
 }
 
+/* Invisible bridge across the gap so hover is not lost moving from the link to the panel */
 .dropdown::before {
   content: "";
   position: absolute;
-  inset: -0.8rem 0 auto;
-  height: 0.8rem;
+  inset: -1.9rem 0 auto;
+  height: 1.9rem;
 }
 
 .dropdownWrap:hover .dropdown,
