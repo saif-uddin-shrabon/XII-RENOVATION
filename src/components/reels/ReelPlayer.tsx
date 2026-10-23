@@ -8,12 +8,10 @@ import styles from "./ReelPlayer.module.css";
 interface ReelCardProps {
   video: ProjectVideo;
   index: number;
-  /** Muted inline preview should be playing */
+  /** Muted inline autoplay should be running */
   previewing: boolean;
-  /** Mount the <video> element (only after first preview intent, so no bytes load before) */
+  /** Mount the <video> element (only once the card has been on screen, so no bytes load before) */
   loadVideo: boolean;
-  onPreviewStart: () => void;
-  onPreviewEnd: () => void;
   onOpen: () => void;
 }
 
@@ -27,8 +25,6 @@ export default function ReelCard({
   index,
   previewing,
   loadVideo,
-  onPreviewStart,
-  onPreviewEnd,
   onOpen,
 }: ReelCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -51,10 +47,6 @@ export default function ReelCard({
       type="button"
       className={styles.card}
       data-playing={playing || undefined}
-      onMouseEnter={onPreviewStart}
-      onMouseLeave={onPreviewEnd}
-      onFocus={onPreviewStart}
-      onBlur={onPreviewEnd}
       onClick={onOpen}
     >
       <span className={styles.frame}>

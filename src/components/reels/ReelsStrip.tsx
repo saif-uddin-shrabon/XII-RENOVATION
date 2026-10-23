@@ -33,7 +33,7 @@ export default function ReelsStrip({ reels }: ReelsStripProps) {
   const [overflowing, setOverflowing] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [inView, setInView] = useState(false);
-  const [hoverIndex, setHoverIndex] = useState<number | null>(null);
+  const [visibleCards, setVisibleCards] = useState<ReadonlySet<number>>(() => new Set());
   const [loaded, setLoaded] = useState<ReadonlySet<number>>(() => new Set());
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [lightboxMounted, setLightboxMounted] = useState(false);
@@ -41,9 +41,6 @@ export default function ReelsStrip({ reels }: ReelsStripProps) {
   const isTouch = useMediaQuery(TOUCH_QUERY);
   const reducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
 
-  const markLoaded = useCallback((index: number) => {
-    setLoaded((prev) => (prev.has(index) ? prev : new Set(prev).add(index)));
-  }, []);
 
   const measure = useCallback(() => {
     const track = trackRef.current;
@@ -75,36 +72,60 @@ export default function ReelsStrip({ reels }: ReelsStripProps) {
       if (frameRef.current !== null) return;
       frameRef.current = requestAnimationFrame(() => {
         frameRef.current = null;
-        const closest = measure();
-        if (closest !== undefined && window.matchMedia(TOUCH_QUERY).matches) {
-          markLoaded(closest);
-        }
+        measure();
       });
     };
 
     const resizeObserver = new ResizeObserver(() => measure());
-    const intersectionObserver = new IntersectionObserver(
+
+    let sectionVisible = false;
+    const visible = new Set<number>();
+
+    /** Video files are only fetched once the strip is on screen */
+    const loadVisible = () => {
+      if (!sectionVisible || visible.size === 0) return;
+      setLoaded((prev) => {
+        if ([...visible].every((i) => prev.has(i))) return prev;
+        return new Set([...prev, ...visible]);
+      });
+    };
+
+    const sectionObserver = new IntersectionObserver(
       ([entry]) => {
+        sectionVisible = entry.isIntersecting;
         setInView(entry.isIntersecting);
-        if (entry.isIntersecting && window.matchMedia(TOUCH_QUERY).matches) {
-          const closest = measure();
-          if (closest !== undefined) markLoaded(closest);
-        }
+        loadVisible();
       },
-      { threshold: 0.35 }
+      { threshold: 0.25 }
+    );
+
+    /** Cards at least 60% inside the strip autoplay; others pause */
+    const cardObserver = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const index = Number((entry.target as HTMLElement).dataset.index);
+          if (entry.isIntersecting) visible.add(index);
+          else visible.delete(index);
+        }
+        setVisibleCards(new Set(visible));
+        loadVisible();
+      },
+      { root: track, threshold: 0.6 }
     );
 
     track.addEventListener("scroll", onScroll, { passive: true });
     resizeObserver.observe(track);
-    intersectionObserver.observe(track);
+    sectionObserver.observe(track);
+    Array.from(track.children).forEach((child) => cardObserver.observe(child));
 
     return () => {
       track.removeEventListener("scroll", onScroll);
       resizeObserver.disconnect();
-      intersectionObserver.disconnect();
+      sectionObserver.disconnect();
+      cardObserver.disconnect();
       if (frameRef.current !== null) cancelAnimationFrame(frameRef.current);
     };
-  }, [measure, markLoaded]);
+  }, [measure, reels.length]);
 
   const scrollByCard = (direction: 1 | -1) => {
     const track = trackRef.current;
@@ -115,18 +136,13 @@ export default function ReelsStrip({ reels }: ReelsStripProps) {
   };
 
   const openAt = (index: number) => {
-    setHoverIndex(null);
     setLightboxMounted(true);
     setLightboxIndex(index);
   };
 
-  const previewIndex = reducedMotion
-    ? null
-    : isTouch
-      ? inView
-        ? activeIndex
-        : null
-      : hoverIndex;
+  const lightboxOpen = lightboxIndex !== null;
+  const isPlaying = (index: number) =>
+    !reducedMotion && inView && !lightboxOpen && visibleCards.has(index);
 
   const total = reels.length;
   const pad = (n: number) => String(n).padStart(2, "0");
@@ -135,7 +151,7 @@ export default function ReelsStrip({ reels }: ReelsStripProps) {
     <div className={styles.carousel}>
       <div className={styles.toolbar}>
         <p className={styles.hint}>
-          {isTouch ? "Tap a film to watch with sound" : "Hover to preview · click to watch with sound"}
+          {isTouch ? "Tap a film to watch with sound" : "Click any film to watch with sound"}
         </p>
         <div className={styles.controls}>
           {overflowing ? (
@@ -191,23 +207,14 @@ export default function ReelsStrip({ reels }: ReelsStripProps) {
             scrollByCard(-1);
           }
         }}
-        onMouseLeave={() => setHoverIndex(null)}
       >
         {reels.map((video, index) => (
-          <li key={video.id} className={styles.item}>
+          <li key={video.id} className={styles.item} data-index={index}>
             <ReelCard
               video={video}
               index={index}
-              previewing={previewIndex === index}
-              loadVideo={loaded.has(index) || previewIndex === index}
-              onPreviewStart={() => {
-                if (isTouch || reducedMotion) return;
-                markLoaded(index);
-                setHoverIndex(index);
-              }}
-              onPreviewEnd={() => {
-                if (!isTouch) setHoverIndex((current) => (current === index ? null : current));
-              }}
+              previewing={isPlaying(index)}
+              loadVideo={!reducedMotion && (loaded.has(index) || isPlaying(index))}
               onOpen={() => openAt(index)}
             />
           </li>
