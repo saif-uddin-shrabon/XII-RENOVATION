@@ -1,168 +1,192 @@
 .footer {
-  background-color: #070709;
-  border-top: 1px solid var(--border-muted);
-  padding: 5rem 2rem 2.5rem 2rem;
+  position: relative;
+  padding: 11rem max(1.5rem, calc((100% - 1200px) / 2)) 2rem;
+  overflow: hidden;
+  background: #eee6dc;
+  color: var(--ink);
 }
 
-.footerContainer {
-  max-width: 1200px;
-  margin: 0 auto 4rem;
+.footerLine {
+  position: absolute;
+  inset: 0 0 auto;
+  width: 100%;
+  height: 12rem;
+  fill: none;
+  stroke: var(--brand-dark);
+  stroke-width: 7;
+  vector-effect: non-scaling-stroke;
+  stroke-linecap: round;
+}
+
+.footerLine path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: var(--scroll-dash, 0);
+}
+
+.footerLineSoft {
+  opacity: 0.28;
+  stroke-width: 3;
+}
+
+.footerInner {
+  position: relative;
   display: grid;
-  grid-template-columns: 1.4fr 1fr 0.8fr 1.2fr;
+  grid-template-columns: 1.4fr 0.9fr 0.7fr 1fr;
   gap: 3rem;
 }
 
-.logoArea {
+.footerInner > :not(.footerBrand) {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.footerBrandRow {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  text-decoration: none;
 }
 
-.logoImage {
-  object-fit: contain;
-  border-radius: 4px;
-  flex-shrink: 0;
-}
-
-.logoText {
-  display: flex;
-  flex-direction: column;
-}
-
-.logoTextMain {
+.footerBrandRow strong {
   font-family: var(--font-serif);
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: 0.1em;
-  line-height: 1.1;
+  font-size: 1.15rem;
 }
 
-.logoTextSub {
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--accent-gold);
-  margin-top: 0.1rem;
-  white-space: nowrap;
-}
-
-.footerAbout {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.footerAboutDesc {
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
-
-.footerUen {
+.footerBrand > p {
+  max-width: 38ch;
+  margin-top: 1rem;
+  color: var(--muted);
   font-size: 0.8rem;
-  color: var(--text-muted);
+  line-height: 1.55;
 }
 
-.footerLinksTitle {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  letter-spacing: 0.05em;
-}
-
-.footerLinks {
-  list-style: none;
+.socialLinks {
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.65rem 1rem;
+  margin-top: 1.25rem;
 }
 
-.footerLinks a {
+.socialLinks a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  color: var(--ink);
+  font-size: 0.8rem;
+  font-weight: 600;
   text-decoration: none;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  transition: var(--transition-fast);
-  display: inline-block;
+  transition: color 180ms ease;
+}
+
+.socialLinks a > span {
+  width: 2.1rem;
+  height: 2.1rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(28, 25, 21, 0.2);
+  border-radius: 50%;
+  color: var(--brand-dark);
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.socialLinks a:hover > span {
+  color: var(--ink);
+  border-color: var(--brand);
+  background: var(--brand);
+  transform: translateY(-2px);
+}
+
+.socialLinks svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.socialLinks .iconSolid,
+.socialLinks .iconFill {
+  fill: currentColor;
+  stroke: none;
+}
+
+.footerInner h2 {
+  margin-bottom: 0.45rem;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.footerInner a,
+.footerInner address {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.footerInner nav a,
+.footerInner > div:last-child a {
   padding: 0.15rem 0;
 }
 
-.footerLinks a:hover {
-  color: var(--accent-gold);
-  padding-left: 4px;
-}
-
-.footerContact {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.footerContactText {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--text-secondary);
-}
-
-.footerContactText a {
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: var(--transition-fast);
-}
-
-.footerContactText a:hover {
-  color: var(--accent-gold);
+.footerInner a:hover {
+  color: var(--brand-dark);
 }
 
 .footerBottom {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border-muted);
+  position: relative;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  margin-top: 4rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(28, 25, 21, 0.12);
+  color: var(--muted);
+  font-size: 0.72rem;
 }
 
-.footerCopyright {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-.footerLegalLinks {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.footerLegalLinks a {
-  text-decoration: none;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  transition: var(--transition-fast);
-}
-
-.footerLegalLinks a:hover {
-  color: var(--accent-gold);
-}
-
-@media (max-width: 1024px) {
-  .footerContainer {
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+@media (max-width: 980px) {
+  .footerInner {
+    grid-template-columns: 1fr 0.8fr 1fr;
+  }
+  .footerBrand {
+    grid-column: 1 / -1;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 720px) {
   .footer {
-    /* Leaves room for the sticky mobile call bar on service pages */
-    padding: 3.5rem 1.25rem max(5.5rem, calc(4.5rem + env(safe-area-inset-bottom, 0px)));
+    /* Leaves room for the sticky mobile call bar */
+    padding: 9rem 1rem max(5.5rem, calc(4.5rem + env(safe-area-inset-bottom, 0px)));
   }
-  .footerContainer {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
+  .footerLine {
+    height: 9rem;
+    stroke-width: 5;
+  }
+  .footerInner {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem 1.4rem;
   }
   .footerBottom {
     flex-direction: column;
-    gap: 1rem;
-    text-align: center;
+    gap: 0.35rem;
+  }
+}
+
+@media (max-width: 430px) {
+  .footerInner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footerLine path {
+    stroke-dashoffset: 0;
   }
 }

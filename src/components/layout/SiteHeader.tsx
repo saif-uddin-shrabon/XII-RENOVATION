@@ -4,156 +4,156 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { services, servicePath } from "@/data/services";
-import { BUSINESS } from "@/lib/site";
+import { services, servicePath, serviceSlugs } from "@/data/services";
+import { useScrollComposition } from "@/hooks/useScrollComposition";
+import { whatsAppLink } from "@/lib/site";
 import styles from "./SiteHeader.module.css";
 
 const NAV_LINKS = [
-  { href: "/#projects", label: "Work" },
-  { href: "/#about", label: "About" },
+  { href: "/#work", label: "Work" },
+  { href: "/#why-xiii", label: "Why XIII" },
   { href: "/#reviews", label: "Reviews" },
 ] as const;
+
+/** Pages that open with a dark full-bleed hero, so the header can start transparent */
+function hasDarkHero(pathname: string): boolean {
+  return pathname === "/" || (serviceSlugs as string[]).includes(pathname.replace(/^\//, ""));
+}
+
+export function BrandMark() {
+  return (
+    <span className={styles.mark} aria-hidden="true">
+      <Image
+        className={styles.markImage}
+        src="/assets/xiii-logo-transparent-512.png"
+        alt=""
+        width={512}
+        height={512}
+        sizes="(max-width: 700px) 32px, 37px"
+      />
+    </span>
+  );
+}
 
 export default function SiteHeader() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useScrollComposition();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 32);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
-    if (!mobileMenuOpen) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMobileMenuOpen(false);
+    if (!menuOpen) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
     };
     const onResize = () => {
-      if (window.innerWidth > 900) setMobileMenuOpen(false);
+      if (window.innerWidth > 980) setMenuOpen(false);
     };
-    window.addEventListener("keydown", onKey);
+    window.addEventListener("keydown", onKeyDown);
     window.addEventListener("resize", onResize);
     return () => {
-      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("keydown", onKeyDown);
       window.removeEventListener("resize", onResize);
     };
-  }, [mobileMenuOpen]);
+  }, [menuOpen]);
 
-  const closeMobile = () => setMobileMenuOpen(false);
-  const solid = scrolled || mobileMenuOpen;
+  const solid = scrolled || !hasDarkHero(pathname);
+  const close = () => setMenuOpen(false);
 
   return (
-    <header
-      className={`${styles.navbar} ${solid ? styles.navbarScrolled : ""} ${
-        mobileMenuOpen ? styles.navbarMenuOpen : ""
-      }`}
-    >
-      <div className={styles.navbarContainer}>
-        <Link href="/" className={styles.logoArea} onClick={closeMobile}>
-          <Image
-            src={BUSINESS.logo}
-            alt="XIII Renovation & Design logo"
-            width={40}
-            height={40}
-            className={styles.logoImage}
-          />
-          <span className={styles.logoText}>
-            <span className={styles.logoTextMain}>XIII</span>
-            <span className={styles.logoTextSub}>Renovation & Design</span>
+    <header className={`${styles.header} ${solid ? styles.headerScrolled : ""}`}>
+      <div className={styles.navInner}>
+        <Link href="/" className={styles.brand} onClick={close}>
+          <BrandMark />
+          <span className={styles.brandName}>
+            XIII
+            <small>Renovation &amp; Design</small>
           </span>
         </Link>
 
-        <nav className={styles.navPrimary} aria-label="Primary">
-          <ul className={styles.navMenu}>
-            <li className={styles.navItem}>
-              <Link href={NAV_LINKS[0].href}>{NAV_LINKS[0].label}</Link>
-            </li>
-            <li className={`${styles.navItem} ${styles.hasDropdown}`}>
-              <Link href="/#services" aria-haspopup="true">
-                Services
-              </Link>
-              <ul className={styles.dropdown} aria-label="Services">
-                {services.map((service) => {
-                  const href = servicePath(service.slug);
-                  return (
-                    <li key={service.slug}>
-                      <Link
-                        href={href}
-                        aria-current={pathname === href ? "page" : undefined}
-                      >
-                        {service.navLabel}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </li>
-            {NAV_LINKS.slice(1).map((link) => (
-              <li key={link.href} className={styles.navItem}>
-                <Link href={link.href}>{link.label}</Link>
-              </li>
-            ))}
-          </ul>
+        <nav className={styles.desktopNav} aria-label="Primary navigation">
+          <div className={styles.dropdownWrap}>
+            <Link href="/#services" aria-haspopup="true">
+              Services
+            </Link>
+            <ul className={styles.dropdown} aria-label="Services">
+              {services.map((service) => {
+                const href = servicePath(service.slug);
+                return (
+                  <li key={service.slug}>
+                    <Link href={href} aria-current={pathname === href ? "page" : undefined}>
+                      {service.navLabel}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          {NAV_LINKS.map((link) => (
+            <Link key={link.href} href={link.href}>
+              {link.label}
+            </Link>
+          ))}
         </nav>
 
-        <a href="#contact" className={styles.ctaButtonNav}>
-          Get a Quote
+        <a
+          className={styles.navCta}
+          href={whatsAppLink("Hello XIII — I'd like a renovation quotation.")}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Get a quote
         </a>
 
         <button
+          className={styles.menuButton}
           type="button"
-          className={styles.mobileMenuBtn}
-          onClick={() => setMobileMenuOpen((open) => !open)}
-          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={mobileMenuOpen}
-          aria-controls="mobile-nav"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
+          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+          onClick={() => setMenuOpen((open) => !open)}
         >
-          {mobileMenuOpen ? (
-            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          ) : (
-            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
-            </svg>
-          )}
+          <span />
+          <span />
         </button>
       </div>
 
       <nav
-        id="mobile-nav"
-        className={`${styles.mobileNav} ${mobileMenuOpen ? styles.mobileNavOpen : ""}`}
-        aria-label="Mobile"
-        hidden={!mobileMenuOpen}
+        id="mobile-navigation"
+        className={`${styles.mobileNav} ${menuOpen ? styles.mobileNavOpen : ""}`}
+        aria-label="Mobile navigation"
+        hidden={!menuOpen}
       >
-        <Link href={NAV_LINKS[0].href} onClick={closeMobile}>
-          {NAV_LINKS[0].label}
-        </Link>
-        <span className={styles.mobileGroupLabel}>Services</span>
+        <span className={styles.mobileGroup}>Services</span>
         {services.map((service) => {
           const href = servicePath(service.slug);
           return (
             <Link
               key={service.slug}
               href={href}
-              onClick={closeMobile}
-              className={styles.mobileSubLink}
+              onClick={close}
+              className={styles.mobileSub}
               aria-current={pathname === href ? "page" : undefined}
             >
               {service.navLabel}
             </Link>
           );
         })}
-        {NAV_LINKS.slice(1).map((link) => (
-          <Link key={link.href} href={link.href} onClick={closeMobile}>
+        {NAV_LINKS.map((link) => (
+          <Link key={link.href} href={link.href} onClick={close}>
             {link.label}
           </Link>
         ))}
-        <a href="#contact" className={styles.mobileNavCta} onClick={closeMobile}>
-          Get a Quote
+        <a href="#contact" onClick={close}>
+          Contact
         </a>
       </nav>
     </header>

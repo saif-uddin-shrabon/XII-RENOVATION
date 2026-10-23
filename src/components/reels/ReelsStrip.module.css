@@ -39,7 +39,7 @@
 
 .counterDivider {
   margin: 0 0.4rem;
-  color: var(--accent-gold-dark);
+  color: var(--brand);
 }
 
 .arrows {
@@ -53,26 +53,25 @@
   display: grid;
   place-items: center;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid var(--brand);
   background: transparent;
-  color: var(--text-primary);
+  color: var(--brand-dark);
   cursor: pointer;
   transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease, opacity 0.25s ease;
 }
 
 .arrow:hover:not(:disabled) {
-  border-color: var(--accent-gold);
-  color: var(--accent-gold);
-  background: rgba(207, 168, 98, 0.06);
+  color: var(--on-brand);
+  background: var(--brand);
 }
 
 .arrow:disabled {
-  opacity: 0.3;
+  opacity: 0.35;
   cursor: default;
 }
 
 .arrow:focus-visible {
-  outline: 1px solid var(--accent-gold);
+  outline: 2px solid var(--brand);
   outline-offset: 3px;
 }
 
@@ -105,15 +104,15 @@
 
 .progress {
   position: relative;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.1);
+  height: 2px;
+  background: var(--line);
   overflow: hidden;
 }
 
 .progressFill {
   position: absolute;
   inset: 0;
-  background: var(--accent-gold);
+  background: var(--brand);
   transform-origin: left center;
   transition: transform 0.25s ease-out;
 }
@@ -132,9 +131,9 @@
     font-size: 0.68rem;
   }
   .track {
-    margin: 0 -1.25rem;
-    padding: 0.25rem 1.25rem 0.5rem;
-    scroll-padding-inline: 1.25rem;
+    margin: 0 -1rem;
+    padding: 0.25rem 1rem 0.5rem;
+    scroll-padding-inline: 1rem;
   }
   .trackMasked {
     mask-image: none;

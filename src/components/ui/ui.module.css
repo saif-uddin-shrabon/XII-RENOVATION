@@ -1,16 +1,16 @@
-/* Shared section + button primitives used across the homepage and service pages */
+/* Shared section + button primitives (Redesign light theme) */
 
 .section {
-  padding: 8rem 2rem;
+  padding: 8.5rem max(1.5rem, calc((100% - 1200px) / 2));
   position: relative;
 }
 
 .sectionDark {
-  background-color: var(--bg-primary);
+  background-color: var(--canvas);
 }
 
 .sectionLight {
-  background-color: var(--bg-secondary);
+  background-color: var(--paper);
 }
 
 .sectionContainer {
@@ -20,89 +20,108 @@
 
 .sectionHeader {
   text-align: center;
-  max-width: 700px;
+  max-width: 760px;
   margin: 0 auto 4rem auto;
 }
 
 .sectionHeaderLeft {
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 0 3rem;
 }
 
 .sectionTitle {
-  font-size: clamp(2rem, 3.5vw, 3rem);
-  margin-bottom: 1.5rem;
+  color: var(--ink);
+  font-size: clamp(2.2rem, 3.8vw, 3.6rem);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+  margin-bottom: 1.25rem;
 }
 
 .sectionSubtitle {
-  font-size: 1.05rem;
-  color: var(--text-secondary);
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.65;
 }
 
 .eyebrow {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 1.1rem;
   color: var(--accent-gold);
-  margin-bottom: 1rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--brand);
 }
 
 .primaryBtn,
 .secondaryBtn {
-  min-height: 2.75rem;
+  min-height: 46px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
-  box-sizing: border-box;
-  padding: 1rem 2rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
+  gap: 0.55rem;
+  padding: 0.8rem 1.25rem;
+  border-radius: var(--radius-control);
+  font-size: 0.8rem;
+  font-weight: 620;
   text-decoration: none;
-  border-radius: 2px;
   text-align: center;
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
 
 .primaryBtn {
-  background: var(--accent-gold);
-  color: var(--bg-primary);
-  border: 1px solid var(--accent-gold);
-  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  color: var(--on-brand);
+  background: var(--brand);
+  border: 1px solid var(--brand);
 }
 
 .primaryBtn:hover {
-  background: var(--accent-gold-light);
-  border-color: var(--accent-gold-light);
+  background: var(--brand-light);
+  border-color: var(--brand-light);
+  transform: translateY(-2px);
 }
 
 .secondaryBtn {
+  color: var(--ink);
   background: transparent;
-  color: var(--text-primary);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: background 0.25s ease, border-color 0.25s ease;
+  border: 1px solid rgba(28, 25, 21, 0.22);
 }
 
 .secondaryBtn:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: var(--text-primary);
+  border-color: var(--ink);
+  background: rgba(28, 25, 21, 0.04);
 }
 
 .primaryBtn:focus-visible,
 .secondaryBtn:focus-visible {
-  outline: 1px solid var(--accent-gold);
-  outline-offset: 4px;
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 720px) {
   .section {
-    padding: 4.5rem 1.25rem;
+    padding: 6rem 1rem;
   }
   .sectionHeader,
   .sectionHeaderLeft {
-    margin-bottom: 2.75rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media (max-width: 430px) {
+  .sectionTitle {
+    font-size: 2.2rem;
   }
 }

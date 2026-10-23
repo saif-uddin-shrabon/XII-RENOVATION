@@ -54,7 +54,7 @@ export default function ServicePageTemplate({ service }: ServicePageTemplateProp
             </ol>
           </nav>
 
-          <p className={ui.eyebrow}>{service.eyebrow}</p>
+          <p className={styles.heroLabel}>{service.eyebrow}</p>
           <h1 className={styles.heroTitle}>{service.h1}</h1>
           <p className={styles.heroLead}>{lead}</p>
 
@@ -67,7 +67,7 @@ export default function ServicePageTemplate({ service }: ServicePageTemplateProp
             >
               Get a Quote on WhatsApp
             </a>
-            <a href={BUSINESS.phoneHref} className={ui.secondaryBtn}>
+            <a href={BUSINESS.phoneHref} className={styles.lightBtn}>
               Call {BUSINESS.phoneDisplay}
             </a>
           </div>
@@ -75,7 +75,7 @@ export default function ServicePageTemplate({ service }: ServicePageTemplateProp
       </section>
 
       {moreIntro.length > 0 && (
-        <section className={`${ui.section} ${ui.sectionDark} ${styles.introSection}`}>
+        <section className={`${ui.section} ${ui.sectionDark}`}>
           <div className={`${ui.sectionContainer} ${styles.introGrid}`}>
             <div className={styles.introText}>
               {moreIntro.map((paragraph) => (
@@ -175,7 +175,7 @@ export default function ServicePageTemplate({ service }: ServicePageTemplateProp
             >
               WhatsApp Us
             </a>
-            <a href="#contact" className={ui.secondaryBtn}>
+            <a href="#contact" className={styles.ghostBtn}>
               Enquiry Form
             </a>
           </div>
@@ -218,7 +218,7 @@ export default function ServicePageTemplate({ service }: ServicePageTemplateProp
       </section>
 
       {related.length > 0 && (
-        <section className={`${ui.section} ${ui.sectionDark} ${styles.relatedSection}`}>
+        <section className={`${ui.section} ${ui.sectionDark}`}>
           <div className={ui.sectionContainer}>
             <div className={ui.sectionHeaderLeft}>
               <h2 className={ui.sectionTitle}>Related services</h2>

@@ -1,7 +1,7 @@
 .root {
   --yarl__color_backdrop: rgba(6, 7, 9, 0.97);
   --yarl__color_button: rgba(245, 246, 248, 0.82);
-  --yarl__color_button_active: #e6c587;
+  --yarl__color_button_active: #f1ad3e;
   --yarl__color_button_disabled: rgba(245, 246, 248, 0.25);
   --yarl__button_filter: none;
   --yarl__icon_size: 26px;
@@ -16,14 +16,14 @@
   --yarl__slide_title_color: #f5f6f8;
   --yarl__slide_title_font_size: clamp(1.15rem, 2vw, 1.6rem);
   --yarl__slide_title_font_weight: 400;
-  --yarl__slide_description_color: #cfa862;
+  --yarl__slide_description_color: #e39a25;
   --yarl__slide_captions_container_padding: 1.25rem 1.75rem;
 
   --yarl__thumbnails_container_background_color: rgba(6, 7, 9, 0.97);
   --yarl__thumbnails_thumbnail_background: #121418;
   --yarl__thumbnails_thumbnail_border_color: rgba(255, 255, 255, 0.12);
-  --yarl__thumbnails_thumbnail_active_border_color: #cfa862;
-  --yarl__thumbnails_thumbnail_focus_box_shadow: 0 0 0 1px #cfa862;
+  --yarl__thumbnails_thumbnail_active_border_color: #e39a25;
+  --yarl__thumbnails_thumbnail_focus_box_shadow: 0 0 0 1px #e39a25;
 
   --yarl__counter_color: rgba(245, 246, 248, 0.75);
   --yarl__counter_filter: none;
@@ -79,7 +79,7 @@
 }
 
 .root :global(.yarl__button:focus-visible) {
-  outline: 1px solid #cfa862;
+  outline: 1px solid #e39a25;
   outline-offset: 2px;
 }
 

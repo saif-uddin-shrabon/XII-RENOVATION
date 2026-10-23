@@ -17,7 +17,7 @@ export default function ContactSection({
   whatsAppMessage = "Hello XIII — I'd like a renovation quotation.",
 }: ContactSectionProps) {
   return (
-    <section id="contact" className={`${ui.section} ${ui.sectionDark}`}>
+    <section id="contact" className={`${ui.section} ${styles.band}`}>
       <div className={ui.sectionContainer}>
         <div className={styles.contactGrid}>
           <div className={styles.contactInfoArea}>

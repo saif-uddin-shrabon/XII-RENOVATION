@@ -28,29 +28,27 @@
     justify-content: center;
     gap: 0.5rem;
     min-height: 3rem;
-    border-radius: 2px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
+    border-radius: var(--radius-control);
+    font-size: 0.85rem;
+    font-weight: 650;
     text-decoration: none;
   }
 
   .whatsapp {
-    background: var(--accent-gold);
-    color: var(--bg-primary);
-    border: 1px solid var(--accent-gold);
+    background: var(--brand);
+    color: var(--on-brand);
+    border: 1px solid var(--brand);
   }
 
   .call {
-    color: var(--text-primary);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(11, 12, 14, 0.6);
+    color: var(--ink);
+    border: 1px solid rgba(28, 25, 21, 0.22);
+    background: var(--paper);
   }
 
   .whatsapp:focus-visible,
   .call:focus-visible {
-    outline: 1px solid var(--accent-gold);
+    outline: 2px solid var(--brand);
     outline-offset: 2px;
   }
 }
