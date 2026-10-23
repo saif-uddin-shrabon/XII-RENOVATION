@@ -25,23 +25,18 @@ const DEFAULT_DESCRIPTION =
   "Renovation contractor in Singapore for HDB flats, condos, and landed homes. Kitchen renovation, custom carpentry, tiling, hacking, and electrical works by one accountable team.";
 
 export const metadata: Metadata = {
-  title: "XIII Renovation & Design | Interior Design & Renovation Singapore",
-  description: "Thoughtful interior design, custom joinery, and accountable renovation delivery for Singapore homes.",
-  keywords: [
-    "Interior Design Singapore",
-    "Renovation Contractor Singapore",
-    "Luxury Interior Design",
-    "Bespoke Joinery Singapore",
-    "Sengkang Renovation",
-    "Design and Build Singapore",
-    "Condo Renovation Singapore",
-    "HDB Renovation Singapore"
-  ],
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: DEFAULT_TITLE,
+    template: `%s | ${BUSINESS.name}`,
+  },
+  description: DEFAULT_DESCRIPTION,
+  applicationName: BUSINESS.name,
   openGraph: {
-    title: "XIII Renovation & Design | Singapore Homes, Considered End to End",
-    description: "Interior design, custom joinery, and coordinated renovation delivery by one accountable Singapore team.",
-    url: "https://www.facebook.com/XIIIRND",
-    siteName: "XIII Renovation & Design",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    url: "/",
+    siteName: BUSINESS.name,
     images: [
       {
         url: "/image/xiii-12-08-26.png",

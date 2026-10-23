@@ -37,30 +37,8 @@ export default function ReelCard({
 
   useEffect(() => {
     const node = videoRef.current;
-    if (!node || !shouldLoad) return;
-
-    const reduceMotion =
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (autoPlayWhenVisible && inView && !reduceMotion) {
-      node.muted = true;
-      const playPromise = node.play();
-      if (playPromise) {
-        playPromise.catch(() => {});
-      }
-    } else if (!inView || reduceMotion) {
-      node.pause();
-    }
-  }, [autoPlayWhenVisible, inView, shouldLoad]);
-
-  const togglePlay = () => {
-    const node = videoRef.current;
-    if (!node) {
-      setShouldLoad(true);
-      return;
-    }
-    if (node.paused) {
+    if (!node) return;
+    if (previewing) {
       node.muted = true;
       node.play().catch(() => {});
     } else {
@@ -95,10 +73,12 @@ export default function ReelCard({
             muted
             playsInline
             loop
-            preload="none"
-            onClick={togglePlay}
+            preload="auto"
+            aria-hidden
+            tabIndex={-1}
             onPlay={() => setPlaying(true)}
             onPause={() => setPlaying(false)}
+            onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)}
           >
             <source src={video.src} type="video/mp4" />
           </video>
