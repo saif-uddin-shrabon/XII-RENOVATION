@@ -17,6 +17,9 @@ export const SITE_URL = resolveSiteUrl();
 
 export const GSC_VERIFICATION = process.env.NEXT_PUBLIC_GSC_VERIFICATION || undefined;
 
+/** Google Analytics 4 measurement ID (G-XXXXXXX). Analytics and lead tracking stay off when unset. */
+export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || undefined;
+
 export const WHATSAPP_NUMBER = "6587231313";
 
 export const BUSINESS = {

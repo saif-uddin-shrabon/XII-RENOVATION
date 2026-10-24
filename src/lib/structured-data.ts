@@ -27,6 +27,20 @@ export function businessJsonLd(): Record<string, unknown> {
   };
 }
 
+/** Site-name markup — lets Google show "XIII Renovation & Design" as the site name in results */
+export function websiteJsonLd(): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    name: BUSINESS.name,
+    alternateName: ["XIII Renovation", "XIII"],
+    url: absoluteUrl("/"),
+    publisher: { "@id": BUSINESS_ID },
+    inLanguage: "en-SG",
+  };
+}
+
 export function serviceJsonLd(service: Service): Record<string, unknown> {
   return {
     "@context": "https://schema.org",

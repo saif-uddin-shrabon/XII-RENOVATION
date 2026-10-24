@@ -3,8 +3,10 @@ import { Playfair_Display, Outfit } from "next/font/google";
 import SiteHeader from "@/components/layout/SiteHeader";
 import SiteFooter from "@/components/layout/SiteFooter";
 import MobileCallBar from "@/components/layout/MobileCallBar";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import JsonLd from "@/components/seo/JsonLd";
-import { BUSINESS, GSC_VERIFICATION, SITE_URL } from "@/lib/site";
+import LeadTracking from "@/components/seo/LeadTracking";
+import { BUSINESS, GA_MEASUREMENT_ID, GSC_VERIFICATION, SITE_URL } from "@/lib/site";
 import { businessJsonLd } from "@/lib/structured-data";
 import "./globals.css";
 
@@ -87,7 +89,9 @@ export default function RootLayout({
         <SiteFooter />
         <MobileCallBar />
         <JsonLd data={businessJsonLd()} />
+        {GA_MEASUREMENT_ID && <LeadTracking />}
       </body>
+      {GA_MEASUREMENT_ID && <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />}
     </html>
   );
 }

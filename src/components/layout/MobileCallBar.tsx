@@ -3,7 +3,7 @@ import styles from "./MobileCallBar.module.css";
 
 export default function MobileCallBar() {
   return (
-    <div className={styles.bar} role="region" aria-label="Quick contact">
+    <div className={styles.bar} role="region" aria-label="Quick contact" data-track-location="mobile-call-bar">
       <a
         href={whatsAppLink("Hello XIII — I'd like a renovation quotation.")}
         target="_blank"

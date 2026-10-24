@@ -50,6 +50,7 @@ SEO configuration lives in `src/lib/site.ts` and reads two env vars (see `.env.e
 
 - `NEXT_PUBLIC_SITE_URL` — live domain; drives canonical URLs, sitemap, robots, and JSON-LD
 - `NEXT_PUBLIC_GSC_VERIFICATION` — Google Search Console HTML-tag code (optional if verifying by DNS)
+- `NEXT_PUBLIC_GA_ID` — Google Analytics 4 measurement ID; when set, WhatsApp / phone / email clicks and enquiry-form submissions are sent as `generate_lead` events (with `method`, `link_location`, `service`). Mark `generate_lead` as a key event in GA4 and import it into Google Ads as the conversion.
 
 Repo folder and npm package still use "XII" / `xii-app`. Public identity is XIII — do not let the repo name leak into visitor-facing copy.
 
@@ -59,7 +60,8 @@ Owner follow-ups:
 
 - Set `NEXT_PUBLIC_SITE_URL` to the live domain in the hosting environment.
 - Supply real completed-job photos for tiling, hacking / demolition, and electrical; add them to each service's `photos` array in `src/data/services.ts` (those pages show a "photos coming soon" panel until then).
-- Verify the domain in Google Search Console (HTML tag via `NEXT_PUBLIC_GSC_VERIFICATION`, or DNS), deploy, submit `/sitemap.xml`, and request indexing for `/` and the six service URLs.
+- Search Console: sitemap submitted (24 Oct 2026). Request indexing for `/` and the six service URLs, then check the Pages report.
+- Create a GA4 property, set `NEXT_PUBLIC_GA_ID` in the hosting environment, redeploy, and mark `generate_lead` as a key event.
 - Run a Singapore-specific Keyword Planner pull for electrical terms before expanding `/electrical`.
 
 ## Brand Commitments

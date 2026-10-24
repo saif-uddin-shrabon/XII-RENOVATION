@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { services } from "@/data/services";
 import { BUSINESS, buildEnquiryWhatsAppUrl } from "@/lib/site";
+import { trackLead } from "@/lib/analytics";
 import styles from "./EnquiryForm.module.css";
 
 const OTHER_SERVICE = "Other / not sure yet";
@@ -71,6 +72,7 @@ export default function EnquiryForm({ defaultService }: EnquiryFormProps) {
 
     setFormError(null);
     setWhatsAppUrl(url);
+    trackLead("enquiry_form", { service: formData.service, property_type: formData.propertyType });
     window.open(url, "_blank", "noopener,noreferrer");
     setFormData(emptyForm(defaultService));
   };
