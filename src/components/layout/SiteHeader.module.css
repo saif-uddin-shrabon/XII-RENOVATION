@@ -125,6 +125,8 @@
 
 .dropdownWrap {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 /* Opens just below the header edge (76px bar, link vertically centred) and above the progress line */
