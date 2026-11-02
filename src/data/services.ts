@@ -41,6 +41,8 @@ export interface Service {
   process: ServiceItem[];
   whyUs: ServiceItem[];
   faqs: ServiceFaq[];
+  /** Top-of-page background image; falls back to the first photo */
+  heroImage?: ProjectMedia;
   /** Real completed-work photos only. Empty renders a "photos coming soon" slot. */
   photos: ProjectMedia[];
   /** Ids from `videos` in data/projects.ts */
@@ -457,6 +459,12 @@ export const services: Service[] = [
           "Yes. We build carpentry for HDB BTO and resale flats, condominiums, and landed homes across Singapore.",
       },
     ],
+    heroImage: {
+      src: "/image/xiii-carpentry-feature-wall-hero.jpg",
+      alt: "Full-height wood-veneer TV feature wall with built-in console and fireplace niche",
+      width: 1024,
+      height: 576,
+    },
     photos: [
       {
         src: "/image/xiii-12-08-26.png",

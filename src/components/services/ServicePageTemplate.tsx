@@ -15,7 +15,7 @@ interface ServicePageTemplateProps {
 }
 
 export default function ServicePageTemplate({ service }: ServicePageTemplateProps) {
-  const heroPhoto = service.photos[0];
+  const heroPhoto = service.heroImage ?? service.photos[0];
   const related = getRelatedServices(service);
   const reels = service.videoIds
     .map((id) => getVideoById(id))

@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: ServiceRouteProps): Promise<M
   if (!service) return {};
 
   const path = servicePath(service.slug);
-  const image = service.photos[0] ?? HERO_IMAGE;
+  const image = service.heroImage ?? service.photos[0] ?? HERO_IMAGE;
 
   return {
     title: { absolute: service.metaTitle },
