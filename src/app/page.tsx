@@ -116,6 +116,7 @@ export default function Home() {
             alt="Living room with wood-panel TV feature wall, backlit display niche, and built-in console"
             fill
             priority
+            quality={90}
             sizes="100vw"
             className={styles.heroImage}
           />

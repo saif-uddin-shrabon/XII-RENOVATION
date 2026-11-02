@@ -24,7 +24,7 @@
   object-fit: cover;
   object-position: center 50%;
   transform: translate3d(0, var(--hero-image-y, 0px), 0);
-  scale: 1.035;
+  scale: 1;
   will-change: transform;
   animation: heroSettle 1.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
@@ -882,8 +882,8 @@
 }
 
 @keyframes heroSettle {
-  from { opacity: 0.72; scale: 1.1; filter: blur(6px); }
-  to { opacity: 1; scale: 1.035; filter: blur(0); }
+  from { opacity: 0.72; scale: 1.04; }
+  to { opacity: 1; scale: 1; }
 }
 
 @keyframes heroCopyIn {
@@ -960,7 +960,7 @@
   .heroImage, .heroLabel, .heroTitle, .heroCopy, .heroActions, .scrollCue i::after, .orbitWord {
     animation: none;
   }
-  .heroImage { scale: 1.035; }
+  .heroImage { scale: 1; }
 
   .heroImage,
   .heroInner,
