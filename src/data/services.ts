@@ -850,6 +850,12 @@ export const services: Service[] = [
           "Yes. We plan LED strips and cove lighting together with feature walls, display cabinets, and headboards so wiring is concealed and switches are where you expect them.",
       },
     ],
+    heroImage: {
+      src: "/image/xiii-electrical-ceiling-wiring-hero.jpg",
+      alt: "Electrician running ceiling wiring for new lighting points during an HDB renovation",
+      width: 1024,
+      height: 576,
+    },
     photos: [],
     videoIds: [],
     relatedSlugs: ["carpentry", "hdb-renovation", "kitchen-renovation"],
