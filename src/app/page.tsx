@@ -112,8 +112,8 @@ export default function Home() {
       <main id="main-content">
         <section className={styles.hero} aria-labelledby="hero-title">
           <Image
-            src="/image/xiii-21-08-26.png"
-            alt="Completed XIII living room with custom feature wall and integrated lighting"
+            src="/image/xiii-living-feature-wall-hero.jpg"
+            alt="Living room with wood-panel TV feature wall, backlit display niche, and built-in console"
             fill
             priority
             sizes="100vw"

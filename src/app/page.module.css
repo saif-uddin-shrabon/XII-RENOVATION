@@ -915,7 +915,7 @@
 
 @media (max-width: 720px) {
   .hero { min-height: 700px; height: 88svh; align-items: flex-end; }
-  .heroImage { object-position: 56% center; }
+  .heroImage { object-position: 40% center; }
   .heroShade { background: linear-gradient(0deg, rgba(12, 10, 8, 0.92) 0%, rgba(12, 10, 8, 0.68) 53%, rgba(12, 10, 8, 0.32) 100%); }
   .heroInner { width: calc(100% - 2rem); margin: 0 auto; padding-bottom: 5.5rem; }
   .heroTitle { font-size: clamp(2.65rem, 12vw, 4.1rem); }
