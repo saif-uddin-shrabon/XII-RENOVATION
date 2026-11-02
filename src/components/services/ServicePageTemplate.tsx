@@ -118,7 +118,8 @@ export default function ServicePageTemplate({ service }: ServicePageTemplateProp
           <div className={ui.sectionHeaderLeft}>
             <h2 className={ui.sectionTitle}>Our {service.navLabel} Work</h2>
             <p className={ui.sectionSubtitle}>
-              Photos and short films from our own completed Singapore projects.
+              Photos and short films from our own Singapore projects — finished rooms and work in
+              progress on site.
             </p>
           </div>
 

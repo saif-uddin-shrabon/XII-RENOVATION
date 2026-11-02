@@ -856,7 +856,32 @@ export const services: Service[] = [
       width: 1024,
       height: 576,
     },
-    photos: [],
+    photos: [
+      {
+        src: "/image/xiii-electrical-ceiling-wiring.jpg",
+        alt: "Electrician wiring new ceiling lighting points before the false ceiling is closed",
+        width: 819,
+        height: 1024,
+      },
+      {
+        src: "/image/xiii-electrical-kitchen-points-carcass.jpg",
+        alt: "Kitchen power and lighting points run through new cabinet carcasses during installation",
+        width: 819,
+        height: 1024,
+      },
+      {
+        src: "/image/xiii-electrical-kitchen-points.jpg",
+        alt: "Wiring left ready for under-cabinet lighting and appliance points in a renovated kitchen",
+        width: 819,
+        height: 1024,
+      },
+      {
+        src: "/image/xiii-electrical-room-lighting-points.jpg",
+        alt: "Ceiling lighting points and socket wiring in place during an HDB room renovation",
+        width: 819,
+        height: 1024,
+      },
+    ],
     videoIds: [],
     relatedSlugs: ["carpentry", "hdb-renovation", "kitchen-renovation"],
   },
