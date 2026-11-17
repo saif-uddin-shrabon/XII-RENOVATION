@@ -60,7 +60,7 @@ export default async function ServicePage({ params }: ServiceRouteProps) {
   return (
     <>
       <ServicePageTemplate service={service} />
-      <JsonLd data={[serviceJsonLd(service), faqJsonLd(service), breadcrumbJsonLd(service)]} />
+      <JsonLd data={[serviceJsonLd(service), faqJsonLd(service.faqs), breadcrumbJsonLd(service)]} />
     </>
   );
 }

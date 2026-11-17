@@ -1,0 +1,61 @@
+.fab {
+  position: fixed;
+  right: max(1.1rem, env(safe-area-inset-right, 0px));
+  bottom: max(1.1rem, env(safe-area-inset-bottom, 0px));
+  z-index: 920;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--radius-card);
+  color: #fff;
+  background: #25d366;
+  border: 1px solid #1ebe57;
+  box-shadow: 0 10px 28px rgba(18, 140, 126, 0.28);
+  text-decoration: none;
+  transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.fab:hover {
+  background: #1ebe57;
+  box-shadow: 0 12px 32px rgba(18, 140, 126, 0.34);
+  transform: translateY(-2px);
+}
+
+.fab:active {
+  transform: translateY(0);
+}
+
+.fab:focus-visible {
+  outline: 2px solid #128c7e;
+  outline-offset: 3px;
+}
+
+.label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Mobile already has the sticky WhatsApp / Call bar — keep one WhatsApp path there. */
+@media (max-width: 768px) {
+  .fab {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fab,
+  .fab:hover,
+  .fab:active {
+    transition: none;
+    transform: none;
+  }
+}

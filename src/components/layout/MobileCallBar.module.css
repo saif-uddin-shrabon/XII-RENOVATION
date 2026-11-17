@@ -35,9 +35,9 @@
   }
 
   .whatsapp {
-    background: var(--brand);
-    color: var(--on-brand);
-    border: 1px solid var(--brand);
+    background: #25d366;
+    color: #fff;
+    border: 1px solid #1ebe57;
   }
 
   .call {

@@ -6,8 +6,8 @@ colors:
   paper: "#fffdf9"
   sand: "#f1eae0"
   ink: "#1c1915"
-  muted: "#6d675f"
-  line: "#ddd4c8"
+  muted: "#4a453f"
+  line: "#cfc5b7"
   xiii-amber: "#e39a25"
   xiii-amber-dark: "#b86f17"
 typography:
@@ -30,7 +30,7 @@ The website reads like a beautifully edited residential design folio: warm paper
 - Warm off-white is the main canvas; near-white paper distinguishes content surfaces.
 - Near-black ink carries headings and active service or FAQ panels.
 - XIII amber is used for calls to action, tiny wayfinding marks, review stars, and linework. It is never a large background field.
-- Body text uses warm grey with at least readable body contrast on the canvas.
+- Body and supporting copy use warm dark brown-grey (`muted` / `text-secondary`) that stays clearly readable on cream canvas and paper — never washed light grey. Aim well above WCAG AA so Google Ads visitors can scan service copy on mobile.
 
 ## Typography
 

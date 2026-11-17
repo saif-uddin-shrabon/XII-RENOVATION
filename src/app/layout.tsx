@@ -3,6 +3,7 @@ import { Playfair_Display, Outfit } from "next/font/google";
 import SiteHeader from "@/components/layout/SiteHeader";
 import SiteFooter from "@/components/layout/SiteFooter";
 import MobileCallBar from "@/components/layout/MobileCallBar";
+import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import JsonLd from "@/components/seo/JsonLd";
 import LeadTracking from "@/components/seo/LeadTracking";
@@ -24,7 +25,7 @@ const outfit = Outfit({
 
 const DEFAULT_TITLE = "Renovation Contractor Singapore | XIII Renovation & Design";
 const DEFAULT_DESCRIPTION =
-  "Renovation contractor in Singapore for HDB flats, condos, and landed homes. Kitchen renovation, custom carpentry, tiling, hacking, and electrical works by one accountable team.";
+  "Renovation contractor in Singapore for HDB flats, condos and landed homes. Kitchens, custom carpentry, tiling, hacking and electrical works by one team.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -88,6 +89,7 @@ export default function RootLayout({
         {children}
         <SiteFooter />
         <MobileCallBar />
+        <FloatingWhatsApp />
         <JsonLd data={businessJsonLd()} />
         {GA_MEASUREMENT_ID && <LeadTracking />}
       </body>

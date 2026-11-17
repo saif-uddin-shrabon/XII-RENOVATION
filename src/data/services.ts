@@ -76,9 +76,9 @@ export const services: Service[] = [
       "Full kitchen renovation and custom kitchen cabinets for HDB flats, condos, and landed homes — layout, carpentry, countertops, and fitting.",
     eyebrow: "Kitchen Renovation & Kitchen Cabinets",
     h1: "Kitchen Renovation & Kitchen Cabinets in Singapore",
-    metaTitle: "Kitchen Renovation Singapore | Custom Kitchen Cabinets Contractor",
+    metaTitle: "Kitchen Renovation Singapore | Custom Kitchen Cabinets",
     metaDescription:
-      "Kitchen renovation contractor in Singapore for HDB, condo, and landed homes. Custom kitchen cabinets, countertops, tiling, and appliance fitting. WhatsApp for a quote.",
+      "Kitchen renovation contractor in Singapore for HDB, condo and landed homes. Custom kitchen cabinets, countertops, tiling and fitting. WhatsApp for a quote.",
     primaryKeyword: "kitchen renovation singapore",
     keywords: [
       "kitchen renovation singapore",
@@ -229,7 +229,7 @@ export const services: Service[] = [
     h1: "HDB Renovation Contractor & Full Home Renovation in Singapore",
     metaTitle: "HDB Renovation Contractor Singapore | Full Home Renovation",
     metaDescription:
-      "HDB renovation contractor for BTO and resale flats, plus full home renovation for condos and landed homes in Singapore. One team from hacking to handover. Get a quote.",
+      "HDB renovation contractor for BTO and resale flats, plus full home renovation for Singapore condos and landed homes. One team from hacking to handover.",
     primaryKeyword: "hdb renovation contractor",
     keywords: [
       "hdb renovation contractor",
@@ -375,7 +375,7 @@ export const services: Service[] = [
     h1: "Custom Carpentry & Built-in Furniture in Singapore",
     metaTitle: "Carpentry Singapore | Custom Built-in Wardrobes & Cabinets",
     metaDescription:
-      "Carpentry contractor in Singapore for custom built-in wardrobes, kitchen cabinets, TV feature walls, study desks, and storage. Made to measure for HDB and condo homes.",
+      "Carpentry contractor in Singapore for built-in wardrobes, kitchen cabinets, TV feature walls, shoe cabinets and study desks, made to measure for your home.",
     primaryKeyword: "carpentry singapore",
     keywords: [
       "carpentry singapore",
@@ -385,9 +385,11 @@ export const services: Service[] = [
       "built in wardrobe singapore",
       "custom wardrobe singapore",
       "custom cabinet singapore",
+      "carpenter singapore",
+      "shoe cabinet singapore",
     ],
     intro: [
-      "Good carpentry is what makes a Singapore home feel finished. XIII Renovation & Design designs and builds custom built-in furniture to the exact dimensions of your space — so wardrobes reach the ceiling, cabinets fit the alcove, and nothing looks like it was bought to roughly fit.",
+      "Good carpentry is what makes a Singapore home feel finished. If you are looking for a carpenter in Singapore who will measure, build, and install the whole piece, XIII Renovation & Design designs and builds custom built-in furniture to the exact dimensions of your space — so wardrobes reach the ceiling, cabinets fit the alcove, and nothing looks like it was bought to roughly fit.",
       "Our carpentry work ranges from full-height built-in wardrobes and kitchen cabinets to TV feature walls with integrated LED lighting, study desks with shelving, and display cabinets. Every piece is measured on site and planned around how you will actually use it.",
       "Because we also handle renovation works, carpentry can be coordinated with electrical points, lighting, and flooring — no surprises when the cabinets arrive.",
     ],
@@ -539,7 +541,7 @@ export const services: Service[] = [
     h1: "Floor & Wall Tiling Contractor in Singapore",
     metaTitle: "Tiling Contractor Singapore | Floor & Wall Tiler",
     metaDescription:
-      "Tiling contractor in Singapore for floor and wall tiling, bathroom and kitchen tiles, tile replacement, hollow tile repair, and regrouting. WhatsApp XIII for a quote.",
+      "Tiling contractor in Singapore for floor and wall tiles, bathroom and kitchen tiling, tile replacement, hollow tile repair and regrouting. Get a quote.",
     primaryKeyword: "tiling contractor singapore",
     keywords: [
       "tiling contractor singapore",
@@ -685,7 +687,7 @@ export const services: Service[] = [
     h1: "Hacking & Demolition Contractor in Singapore",
     metaTitle: "Hacking Contractor Singapore | Wall & Floor Hacking",
     metaDescription:
-      "Hacking contractor in Singapore for wall hacking, floor and tile hacking, and carpentry removal in HDB flats, condos, and landed homes. Planned around HDB rules.",
+      "Hacking contractor in Singapore for wall, floor and tile hacking and carpentry removal in HDB flats, condos and landed homes. Planned around HDB rules.",
     primaryKeyword: "hacking contractor singapore",
     keywords: [
       "hacking contractor singapore",

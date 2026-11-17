@@ -8,7 +8,7 @@ import ReelsStrip from "@/components/reels/ReelsStrip";
 import HomeReviews from "@/components/home/HomeReviews";
 import ContactSection from "@/components/contact/ContactSection";
 import JsonLd from "@/components/seo/JsonLd";
-import { websiteJsonLd } from "@/lib/structured-data";
+import { faqJsonLd, websiteJsonLd } from "@/lib/structured-data";
 import { galleryItems, getFeaturedReels } from "@/data/projects";
 import { GOOGLE_PROFILE_URL } from "@/data/reviews";
 import { services, servicePath } from "@/data/services";
@@ -402,7 +402,7 @@ export default function Home() {
 
         <ContactSection />
       </main>
-      <JsonLd data={websiteJsonLd()} />
+      <JsonLd data={[websiteJsonLd(), faqJsonLd(faqItems)]} />
     </div>
   );
 }

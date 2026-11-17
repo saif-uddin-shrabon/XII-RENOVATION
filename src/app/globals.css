@@ -6,11 +6,12 @@
 
   /* Redesign palette */
   --ink: #1c1915;
-  --muted: #6d675f;
+  /* Supporting copy on cream: keep warm, push past “washed grey” for Ads readability */
+  --muted: #4a453f;
   --canvas: #fbf8f3;
   --paper: #fffdf9;
   --sand: #f1eae0;
-  --line: #ddd4c8;
+  --line: #cfc5b7;
   --brand: #e39a25;
   --brand-light: #f1ad3e;
   --brand-dark: #b86f17;
@@ -21,13 +22,14 @@
   --bg-primary: var(--canvas);
   --bg-secondary: #f4eee5;
   --bg-tertiary: var(--paper);
-  /* #8f5410 on canvas ≈ 5.6:1 — accent text that passes WCAG AA */
-  --accent-gold: #8f5410;
+  /* #7a4810 on canvas ≈ 7:1 — accent links stay readable on paper */
+  --accent-gold: #7a4810;
   --accent-gold-light: var(--brand-dark);
   --accent-gold-dark: var(--brand);
   --text-primary: var(--ink);
-  --text-secondary: #57514a;
-  --text-muted: var(--muted);
+  --text-secondary: #3f3a34;
+  --text-muted: #4a453f;
+  --text-placeholder: #5c564e;
   --border-color: rgba(184, 111, 23, 0.35);
   --border-muted: var(--line);
   --glass-bg: rgba(251, 248, 243, 0.94);
@@ -75,6 +77,12 @@ h6 {
 p {
   color: var(--text-secondary);
   line-height: 1.7;
+  font-weight: 500;
+}
+
+::placeholder {
+  color: var(--text-placeholder);
+  opacity: 1;
 }
 
 button,

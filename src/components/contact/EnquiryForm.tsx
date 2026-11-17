@@ -167,6 +167,8 @@ export default function EnquiryForm({ defaultService }: EnquiryFormProps) {
               onChange={handleInputChange}
               className={styles.formInput}
               placeholder="e.g. johnathan@example.com"
+              // Temp-mail / form-filler extensions inject attrs (e.g. data-temp-mail-org) before hydrate.
+              suppressHydrationWarning
             />
           </div>
 

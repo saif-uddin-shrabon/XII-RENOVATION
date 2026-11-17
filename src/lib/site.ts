@@ -43,6 +43,9 @@ export const BUSINESS = {
     instagram: "https://www.instagram.com/xiii_renovation_design/",
   },
   logo: "/logo.jpg",
+  /** Square transparent logo, preferred by Google for the business logo */
+  squareLogo: "/assets/xiii-logo-transparent-512.png",
+  googleMaps: "https://maps.app.goo.gl/P1ZmtXUy63UfC3UN7",
 } as const;
 
 export function absoluteUrl(path = "/"): string {

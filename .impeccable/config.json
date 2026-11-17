@@ -174,6 +174,72 @@
         "value": "3px",
         "createdAt": "2026-09-04T12:33:01.690Z",
         "reason": "Incumbent thin scrollbar thumb; near surface 4px"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "999px",
+        "createdAt": "2026-11-17T12:42:02.616Z",
+        "reason": "Existing globals.css scrollbar thumb already uses 999px; not introduced by FloatingWhatsApp"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#25d366",
+        "createdAt": "2026-11-17T12:43:42.736Z",
+        "reason": "user confirmed: WhatsApp brand green for floating WhatsApp FAB"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#1ebe57",
+        "createdAt": "2026-11-17T12:43:42.772Z",
+        "reason": "user confirmed: WhatsApp brand green hover for floating WhatsApp FAB"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#128c7e",
+        "createdAt": "2026-11-17T12:43:42.808Z",
+        "reason": "user confirmed: WhatsApp teal for floating WhatsApp FAB focus ring"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(18, 140, 126, 0.28)",
+        "createdAt": "2026-11-17T12:43:42.845Z",
+        "reason": "user confirmed: WhatsApp-tinted shadow for floating FAB"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(18, 140, 126, 0.34)",
+        "createdAt": "2026-11-17T12:43:42.901Z",
+        "reason": "user confirmed: WhatsApp-tinted hover shadow for floating FAB"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#fff",
+        "createdAt": "2026-11-17T12:43:42.937Z",
+        "reason": "user confirmed: white WhatsApp icon on brand-green FAB"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "9px",
+        "createdAt": "2026-11-17T12:51:38.153Z",
+        "reason": "DESIGN.md image radius is 10px; 9px is intentional near-match on mosaic/image thumbs"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#f1ad3e",
+        "createdAt": "2026-11-17T12:51:38.192Z",
+        "reason": "Already the --brand-light token value used for CTA hover"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#17120c",
+        "createdAt": "2026-11-17T12:51:38.231Z",
+        "reason": "Already the --on-brand token value for CTA text"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(74, 53, 27, 0.08)",
+        "createdAt": "2026-11-17T12:51:47.267Z",
+        "reason": "Intentional soft warm card shadow used across contact/service surfaces"
       }
     ]
   }
