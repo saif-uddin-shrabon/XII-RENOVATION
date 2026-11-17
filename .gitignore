@@ -23,6 +23,10 @@
 # misc
 .DS_Store
 *.pem
+Thumbs.db
+*.swp
+*.swo
+*~
 
 # debug
 npm-debug.log*
@@ -40,3 +44,26 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local agent / IDE caches (keep committed skill configs under .cursor if already tracked)
+.claude/
+.codex/
+.idea/
+.vscode/
+
+# keyword research exports (local only — not site code)
+/Keyword/
+Keyword/
+**/Keyword Stats*.csv
+
+# local SEO / Lighthouse audit dumps
+/xiiirenovation.com.sg-audit/
+*-audit/
+
+# impeccable local / generated screenshots (keep config + design sidecar)
+.impeccable/*.png
+.impeccable/polish-*.png
+.impeccable/hook.cache.json
+.impeccable/hook.pending.json
+.impeccable/config.local.json
+.impeccable/live/
