@@ -22,6 +22,21 @@ export const GSC_VERIFICATION = process.env.NEXT_PUBLIC_GSC_VERIFICATION || unde
 /** Google Analytics 4 measurement ID (G-XXXXXXX). Analytics and lead tracking stay off when unset. */
 export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || undefined;
 
+/** Google Ads account tag (AW-XXXXXXXXXX). Optional — used with per-event conversion labels. */
+export const GOOGLE_ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || undefined;
+
+/**
+ * Full Ads conversion `send_to` values, e.g. `AW-XXXXXXXXXX/AbCdEf`.
+ * Leave empty until you import GA4 key events (whatsapp_click / phone_click) into Google Ads
+ * and copy each conversion label here / into env.
+ */
+export const ADS_CONVERSION_LABELS = {
+  whatsapp: process.env.NEXT_PUBLIC_GADS_WHATSAPP_LABEL || undefined,
+  phone: process.env.NEXT_PUBLIC_GADS_PHONE_LABEL || undefined,
+  email: process.env.NEXT_PUBLIC_GADS_EMAIL_LABEL || undefined,
+  enquiry_form: process.env.NEXT_PUBLIC_GADS_FORM_LABEL || undefined,
+} as const;
+
 export const WHATSAPP_NUMBER = "6587231313";
 
 /** Owner-confirmed typical WhatsApp response time (17 Nov 2026). Shown beside WhatsApp buttons. */

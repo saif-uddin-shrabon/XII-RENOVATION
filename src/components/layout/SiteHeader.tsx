@@ -86,7 +86,10 @@ export default function SiteHeader() {
   const quoteHref = whatsAppLink(quoteMessageFor(pathname));
 
   return (
-    <header className={`${styles.header} ${solid ? styles.headerScrolled : ""}`}>
+    <header
+      className={`${styles.header} ${solid ? styles.headerScrolled : ""}`}
+      data-track-location="header"
+    >
       <div className={styles.navInner}>
         <Link href="/" className={styles.brand} onClick={close}>
           <BrandMark />

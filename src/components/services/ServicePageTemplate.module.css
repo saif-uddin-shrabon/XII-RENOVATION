@@ -34,8 +34,8 @@ so the header starts transparent */
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(15, 13, 10, 0.86) 0%, rgba(15, 13, 10, 0.62) 48%, rgba(15, 13, 10, 0.25) 78%),
-    linear-gradient(0deg, rgba(10, 8, 6, 0.55), transparent 50%);
+    linear-gradient(90deg, rgba(12, 10, 8, 0.92) 0%, rgba(12, 10, 8, 0.74) 46%, rgba(12, 10, 8, 0.36) 76%, rgba(12, 10, 8, 0.16) 100%),
+    linear-gradient(0deg, rgba(10, 8, 6, 0.62), transparent 52%);
 }
 
 .heroContent {
@@ -110,9 +110,11 @@ so the header starts transparent */
 .heroLead {
   max-width: 44rem;
   margin-bottom: 2.25rem;
-  color: rgba(255, 255, 255, 0.82);
-  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+  color: #fff;
+  font-size: clamp(1rem, 1.4vw, 1.08rem);
   line-height: 1.7;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(10, 8, 6, 0.45);
 }
 
 /* Intro */
@@ -127,7 +129,9 @@ so the header starts transparent */
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  font-size: 1.02rem;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  font-weight: 500;
 }
 
 .introAside {
@@ -183,9 +187,10 @@ so the header starts transparent */
 }
 
 .cardText {
-  color: var(--muted);
-  font-size: 0.88rem;
-  line-height: 1.6;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  font-weight: 500;
 }
 
 .whyGrid,
@@ -245,8 +250,10 @@ so the header starts transparent */
 
 .photoSlotText {
   max-width: 34rem;
-  color: var(--muted);
-  font-size: 0.92rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.6;
 }
 
 .photoSlotLink {

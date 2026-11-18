@@ -296,7 +296,7 @@ export default function ServicePageTemplate({ service }: ServicePageTemplateProp
                   <div className={styles.ratingStars} role="img" aria-label={`${review.rating} out of 5 stars`}>
                     ★★★★★
                   </div>
-                  <blockquote className={styles.reviewText}>&ldquo;{review.text}&rdquo;</blockquote>
+                  <blockquote className={styles.reviewText}>&ldquo;{review.excerpt ?? review.text}&rdquo;</blockquote>
                   <p className={styles.reviewMeta}>
                     <strong>{review.author}</strong>
                     {review.category && <span> · {review.category}</span>}

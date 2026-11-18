@@ -16,9 +16,10 @@
 }
 
 .contactIntro {
-  font-size: 0.98rem;
-  color: var(--muted);
+  font-size: 1rem;
+  color: var(--text-secondary);
   line-height: 1.7;
+  font-weight: 500;
 }
 
 .quickActions {

@@ -33,8 +33,8 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(15, 13, 10, 0.84) 0%, rgba(15, 13, 10, 0.59) 43%, rgba(15, 13, 10, 0.18) 73%),
-    linear-gradient(0deg, rgba(10, 8, 6, 0.4), transparent 45%);
+    linear-gradient(90deg, rgba(12, 10, 8, 0.9) 0%, rgba(12, 10, 8, 0.72) 42%, rgba(12, 10, 8, 0.32) 72%, rgba(12, 10, 8, 0.14) 100%),
+    linear-gradient(0deg, rgba(10, 8, 6, 0.55), transparent 48%);
   opacity: var(--hero-shade-opacity, 1);
 }
 
@@ -79,15 +79,18 @@
   line-height: 0.98;
   letter-spacing: -0.035em;
   text-wrap: balance;
+  text-shadow: 0 2px 18px rgba(10, 8, 6, 0.35);
   animation: heroCopyIn 1s 230ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .heroCopy {
   max-width: 610px;
   margin-top: 1.55rem;
-  color: rgba(255, 255, 255, 0.82);
-  font-size: 0.94rem;
+  color: #fff;
+  font-size: 1rem;
   line-height: 1.65;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(10, 8, 6, 0.45);
   animation: heroCopyIn 1s 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -207,10 +210,11 @@
 .workCopy > p,
 .splitHeading p,
 .centerHeading p,
-.faqIntro > p  {
-  color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.65;
+.faqIntro > p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+  font-weight: 500;
 }
 
 @media (min-width: 981px) {
@@ -378,9 +382,10 @@
 
 .reasonCard p {
   margin: 0 0.45rem;
-  color: var(--muted);
-  font-size: 0.76rem;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
   line-height: 1.55;
+  font-weight: 500;
 }
 
 .reasonNumber {
@@ -439,9 +444,10 @@
 .scopeBody p {
   min-height: 3.6rem;
   margin-top: 0.55rem;
-  color: var(--muted);
-  font-size: 0.78rem;
-  line-height: 1.5;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  font-weight: 500;
 }
 
 .scopeBody a {

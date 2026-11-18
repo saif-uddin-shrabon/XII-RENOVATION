@@ -20,7 +20,7 @@ export default function HomeReviews() {
           <div className={styles.stars} role="img" aria-label={`${review.rating} out of 5 stars`}>
             ★★★★★ <span>({review.rating}.0)</span>
           </div>
-          <blockquote>&ldquo;{review.text}&rdquo;</blockquote>
+          <blockquote>&ldquo;{review.excerpt ?? review.text}&rdquo;</blockquote>
         </article>
       ))}
       <div className={styles.reviewControls}>

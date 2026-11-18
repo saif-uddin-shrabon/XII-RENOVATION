@@ -1,3 +1,4 @@
+import { googleSummary } from "@/data/reviews";
 import { services, servicePath } from "@/data/services";
 import { BUSINESS, absoluteUrl } from "@/lib/site";
 
@@ -30,6 +31,7 @@ export function GET() {
     "- Pricing: no fixed packages and no design fee; a free itemised quotation is given after a free site visit",
     "- Payment: progressive (in stages as work is completed); workmanship warranty after handover",
     "- Fastest contact: WhatsApp +65 8723 1313 (usually replies within 1 hour)",
+    `- Google rating: ${googleSummary.rating.toFixed(1)} from ${googleSummary.reviewCount} reviews on the Google Business Profile`,
     "",
     "## Services",
     "",

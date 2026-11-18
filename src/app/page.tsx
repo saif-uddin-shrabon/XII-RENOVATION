@@ -14,7 +14,7 @@ import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import JsonLd from "@/components/seo/JsonLd";
 import { faqJsonLd, websiteJsonLd } from "@/lib/structured-data";
 import { galleryItems, getFeaturedReels } from "@/data/projects";
-import { GOOGLE_PROFILE_URL } from "@/data/reviews";
+import { GOOGLE_PROFILE_URL, googleSummary } from "@/data/reviews";
 import { PROMISES } from "@/data/offer";
 import { services, servicePath } from "@/data/services";
 import { midSentence, whatsAppLink } from "@/lib/site";
@@ -444,7 +444,9 @@ export default function Home() {
                 </span>
                 <span>
                   <strong>Google Business Profile</strong>
-                  <small>View reviews and project updates</small>
+                  <small>
+                    {googleSummary.rating.toFixed(1)} stars from {googleSummary.reviewCount} reviews
+                  </small>
                 </span>
                 <svg className={styles.externalArrow} viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M7 17 17 7M9 7h8v8" />

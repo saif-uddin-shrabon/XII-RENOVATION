@@ -8,13 +8,13 @@
         "rule": "design-system-font-size",
         "value": "0.65rem",
         "createdAt": "2026-09-04T12:13:55.134Z",
-        "reason": "DESIGN.md label hierarchy: category ticks ~0.65–0.7rem"
+        "reason": "DESIGN.md label hierarchy: category ticks ~0.65\u20130.7rem"
       },
       {
         "rule": "design-system-font-size",
         "value": "0.7rem",
         "createdAt": "2026-09-04T12:13:55.171Z",
-        "reason": "DESIGN.md label hierarchy: category ticks ~0.65–0.7rem"
+        "reason": "DESIGN.md label hierarchy: category ticks ~0.65\u20130.7rem"
       },
       {
         "rule": "design-system-font-size",
@@ -125,7 +125,7 @@
         "rule": "design-system-font-size",
         "value": "0.68rem",
         "createdAt": "2026-09-04T12:22:19.952Z",
-        "reason": "DESIGN.md category ticks on photography ~0.65–0.7rem"
+        "reason": "DESIGN.md category ticks on photography ~0.65\u20130.7rem"
       },
       {
         "rule": "design-system-font-size",
@@ -149,7 +149,7 @@
         "rule": "design-system-color",
         "value": "rgba(0, 0, 0, 0.28)",
         "createdAt": "2026-09-04T12:28:20.727Z",
-        "reason": "DESIGN.md glass nav shadow — quieter soft offset veil"
+        "reason": "DESIGN.md glass nav shadow \u2014 quieter soft offset veil"
       },
       {
         "rule": "design-system-font-size",
@@ -222,6 +222,48 @@
         "value": "9px",
         "createdAt": "2026-11-17T12:36:11.264Z",
         "reason": "pre-existing FAQ item radius matching homepage FAQ cards"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#1ebe57",
+        "createdAt": "2026-11-17T12:43:42.772Z",
+        "reason": "user confirmed: WhatsApp brand green hover for floating WhatsApp FAB"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#128c7e",
+        "createdAt": "2026-11-17T12:43:42.808Z",
+        "reason": "user confirmed: WhatsApp teal for floating WhatsApp FAB focus ring"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(18, 140, 126, 0.28)",
+        "createdAt": "2026-11-17T12:43:42.845Z",
+        "reason": "user confirmed: WhatsApp-tinted shadow for floating FAB"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(18, 140, 126, 0.34)",
+        "createdAt": "2026-11-17T12:43:42.901Z",
+        "reason": "user confirmed: WhatsApp-tinted hover shadow for floating FAB"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#fff",
+        "createdAt": "2026-11-17T12:43:42.937Z",
+        "reason": "user confirmed: white WhatsApp icon on brand-green FAB"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#f1ad3e",
+        "createdAt": "2026-11-17T12:51:38.192Z",
+        "reason": "Already the --brand-light token value used for CTA hover"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#17120c",
+        "createdAt": "2026-11-17T12:51:38.231Z",
+        "reason": "Already the --on-brand token value for CTA text"
       }
     ]
   }

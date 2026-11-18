@@ -61,6 +61,8 @@ export interface Service {
   priceFactors: string[];
   /** Ids from `googleReviews` in data/reviews.ts relevant to this service */
   reviewIds: string[];
+  /** Date this page's content last changed (YYYY-MM-DD). Update it by hand when you edit the page; used as sitemap lastmod. */
+  contentUpdated: string;
   /** Top-of-page background image; falls back to the first photo */
   heroImage?: ProjectMedia;
   /** Real completed-work photos only. Empty renders a "photos coming soon" slot. */
@@ -352,7 +354,8 @@ export const services: Service[] = [
       "Whether old cabinets and tiles need hacking first",
       "Plumbing or electrical point changes",
     ],
-    reviewIds: ["lekshmi-kitchen"],
+    reviewIds: ["santhi-kitchen", "lekshmi-kitchen", "muthukumar-full-home"],
+    contentUpdated: "2026-11-18",
     videoIds: ["kitchen-laundry", "red-kitchen"],
     relatedSlugs: ["carpentry", "tiling", "hdb-renovation"],
   },
@@ -602,7 +605,8 @@ export const services: Service[] = [
       "Electrical, lighting, and false-ceiling works",
       "Your material and finish choices",
     ],
-    reviewIds: ["lekshmi-kitchen", "melvin-feature-wall", "puspa-flooring"],
+    reviewIds: ["muthukumar-full-home", "murali-bathrooms-wardrobes", "mahen-carpentry-toilet"],
+    contentUpdated: "2026-11-18",
     videoIds: ["dark-bathroom", "bright-study"],
     relatedSlugs: ["kitchen-renovation", "hacking-demolition", "carpentry"],
   },
@@ -853,7 +857,8 @@ export const services: Service[] = [
       "Finish: laminate, veneer, or other surfaces",
       "Integrated LED lighting and power points",
     ],
-    reviewIds: ["melvin-feature-wall"],
+    reviewIds: ["mahen-carpentry-toilet", "murali-bathrooms-wardrobes", "melvin-feature-wall"],
+    contentUpdated: "2026-11-18",
     videoIds: ["console-mirror", "floating-counter"],
     relatedSlugs: ["kitchen-renovation", "hdb-renovation", "electrical"],
   },
@@ -1059,7 +1064,8 @@ export const services: Service[] = [
       "Surface condition: levelling, hollow spots, waterproofing preparation",
       "Patterns, cuts, and edge trims",
     ],
-    reviewIds: ["puspa-flooring"],
+    reviewIds: ["mahen-carpentry-toilet", "puspa-flooring", "murali-bathrooms-wardrobes"],
+    contentUpdated: "2026-11-18",
     videoIds: [],
     relatedSlugs: ["hacking-demolition", "kitchen-renovation", "hdb-renovation"],
   },
@@ -1223,7 +1229,8 @@ export const services: Service[] = [
       "Access and amount of debris",
       "Making good needed afterwards",
     ],
-    reviewIds: [],
+    reviewIds: ["muthukumar-full-home"],
+    contentUpdated: "2026-11-18",
     videoIds: [],
     relatedSlugs: ["tiling", "hdb-renovation", "kitchen-renovation"],
   },
@@ -1365,7 +1372,8 @@ export const services: Service[] = [
       "DB box or circuit breaker changes",
       "Lighting type: downlights, cove, or LED strips",
     ],
-    reviewIds: [],
+    reviewIds: ["muthukumar-full-home"],
+    contentUpdated: "2026-11-18",
     videoIds: [],
     relatedSlugs: ["carpentry", "hdb-renovation", "kitchen-renovation"],
   },
