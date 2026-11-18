@@ -22,19 +22,29 @@ export const GSC_VERIFICATION = process.env.NEXT_PUBLIC_GSC_VERIFICATION || unde
 /** Google Analytics 4 measurement ID (G-XXXXXXX). Analytics and lead tracking stay off when unset. */
 export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || undefined;
 
-/** Google Ads account tag (AW-XXXXXXXXXX). Optional — used with per-event conversion labels. */
-export const GOOGLE_ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || undefined;
+/**
+ * Google Ads account tag for XIII's Ads account (791-991-0162). Public, not a secret.
+ * Env var overrides it; set NEXT_PUBLIC_GOOGLE_ADS_ID="off" to disable the Ads tag.
+ */
+const ADS_ID_ENV = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID;
+export const GOOGLE_ADS_ID = ADS_ID_ENV === "off" ? undefined : ADS_ID_ENV || "AW-18573334664";
 
 /**
- * Full Ads conversion `send_to` values, e.g. `AW-XXXXXXXXXX/AbCdEf`.
- * Leave empty until you import GA4 key events (whatsapp_click / phone_click) into Google Ads
- * and copy each conversion label here / into env.
+ * Full Ads conversion `send_to` values (`AW-XXXXXXXXXX/label`), created 19 Nov 2026 in the Ads
+ * account as primary, one-per-click website conversions. These are the PRIMARY Ads conversions:
+ * keep any GA4 key-event imports in Google Ads as SECONDARY so a lead is never counted twice.
+ * The enquiry form ends in WhatsApp, so it reports as a WhatsApp lead.
  */
+const WHATSAPP_SEND_TO = "AW-18573334664/0kHUCLOT_7odEIixuphF";
+const PHONE_SEND_TO = "AW-18573334664/EEf3CLaT_7odEIixuphF";
+
 export const ADS_CONVERSION_LABELS = {
-  whatsapp: process.env.NEXT_PUBLIC_GADS_WHATSAPP_LABEL || undefined,
-  phone: process.env.NEXT_PUBLIC_GADS_PHONE_LABEL || undefined,
-  email: process.env.NEXT_PUBLIC_GADS_EMAIL_LABEL || undefined,
-  enquiry_form: process.env.NEXT_PUBLIC_GADS_FORM_LABEL || undefined,
+  whatsapp: GOOGLE_ADS_ID ? process.env.NEXT_PUBLIC_GADS_WHATSAPP_LABEL || WHATSAPP_SEND_TO : undefined,
+  phone: GOOGLE_ADS_ID ? process.env.NEXT_PUBLIC_GADS_PHONE_LABEL || PHONE_SEND_TO : undefined,
+  email: GOOGLE_ADS_ID ? process.env.NEXT_PUBLIC_GADS_EMAIL_LABEL || undefined : undefined,
+  enquiry_form: GOOGLE_ADS_ID
+    ? process.env.NEXT_PUBLIC_GADS_FORM_LABEL || process.env.NEXT_PUBLIC_GADS_WHATSAPP_LABEL || WHATSAPP_SEND_TO
+    : undefined,
 } as const;
 
 export const WHATSAPP_NUMBER = "6587231313";

@@ -121,3 +121,7 @@ client_secret*.json
 # Raw footage / photo source folders (optimised copies live in public/)
 /Web footage*/
 *.zip
+
+# Google Ads API kit (local tool with account data; secrets in its .env) and its OAuth file
+/google-ads-agent/
+credentials.json

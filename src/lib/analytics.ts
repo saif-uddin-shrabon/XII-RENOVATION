@@ -59,7 +59,10 @@ export function trackLead(method: LeadMethod, params: Record<string, string> = {
   // Optional Google Ads conversion ping (after Ads import labels are set)
   const sendTo = ADS_CONVERSION_LABELS[method];
   if (sendTo) {
-    gtag("event", "conversion", { send_to: sendTo, ...payload });
+    // transaction_id lets Google de-duplicate and lets the owner adjust a lead later by its ref code
+    const conversion: Record<string, string> = { send_to: sendTo, ...payload };
+    if (params.lead_ref) conversion.transaction_id = params.lead_ref;
+    gtag("event", "conversion", conversion);
   }
 
   if (debugEnabled()) {
