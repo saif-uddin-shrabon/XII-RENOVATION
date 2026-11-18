@@ -117,3 +117,7 @@ service-account*.json
 # Google OAuth / service-account credentials
 client_secret*.json
 *.apps.googleusercontent.com.json
+
+# Raw footage / photo source folders (optimised copies live in public/)
+/Web footage*/
+*.zip

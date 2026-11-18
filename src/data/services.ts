@@ -517,6 +517,12 @@ export const services: Service[] = [
         height: 1350,
       },
       {
+        src: "/image/xiii-living-room-06-08-26.jpg",
+        alt: "Completed living room with TV feature wall, floating shelves and pendant lights",
+        width: 1080,
+        height: 1350,
+      },
+      {
         src: "/image/xiii-30-07-26.png",
         alt: "Full home renovation living room overview with media console — Singapore condominium",
         width: 1080,
@@ -781,6 +787,24 @@ export const services: Service[] = [
         height: 1350,
       },
       {
+        src: "/image/xiii-carpentry-wardrobe-white-full-height.jpg",
+        alt: "Full-height white built-in wardrobe with LED downlight — custom carpentry",
+        width: 1080,
+        height: 1350,
+      },
+      {
+        src: "/image/xiii-carpentry-wardrobe-dark-vanity.jpg",
+        alt: "Dark built-in wardrobe with integrated dressing table and mirror — custom carpentry",
+        width: 1080,
+        height: 1350,
+      },
+      {
+        src: "/image/xiii-carpentry-shoe-cabinet-curved.jpg",
+        alt: "Curved custom shoe cabinet with stone top and LED strip lighting at the entrance",
+        width: 1080,
+        height: 1350,
+      },
+      {
         src: "/image/xiii-14-08-26.png",
         alt: "Custom study desk with asymmetrical wall shelving — built-in carpentry",
         width: 1080,
@@ -823,8 +847,8 @@ export const services: Service[] = [
           "Priced per foot run in your quotation",
         ],
         image: {
-          src: "/image/xiii-10-08-26.png",
-          alt: "Bedroom headboard joinery with accent lighting and built-in shelving",
+          src: "/image/xiii-carpentry-wardrobe-white-full-height.jpg",
+          alt: "Full-height white built-in wardrobe with LED downlight — custom carpentry",
           width: 1080,
           height: 1350,
         },
