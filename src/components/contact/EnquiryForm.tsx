@@ -4,6 +4,7 @@ import { useState } from "react";
 import { services } from "@/data/services";
 import { BUSINESS, buildEnquiryWhatsAppUrl } from "@/lib/site";
 import { trackLead } from "@/lib/analytics";
+import { newLeadRef, withLeadRef } from "@/lib/leadRef";
 import styles from "./EnquiryForm.module.css";
 
 const OTHER_SERVICE = "Other / not sure yet";
@@ -62,17 +63,25 @@ export default function EnquiryForm({ defaultService }: EnquiryFormProps) {
       return;
     }
 
-    const url = buildEnquiryWhatsAppUrl({
-      ...formData,
-      name,
-      email: email || "-",
-      phone,
-      message,
-    });
+    const leadRef = newLeadRef();
+    const url = withLeadRef(
+      buildEnquiryWhatsAppUrl({
+        ...formData,
+        name,
+        email: email || "-",
+        phone,
+        message,
+      }),
+      leadRef,
+    );
 
     setFormError(null);
     setWhatsAppUrl(url);
-    trackLead("enquiry_form", { service: formData.service, property_type: formData.propertyType });
+    trackLead("enquiry_form", {
+      service: formData.service,
+      property_type: formData.propertyType,
+      lead_ref: leadRef,
+    });
     window.open(url, "_blank", "noopener,noreferrer");
     setFormData(emptyForm(defaultService));
   };

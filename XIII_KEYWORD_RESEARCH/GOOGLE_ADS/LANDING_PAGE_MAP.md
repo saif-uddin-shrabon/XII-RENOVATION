@@ -30,7 +30,7 @@ Other anchors available on every service page: `#projects` (photos), `#pricing`,
 - H1 with the service keyword and "in Singapore"
 - "Get a free quote on WhatsApp" + "Call +65 8723 1313"
 - Promise chips: Free site visit & quote · No design fee · Pay by stages · Workmanship warranty
-- Real Google rating (5.0, 3 reviews) linking to the Google Business Profile
+- Real Google rating (5.0 from 10 reviews, verified 18 Nov 2026) linking to the Google Business Profile
 - Jump links to each sub-service and to pricing
 
 The WhatsApp message is pre-filled with the service (e.g. "I'd like a free quotation for custom kitchen cabinets"), so leads arrive labelled. All WhatsApp and phone clicks fire GA4 `generate_lead` once `NEXT_PUBLIC_GA_ID` is set.

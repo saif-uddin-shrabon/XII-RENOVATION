@@ -55,7 +55,7 @@ Each category was scored 1–5 on six criteria after the research was complete, 
 | 1 | **Conversion tracking live**: GA4 `generate_lead` (WhatsApp / call / email / form) marked as a key event and imported into Google Ads. Add a Google Ads call-from-ads conversion. | The site's conversion path is WhatsApp/phone (PRODUCT.md). Without this, Smart Bidding and optimisation are blind. | Dev / marketer |
 | 2 | **Confirm HDB DRC status** (company name/UEN on HDB's DRC). | HDB requires flat owners to use DRC-listed contractors, and non-listed firms may not hold themselves out as listed. Required for campaign 3 and for any "HDB" ad copy. | Owner |
 | 3 | **Do not use "licensed / certified / HDB approved / BCA"** in ads until confirmed. | Repeats the PRODUCT.md rule. Google also disapproves unverifiable claims. | Marketer |
-| 4 | Google Business Profile linked, as a **location asset**. | 5.0★ from 2 reviews is real, so use it. Do not inflate the count. | Owner |
+| 4 | Google Business Profile linked, as a **location asset**. | 5.0★ from 10 reviews (verified 18 Nov 2026) is real, so use it. Do not inflate the count. | Owner |
 | 5 | `NEXT_PUBLIC_SITE_URL` set, pages indexed, mobile speed checked. | Ads Quality Score includes landing-page experience. | Dev |
 | 6 | Add the universal negative list (`goole_ads/ads_docs/universal-negative-keyword.md`, section A) plus section 7 below. | Saves wasted spend from day 1. | Marketer |
 
@@ -353,4 +353,4 @@ No budget was supplied, so these are principles plus an illustrative example. Th
 - **YoY volatility:** several anchor terms show steep YoY declines in the export (e.g. *kitchen renovation singapore* −62%, *hdb kitchen renovation* −84%) while their 3-month trend is flat or rising. Treat the monthly volumes as directional and re-pull every quarter.
 - **Retail leakage on "kitchen cabinet singapore":** phrase match will pick up IKEA and ready-made cabinet shoppers. Use negatives and watch search terms daily.
 - **Claim compliance:** the biggest risk is copy that implies HDB/BCA/EMA approval before it is confirmed.
-- **Only 2 reviews:** this weakens trust signals against established competitors. Collect Google reviews from every completed job alongside the launch.
+- **Only 10 reviews:** this still trails established competitors on trust signals. Collect Google reviews from every completed job alongside the launch.

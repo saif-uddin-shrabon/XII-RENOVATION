@@ -1,0 +1,43 @@
+# secrets - never tracked
+.env
+.env.*
+!.env.example
+!.env.local.example
+credentials.json
+client_secret*.json
+token.json
+
+# build output and caches
+node_modules/
+.next/
+.vercel/
+out/
+tsconfig.tsbuildinfo
+next-env.d.ts
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+*.log
+
+# script caches: raw API pulls, the audit config, the geocode and Lighthouse caches
+code/cache/
+
+# screenshot_page.py and render_check.py output
+/screenshots/
+
+# what the commands write for you - yours, never tracked, and some of it holds account data
+/audit-report.md
+/audit-report*.html
+/assets/
+/keyword-list.html
+/ad-library.md
+/ads-pending.md
+/negatives-staged.md
+/negatives-log.md
+/seeds.txt
+/candidates.csv
+/municipalities.csv
+/stem-metrics.csv
+/context/ads-live.md
+/website/public/photos/

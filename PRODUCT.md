@@ -67,7 +67,9 @@ SEO configuration lives in `src/lib/site.ts` and reads two env vars (see `.env.e
 
 - `NEXT_PUBLIC_SITE_URL` — live domain; drives canonical URLs, sitemap, robots, and JSON-LD
 - `NEXT_PUBLIC_GSC_VERIFICATION` — Google Search Console HTML-tag code (optional if verifying by DNS)
-- `NEXT_PUBLIC_GA_ID` — Google Analytics 4 measurement ID; when set, WhatsApp / phone / email clicks and enquiry-form submissions fire conversion events. Primary: `whatsapp_click`, `phone_click`. Also `generate_lead` + optional `contact_form_submit` / `email_click`. Mark `whatsapp_click` and `phone_click` as key events in GA4 and import them into Google Ads as primary conversions. Optional: `NEXT_PUBLIC_GOOGLE_ADS_ID` and `NEXT_PUBLIC_GADS_WHATSAPP_LABEL` / `NEXT_PUBLIC_GADS_PHONE_LABEL` for direct Ads `conversion` pings.
+- `NEXT_PUBLIC_GA_ID` — Google Analytics 4 measurement ID (live: G-F28KEBSZGQ); WhatsApp / phone / email clicks and enquiry-form submissions fire `whatsapp_click`, `phone_click`, `email_click`, `contact_form_submit` and `generate_lead`.
+- Google Ads conversions (set up 19 Nov 2026, account 791-991-0162): the Ads tag `AW-18573334664` and the primary conversion labels for **WhatsApp tap** and **Phone tap** are defaults in `src/lib/site.ts` (env vars `NEXT_PUBLIC_GOOGLE_ADS_ID` / `NEXT_PUBLIC_GADS_*_LABEL` override; `NEXT_PUBLIC_GOOGLE_ADS_ID=off` disables). The enquiry form counts as a WhatsApp lead. If GA4 key events are ever imported into Ads, keep them **secondary**, or every lead counts twice. "Calls from ads" (60s+) is created in the Ads UI, not via API.
+- Lead refs (`src/lib/leadRef.ts`): every WhatsApp tap adds `Ref: G-XXXXX` (came from a Google Ads click) or `Ref: W-XXXXX` (any other visit) to the prefilled message, and sends the same code as the conversion's `transaction_id`, so junk leads can later be retracted in Google Ads by code.
 
 Repo folder and npm package still use "XII" / `xii-app`. Public identity is XIII — do not let the repo name leak into visitor-facing copy.
 
@@ -78,7 +80,7 @@ Owner follow-ups:
 - Set `NEXT_PUBLIC_SITE_URL` to the live domain in the hosting environment.
 - Supply real completed-job photos for tiling, hacking / demolition, and electrical; add them to each service's `photos` array in `src/data/services.ts` (those pages show a "photos coming soon" panel until then).
 - Search Console: sitemap submitted (24 Oct 2026). Request indexing for `/` and the six service URLs, then check the Pages report.
-- Create a GA4 property, set `NEXT_PUBLIC_GA_ID` in the hosting environment, redeploy, mark `whatsapp_click` and `phone_click` as key events, then import those into Google Ads as primary conversions.
+- Google Ads tracking: done in code (19 Nov 2026). Owner still to do in the Ads UI: create the "Calls from ads" conversion (60s+), link Google Business Profile and GA4 (GA4 imports secondary only), and confirm the hours the phone is answered.
 - Run a Singapore-specific Keyword Planner pull for electrical terms before expanding `/electrical`.
 
 ## Brand Commitments
@@ -103,11 +105,11 @@ Real completed-work media (toggle `USE_REAL_MEDIA` in `src/data/projects.ts`):
 - Short films under `public/shorts/` with posters in `public/shorts/posters/`
 - Featured catalogue: living-room feature wall, bedroom suite, study carpentry, kitchen and utility joinery
 
-Google proof (manual, two reviews — do not invent more):
+Google proof (manual, 10 reviews as of 18 Nov 2026 — the full set is in `src/data/reviews.ts`; do not invent more):
 
 - Profile: https://maps.app.goo.gl/P1ZmtXUy63UfC3UN7
 - Review link: https://g.page/r/CUkrqaHVdO2OEAI/review
-- Summary currently published: 5.0 from 2 reviews (`src/data/reviews.ts`)
+- Summary currently published: 5.0 from 10 reviews, verified 18 Nov 2026 (`src/data/reviews.ts`)
 - MelvinGRaj (living-room feature wall) with photos `public/image/graj1.webp`, `public/image/graj2.webp`
 - puspa rani (flooring)
 

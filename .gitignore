@@ -46,7 +46,8 @@ yarn-error.log*
 next-env.d.ts
 
 # local agent / IDE caches (keep committed skill configs under .cursor if already tracked)
-.claude/
+.claude/*
+!.claude/skills/
 .codex/
 .idea/
 .vscode/
@@ -67,3 +68,7 @@ Keyword/
 .impeccable/hook.pending.json
 .impeccable/config.local.json
 .impeccable/live/
+
+# Google OAuth client files and API credentials - never commit
+client_secret*.json
+credentials.json
