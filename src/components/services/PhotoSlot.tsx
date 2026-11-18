@@ -1,4 +1,4 @@
-import { whatsAppLink } from "@/lib/site";
+import { midSentence, whatsAppLink } from "@/lib/site";
 import styles from "./ServicePageTemplate.module.css";
 
 interface PhotoSlotProps {
@@ -24,11 +24,11 @@ export default function PhotoSlot({ serviceLabel }: PhotoSlotProps) {
       </svg>
       <h3 className={styles.photoSlotTitle}>Project photos coming soon</h3>
       <p className={styles.photoSlotText}>
-        We are adding photos of our completed {serviceLabel.toLowerCase()} jobs. In the meantime,
+        We are adding photos of our completed {midSentence(serviceLabel)} jobs. In the meantime,
         message us and we will share photos of similar work we have done.
       </p>
       <a
-        href={whatsAppLink(`Hello XIII — could you share photos of past ${serviceLabel.toLowerCase()} jobs?`)}
+        href={whatsAppLink(`Hello XIII — could you share photos of past ${midSentence(serviceLabel)} jobs?`)}
         target="_blank"
         rel="noopener noreferrer"
         className={styles.photoSlotLink}

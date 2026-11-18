@@ -1,3 +1,5 @@
+import { services } from "@/data/services";
+
 /**
  * Single source of truth for the public site address and business identity.
  * Set NEXT_PUBLIC_SITE_URL to the live domain (e.g. https://www.example.sg) before deploying.
@@ -22,6 +24,9 @@ export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || undefined;
 
 export const WHATSAPP_NUMBER = "6587231313";
 
+/** Owner-confirmed typical WhatsApp response time (17 Nov 2026). Shown beside WhatsApp buttons. */
+export const WHATSAPP_REPLY_TIME = "Usually replies within 1 hour";
+
 export const BUSINESS = {
   name: "XIII Renovation & Design",
   shortName: "XIII",
@@ -43,6 +48,9 @@ export const BUSINESS = {
     instagram: "https://www.instagram.com/xiii_renovation_design/",
   },
   logo: "/logo.jpg",
+  /** Square transparent logo, preferred by Google for the business logo */
+  squareLogo: "/assets/xiii-logo-transparent-512.png",
+  googleMaps: "https://maps.app.goo.gl/P1ZmtXUy63UfC3UN7",
 } as const;
 
 export function absoluteUrl(path = "/"): string {
@@ -52,6 +60,22 @@ export function absoluteUrl(path = "/"): string {
 export function whatsAppLink(message?: string): string {
   const base = `https://wa.me/${WHATSAPP_NUMBER}`;
   return message ? `${base}?text=${encodeURIComponent(message)}` : base;
+}
+
+/** Lower-case a label for use mid-sentence, keeping acronyms such as "HDB" or "BTO" intact */
+export function midSentence(label: string): string {
+  return label
+    .split(" ")
+    .map((word) => (/^[A-Z]{2,}$/.test(word) ? word : word.toLowerCase()))
+    .join(" ");
+}
+
+/** WhatsApp prefill that names the service when the visitor is on a service page */
+export function quoteMessageFor(pathname: string | null): string {
+  const service = services.find((item) => `/${item.slug}` === pathname);
+  return service
+    ? `Hello XIII — I'd like a free quotation for ${midSentence(service.navLabel)}.`
+    : "Hello XIII — I'd like a free renovation quotation.";
 }
 
 export interface EnquiryDetails {

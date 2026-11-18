@@ -174,6 +174,54 @@
         "value": "3px",
         "createdAt": "2026-09-04T12:33:01.690Z",
         "reason": "Incumbent thin scrollbar thumb; near surface 4px"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "999px",
+        "createdAt": "2026-11-17T11:58:31.479Z",
+        "reason": "existing pattern: heroLabel pill in ServicePageTemplate.module.css already uses 999px"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(20, 17, 13, 0.42)",
+        "createdAt": "2026-11-17T11:58:31.513Z",
+        "reason": "existing pattern: hero label scrim rgba(20,17,13,0.35) on hero photography in ServicePageTemplate.module.css"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#25d366",
+        "createdAt": "2026-11-17T12:29:02.968Z",
+        "reason": "WhatsApp brand green for the online/reply indicator; user asked for WhatsApp-first conversion emphasis (17 Nov 2026)"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(62, 45, 25, 0.08)",
+        "createdAt": "2026-11-17T12:29:37.904Z",
+        "reason": "existing warm shadow tint used by SiteHeader .headerScrolled"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(62, 45, 25, 0.28)",
+        "createdAt": "2026-11-17T12:29:37.938Z",
+        "reason": "same warm shadow tint as header/dropdown shadows, deeper for floating button"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(20, 17, 13, 0.35)",
+        "createdAt": "2026-11-17T12:36:11.197Z",
+        "reason": "pre-existing hero label scrim on photography (ServicePageTemplate + homepage heroLabel)"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(74, 53, 27, 0.08)",
+        "createdAt": "2026-11-17T12:36:11.231Z",
+        "reason": "pre-existing warm card shadow on service intro aside"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "9px",
+        "createdAt": "2026-11-17T12:36:11.264Z",
+        "reason": "pre-existing FAQ item radius matching homepage FAQ cards"
       }
     ]
   }

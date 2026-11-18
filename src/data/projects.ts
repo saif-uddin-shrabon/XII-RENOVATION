@@ -102,7 +102,7 @@ export const videos: ProjectVideo[] = [
     id: "red-kitchen",
     src: "/shorts/xiii-rd-27-06-26.mp4",
     poster: "/shorts/posters/xiii-rd-27-06-26.jpg",
-    title: "Bespoke Statement Kitchen",
+    title: "Custom Statement Kitchen",
     category: "Kitchen",
     featured: true,
   },
@@ -249,7 +249,7 @@ export const projects: Project[] = [
     title: "Study & Custom Carpentry",
     category: "Study",
     location: "Residential, Singapore",
-    scope: ["Bespoke Desk", "Wall Shelving", "Integrated Lighting"],
+    scope: ["Custom Desk", "Wall Shelving", "Integrated Lighting"],
     description:
       "Purpose-built study nooks and display joinery with warm wood interiors and precise LED detailing.",
     cover: {

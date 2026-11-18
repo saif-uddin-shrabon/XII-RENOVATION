@@ -7,12 +7,17 @@ import type { GalleryFilter } from "@/components/gallery/types";
 import ReelsStrip from "@/components/reels/ReelsStrip";
 import HomeReviews from "@/components/home/HomeReviews";
 import ContactSection from "@/components/contact/ContactSection";
+import TrustChips from "@/components/ui/TrustChips";
+import ContactActions from "@/components/ui/ContactActions";
+import SendPhotos from "@/components/ui/SendPhotos";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import JsonLd from "@/components/seo/JsonLd";
-import { websiteJsonLd } from "@/lib/structured-data";
+import { faqJsonLd, websiteJsonLd } from "@/lib/structured-data";
 import { galleryItems, getFeaturedReels } from "@/data/projects";
 import { GOOGLE_PROFILE_URL } from "@/data/reviews";
+import { PROMISES } from "@/data/offer";
 import { services, servicePath } from "@/data/services";
-import { whatsAppLink } from "@/lib/site";
+import { midSentence, whatsAppLink } from "@/lib/site";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -45,8 +50,8 @@ const reasons = [
   },
   {
     number: "03",
-    title: "Itemised quotations",
-    description: "After a site visit you see what each item costs before you commit.",
+    title: "No design fee, itemised quote",
+    description: "You pay for the work, not a designer. Every item is priced before you commit.",
     image: "/image/xiii-19-08-26.png",
     alt: "Made-to-measure storage and display carpentry",
   },
@@ -64,30 +69,68 @@ const scopeCards = [
     title: "HDB Renovation",
     description: "BTO and resale flats — flooring, carpentry, kitchens, and full renovations.",
     image: "/image/xiii-30-07-26.png",
-    alt: "Completed HDB living room renovation",
-    prompt: "Hello XIII — I would like a quotation for an HDB renovation.",
+    alt: "Completed living room renovation with media console",
+    prompt: "Hello XIII — I would like a free quotation for an HDB renovation.",
   },
   {
     title: "Condominium",
     description: "Renovation and custom carpentry planned around MCST requirements.",
     image: "/image/xiii-21-08-26.png",
     alt: "Completed condominium living room interior",
-    prompt: "Hello XIII — I would like a quotation for a condominium renovation.",
+    prompt: "Hello XIII — I would like a free quotation for a condominium renovation.",
   },
   {
     title: "Landed Home",
     description: "Larger renovation scopes coordinated by one accountable team.",
     image: "/image/xiii-10-08-26.png",
     alt: "Completed bedroom with built-in joinery",
-    prompt: "Hello XIII — I would like a quotation for a landed home renovation.",
+    prompt: "Hello XIII — I would like a free quotation for a landed home renovation.",
+  },
+];
+
+const steps = [
+  {
+    title: "Send photos on WhatsApp",
+    description: "Tell us what you want to change. A few phone photos are enough to start.",
+  },
+  {
+    title: "Free site visit",
+    description: "We measure up and talk through layout, materials, budget, and timing.",
+  },
+  {
+    title: "Free itemised quote",
+    description: "Every item priced line by line. Adjust materials until it fits your budget.",
+  },
+  {
+    title: "Works in stages",
+    description: "One team runs every trade. You pay progressively as each stage is done.",
+  },
+  {
+    title: "Handover & warranty",
+    description: "We fix any snags, clean up, and back the work with a workmanship warranty.",
   },
 ];
 
 const faqItems = [
   {
+    question: "Are you an interior designer or a renovation contractor?",
+    answer:
+      "XIII Renovation & Design is a renovation contractor. We still help you plan the layout, materials, and carpentry, but there is no separate design fee — you pay for the renovation work itself, built by our own team.",
+  },
+  {
     question: "How much does a renovation cost in Singapore?",
     answer:
-      "It depends on property type, scope, material choices, and site conditions. After a site visit we give you an itemised quotation so you can see each cost — XIII does not publish one-size-fits-all package prices.",
+      "It depends on property type, scope, material choices, and site conditions. After a free site visit we give you an itemised quotation so you can see each cost and choose materials that fit your budget — XIII does not publish one-size-fits-all package prices.",
+  },
+  {
+    question: "Is the site visit and quotation really free?",
+    answer:
+      "Yes. The site visit, measurement, and itemised quotation are free, with no obligation to go ahead. You can also send photos on WhatsApp first for a quick idea of the scope.",
+  },
+  {
+    question: "Do I have to pay everything upfront?",
+    answer:
+      "No. Payment is progressive — you pay in stages as the work moves forward, and your workmanship is covered by a warranty after handover.",
   },
   {
     question: "Do you work around HDB and MCST rules?",
@@ -123,7 +166,7 @@ export default function Home() {
           <div className={styles.heroShade} />
           <div className={styles.heroInner}>
             <div className={styles.heroLabel}>
-              <span /> HDB · Condo · Landed · Island-wide
+              <span /> Renovation contractor · HDB · Condo · Landed · Island-wide
             </div>
             <h1 id="hero-title" className={styles.heroTitle}>
               Your renovation contractor
@@ -131,21 +174,14 @@ export default function Home() {
             </h1>
             <p className={styles.heroCopy}>
               Kitchens, custom carpentry, tiling, hacking, and electrical works for HDB flats,
-              condos, and landed homes — planned, built, and finished by one accountable team.
+              condos, and landed homes — built by one accountable team. No design fee: you pay
+              for the work, and the site visit and quotation are free.
             </p>
-            <div className={styles.heroActions}>
-              <a
-                className={styles.primaryButton}
-                href={whatsAppLink("Hello XIII — I'd like a renovation quotation.")}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Get a quote on WhatsApp
-              </a>
-              <a className={styles.lightButton} href="#services">
-                View our services
-              </a>
-            </div>
+            <ContactActions
+              message="Hello XIII — I'd like a free renovation quotation."
+              className={styles.heroActions}
+            />
+            <TrustChips className={styles.heroTrust} />
           </div>
           <a className={styles.scrollCue} href="#services" aria-label="Scroll to services">
             <span>Scroll</span>
@@ -154,63 +190,101 @@ export default function Home() {
         </section>
 
         <section id="services" className={styles.servicesSection}>
-          <div className={styles.servicesGrid}>
-            <Reveal className={styles.servicesIntro}>
-              <h2>Renovation services for every part of your home</h2>
-              <p>
-                From a single kitchen to a full home renovation, one team plans the layout, builds
-                the carpentry, and coordinates every trade through to handover.
-              </p>
-              <a className={styles.textButton} href="#contact">
-                Get a quotation <span aria-hidden="true">↗</span>
-              </a>
-              <div className={styles.servicePortrait} data-scroll-motion data-scroll-depth="-24">
-                <Image
-                  src="/image/xiii-12-08-26.png"
-                  alt="XIII herringbone living room feature wall"
-                  fill
-                  sizes="(max-width: 860px) 100vw, 38vw"
-                />
-              </div>
+          <div className={styles.splitHeading}>
+            <Reveal>
+              <h2>What we can do for your home</h2>
             </Reveal>
-
-            <div className={styles.serviceList}>
-              {services.map((service, index) => (
-                <Reveal key={service.slug} delay={index * 70}>
-                  <Link
-                    href={servicePath(service.slug)}
-                    className={`${styles.serviceItem} ${index === 0 ? styles.serviceActive : ""}`}
-                  >
-                    <span className={styles.serviceNumber}>{String(index + 1).padStart(2, "0")}</span>
-                    <div>
-                      <h3>{service.navLabel}</h3>
-                      <p>{service.cardSummary}</p>
-                    </div>
-                    <span className={styles.serviceArrow} aria-hidden="true">
-                      ↗
-                    </span>
-                  </Link>
-                </Reveal>
-              ))}
-            </div>
+            <Reveal delay={100}>
+              <p>
+                Book one service or the whole renovation. Tap a service to see real project
+                photos, what is included, and how pricing works.
+              </p>
+            </Reveal>
           </div>
+
+          <ul className={styles.serviceCards}>
+            {services.map((service, index) => {
+              const photo = service.heroImage ?? service.photos[0];
+              return (
+                <Reveal as="li" key={service.slug} delay={(index % 3) * 70} className={styles.serviceCardReveal}>
+                  <article className={styles.serviceCard}>
+                    <Link href={servicePath(service.slug)} className={styles.serviceCardMain}>
+                      {photo && (
+                        <span className={styles.serviceCardImage}>
+                          <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 720px) 100vw, (max-width: 1080px) 50vw, 33vw" />
+                        </span>
+                      )}
+                      <span className={styles.serviceCardBody}>
+                        <h3>{service.navLabel}</h3>
+                        <span className={styles.serviceChips}>
+                          {service.scope.map((item) => (
+                            <span key={item.title}>{item.title}</span>
+                          ))}
+                        </span>
+                      </span>
+                    </Link>
+                    <div className={styles.serviceCardActions}>
+                      <Link href={servicePath(service.slug)} className={styles.serviceCardLink}>
+                        See photos &amp; pricing <span aria-hidden="true">→</span>
+                      </Link>
+                      <a
+                        href={whatsAppLink(`Hello XIII — I'd like a free quotation for ${midSentence(service.navLabel)}.`)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.serviceCardWhatsApp}
+                        aria-label={`WhatsApp us about ${service.navLabel}`}
+                      >
+                        <WhatsAppIcon size={17} />
+                        <span>WhatsApp</span>
+                      </a>
+                    </div>
+                  </article>
+                </Reveal>
+              );
+            })}
+          </ul>
+          <SendPhotos message="Hello XIII — I'd like a free renovation quotation." />
+        </section>
+
+        <section className={styles.promiseSection} aria-labelledby="promise-title">
+          <h2 id="promise-title" className={styles.visuallyHidden}>
+            What every XIII renovation includes
+          </h2>
+          <ul className={styles.promiseGrid}>
+            {PROMISES.map((promise) => (
+              <li key={promise.title} className={styles.promiseItem}>
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M3.5 8.5l3 3 6-7" />
+                </svg>
+                <div>
+                  <h3>{promise.title}</h3>
+                  <p>{promise.description}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
         </section>
 
         <section id="work" className={styles.workSection}>
           <Reveal className={styles.centerHeading}>
-            <h2>Renovation, grounded in real work</h2>
-            <p>Completed spaces, carpentry details, and practical ideas from our own Singapore projects.</p>
+            <h2>A renovation contractor, not an interior design firm</h2>
+            <p>
+              You do not need to pay an interior designer to get a well-planned home. We plan the
+              layout, materials, and carpentry with you, then our own team builds it.
+            </p>
           </Reveal>
 
           <div className={styles.workGrid}>
             <Reveal className={styles.workCopy}>
-              <h3>Built to look resolved — and live beautifully</h3>
-              <p>
-                Each detail answers a real need: a calmer living room, a better place to work, or
-                storage that finally fits the space it serves.
-              </p>
+              <h3>Your budget goes into the work you can see</h3>
+              <ul className={styles.workPoints}>
+                <li>No design fee and no designer mark-up layer</li>
+                <li>Talk directly to the team that builds your carpentry</li>
+                <li>Every item priced in a free, itemised quotation</li>
+                <li>Pay in stages as the work progresses</li>
+              </ul>
               <a className={styles.textButton} href="#gallery">
-                Browse the project gallery <span aria-hidden="true">↓</span>
+                See our completed work <span aria-hidden="true">↓</span>
               </a>
             </Reveal>
 
@@ -300,10 +374,35 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="how-it-works" className={styles.stepsSection}>
+          <Reveal className={styles.centerHeading}>
+            <h2>How it works</h2>
+            <p>Five clear steps, one team, and no surprises on the bill.</p>
+          </Reveal>
+          <ol className={styles.stepsList}>
+            {steps.map((step, index) => (
+              <li key={step.title} className={styles.stepItem}>
+                <span className={styles.stepNumber} aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+              </li>
+            ))}
+          </ol>
+          <div className={styles.stepsCta}>
+            <ContactActions
+              message="Hello XIII — I'd like to book a free site visit."
+              whatsAppLabel="Book a free site visit on WhatsApp"
+              tone="light"
+            />
+          </div>
+        </section>
+
         <section className={styles.scopeSection}>
           <Reveal className={styles.centerHeading}>
             <h2>Start with the shape of your home</h2>
-            <p>Choose a property type to begin a direct, project-specific conversation on WhatsApp.</p>
+            <p>Choose your property type to start a free quotation on WhatsApp.</p>
           </Reveal>
 
           <div className={styles.scopeGrid}>
@@ -317,7 +416,7 @@ export default function Home() {
                     <h3>{card.title}</h3>
                     <p>{card.description}</p>
                     <a href={whatsAppLink(card.prompt)} target="_blank" rel="noopener noreferrer">
-                      Discuss your home <span aria-hidden="true">↗</span>
+                      Get a free quote <span aria-hidden="true">↗</span>
                     </a>
                   </div>
                 </article>
@@ -402,7 +501,7 @@ export default function Home() {
 
         <ContactSection />
       </main>
-      <JsonLd data={websiteJsonLd()} />
+      <JsonLd data={[websiteJsonLd(), faqJsonLd(faqItems)]} />
     </div>
   );
 }

@@ -24,7 +24,7 @@ const outfit = Outfit({
 
 const DEFAULT_TITLE = "Renovation Contractor Singapore | XIII Renovation & Design";
 const DEFAULT_DESCRIPTION =
-  "Renovation contractor in Singapore for HDB flats, condos, and landed homes. Kitchen renovation, custom carpentry, tiling, hacking, and electrical works by one accountable team.";
+  "Renovation contractor in Singapore for HDB, condo and landed homes: kitchens, carpentry, tiling and hacking. No design fee, free site visit and quote.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

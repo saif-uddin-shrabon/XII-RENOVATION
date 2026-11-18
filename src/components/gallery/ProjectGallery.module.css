@@ -344,3 +344,17 @@
     transform: none;
   }
 }
+
+/* Phones and folded screens: filter chips scroll sideways inside the page gutter */
+@media (max-width: 640px) {
+  .toolbar > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .chips {
+    width: calc(100% + 2rem);
+    max-width: calc(100% + 2rem);
+    margin: 0 -1rem;
+    padding: 0 1rem 0.25rem;
+  }
+}

@@ -4,7 +4,8 @@
   flex: 1;
 }
 
-/* Hero — dark full-bleed like the homepage, so the header starts transparent */
+/* Hero — dark full-bleed like the homepage,
+so the header starts transparent */
 .hero {
   position: relative;
   min-height: 78svh;
@@ -114,32 +115,6 @@
   line-height: 1.7;
 }
 
-.heroCtaGroup {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.lightBtn {
-  min-height: 46px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.8rem 1.25rem;
-  border-radius: var(--radius-control);
-  color: var(--ink);
-  background: #fff;
-  font-size: 0.8rem;
-  font-weight: 620;
-  text-decoration: none;
-  transition: color 180ms ease, background 180ms ease;
-}
-
-.lightBtn:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.14);
-}
-
 /* Intro */
 .introGrid {
   display: grid;
@@ -213,7 +188,6 @@
   line-height: 1.6;
 }
 
-.scopeGrid,
 .whyGrid,
 .relatedGrid {
   list-style: none;
@@ -222,7 +196,6 @@
   gap: 1rem;
 }
 
-.scopeCard,
 .whyCard {
   position: relative;
   padding: 1.75rem 1.6rem;
@@ -230,11 +203,6 @@
   border-radius: var(--radius-card);
   background: var(--paper);
   transition: background 220ms ease, border-color 220ms ease, transform 220ms ease;
-}
-
-.scopeCard:hover {
-  border-color: var(--brand);
-  transform: translateY(-2px);
 }
 
 .whyCard {
@@ -299,7 +267,8 @@
   background: var(--brand-light);
 }
 
-/* Process — numbered steps on a timeline, echoing the homepage service list */
+/* Process — numbered steps on a timeline,
+echoing the homepage service list */
 .processList {
   list-style: none;
   display: grid;
@@ -326,7 +295,8 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* CTA band — ink panel, like the open FAQ cards on the homepage */
+/* CTA band — ink panel,
+like the open FAQ cards on the homepage */
 .ctaBand {
   padding: 4.5rem max(1.5rem, calc((100% - 1200px) / 2));
   background: var(--ink);
@@ -354,29 +324,7 @@
 }
 
 .ctaBandActions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.ghostBtn {
-  min-height: 46px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.8rem 1.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: var(--radius-control);
-  color: #fff;
-  font-size: 0.8rem;
-  font-weight: 620;
-  text-decoration: none;
-  transition: border-color 180ms ease, background 180ms ease;
-}
-
-.ghostBtn:hover {
-  border-color: #fff;
-  background: rgba(255, 255, 255, 0.08);
+  max-width: 34rem;
 }
 
 /* FAQ — bordered cards that invert when open (homepage FAQ pattern) */
@@ -541,14 +489,9 @@
   .heroTitle {
     font-size: clamp(2.3rem, 10vw, 3.2rem);
   }
-  .heroCtaGroup {
-    flex-direction: column;
-    align-items: stretch;
-  }
   .introAside,
-  .scopeCard,
-  .whyCard,
-  .relatedCard {
+.whyCard,
+.relatedCard {
     padding: 1.5rem 1.3rem;
   }
   .photoSlot {
@@ -560,7 +503,396 @@
   .ctaBandActions {
     width: 100%;
   }
-  .ctaBandActions > a {
-    flex: 1 1 100%;
+}
+
+/* ---------- Conversion sections (ads landing) ---------- */
+
+.heroTrust {
+  margin-top: 1.75rem;
+}
+
+/* What we can do — alternating photo + text blocks */
+.highlightList {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.highlight {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 2.5rem;
+  align-items: center;
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--canvas);
+  scroll-margin-top: 6rem;
+}
+
+.highlight:nth-child(even) .highlightImage {
+  order: 2;
+}
+
+.highlightTextOnly {
+  grid-template-columns: 1fr;
+  padding: 2.25rem 2rem;
+}
+
+.highlightImage {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--sand);
+}
+
+.highlightImage img {
+  object-fit: cover;
+}
+
+.highlightBody {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.5rem 1rem 0.5rem 0;
+}
+
+.highlightTitle {
+  color: var(--ink);
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.checkList {
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+  margin: 0.25rem 0 0.5rem;
+}
+
+.checkList li,
+.factorList li {
+  position: relative;
+  padding-left: 1.6rem;
+  color: var(--ink);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.checkList li::before {
+  content: "";
+  position: absolute;
+  left: 0.15rem;
+  top: 0.32rem;
+  width: 0.7rem;
+  height: 0.4rem;
+  border-left: 2px solid var(--brand);
+  border-bottom: 2px solid var(--brand);
+  transform: rotate(-45deg);
+}
+
+.inlineCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  color: var(--brand-dark);
+  font-size: 0.85rem;
+  font-weight: 620;
+  text-decoration: none;
+}
+
+.inlineCta:hover {
+  text-decoration: underline;
+}
+
+/* Pricing reassurance */
+.pricingGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 4rem;
+  align-items: start;
+}
+
+.factorList {
+  list-style: none;
+  display: grid;
+  gap: 0.6rem;
+  margin: 1.75rem 0 2.25rem;
+}
+
+.factorList li::before {
+  content: "";
+  position: absolute;
+  left: 0.2rem;
+  top: 0.55rem;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--brand);
+}
+
+.budgetGrid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.budgetCard {
+  padding: 1.6rem 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--paper);
+}
+
+.budgetCard::before {
+  content: "";
+  display: block;
+  width: 2.25rem;
+  height: 2px;
+  margin-bottom: 1.1rem;
+  background: var(--brand);
+}
+
+/* Reviews */
+.reviewsHeader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.reviewsHeader .ratingBadge {
+  margin-bottom: 1.25rem;
+}
+
+.ratingBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-weight: 560;
+  text-decoration: none;
+}
+
+.ratingBadge:hover {
+  text-decoration: underline;
+}
+
+.ratingStars {
+  color: var(--brand);
+  letter-spacing: 0.08em;
+}
+
+.reviewGrid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: 1rem;
+}
+
+.reviewCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.75rem 1.6rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--paper);
+}
+
+.reviewText {
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+
+.reviewMeta {
+  margin-top: auto;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.reviewMeta strong {
+  color: var(--ink);
+}
+
+@media (max-width: 960px) {
+  .pricingGrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .highlight {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .highlight:nth-child(even) .highlightImage {
+    order: 0;
+  }
+  .highlightBody {
+    padding: 0 0.25rem 0.5rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .budgetGrid {
+    grid-template-columns: 1fr;
+  }
+  .highlightTextOnly {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+/* ---------- Hero contact + sub-service picker ---------- */
+
+.heroActions {
+  margin-top: 0.25rem;
+}
+
+.pickerSection {
+  padding: 4.5rem max(1.5rem, calc((100% - 1200px) / 2)) 5.5rem;
+  background: var(--paper);
+  scroll-margin-top: 5rem;
+}
+
+.pickerHeader {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+  gap: 1rem 4rem;
+  align-items: end;
+  margin-bottom: 2.25rem;
+}
+
+.pickerHeader h2 {
+  margin-bottom: 0;
+}
+
+.pickerGrid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.pickerGrid > li {
+  display: flex;
+}
+
+.pickerCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1.35rem 1.35rem 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  color: var(--ink);
+  background: var(--canvas);
+  text-decoration: none;
+  transition: border-color 200ms ease, transform 200ms ease, background 200ms ease;
+}
+
+.pickerCard:hover {
+  border-color: var(--brand);
+  background: var(--paper);
+  transform: translateY(-2px);
+}
+
+.pickerCard:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+}
+
+.pickerNumber {
+  color: var(--brand-dark);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+}
+
+.pickerBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.pickerTitle {
+  color: var(--ink);
+  font-size: 1.22rem;
+  line-height: 1.2;
+}
+
+.pickerText {
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.pickerAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  align-self: flex-start;
+  min-height: 40px;
+  margin-top: auto;
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-control);
+  color: var(--on-brand);
+  background: var(--brand);
+  font-size: 0.78rem;
+  font-weight: 650;
+}
+
+.pickerCard:hover .pickerAction {
+  background: var(--brand-light);
+}
+
+@media (max-width: 980px) {
+  .pickerGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .pickerHeader {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .pickerSection {
+    padding: 3.5rem 1rem 4rem;
+  }
+  .pickerGrid {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+  /* Compact row layout on phones so every sub-service fits in a quick scroll */
+  .pickerCard {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 0.85rem;
+    row-gap: 0.6rem;
+    padding: 1rem;
+  }
+  .pickerNumber {
+    padding-top: 0.25rem;
+  }
+  .pickerText {
+    font-size: 0.82rem;
+  }
+  .pickerAction {
+    grid-column: 2;
+    margin-top: 0;
   }
 }

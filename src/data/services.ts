@@ -24,6 +24,18 @@ export interface ServiceFaq {
   answer: string;
 }
 
+export interface ServiceHighlight {
+  /** Anchor id, e.g. "cabinets" → /kitchen-renovation#cabinets (used as Google Ads final URLs) */
+  id: string;
+  title: string;
+  description: string;
+  points: string[];
+  /** Real project photo only; omit rather than use an unrelated image */
+  image?: ProjectMedia;
+  /** WhatsApp prefill for this block's button */
+  whatsApp: string;
+}
+
 export interface Service {
   slug: ServiceSlug;
   /** Short label for nav, footer, breadcrumbs, and the enquiry form */
@@ -41,6 +53,14 @@ export interface Service {
   process: ServiceItem[];
   whyUs: ServiceItem[];
   faqs: ServiceFaq[];
+  /** Visual "what we can do" blocks with anchors; omit for lean pages */
+  highlights?: ServiceHighlight[];
+  /** Pricing section H2, written around the "… cost / price singapore" search term */
+  pricingHeading?: string;
+  /** What changes the price — shown with the shared budget points instead of invented prices */
+  priceFactors: string[];
+  /** Ids from `googleReviews` in data/reviews.ts relevant to this service */
+  reviewIds: string[];
   /** Top-of-page background image; falls back to the first photo */
   heroImage?: ProjectMedia;
   /** Real completed-work photos only. Empty renders a "photos coming soon" slot. */
@@ -51,21 +71,39 @@ export interface Service {
 }
 
 const consultStep: ServiceItem = {
-  title: "Site visit & measurement",
+  title: "Free site visit & measurement",
   description:
-    "We come to your HDB flat, condo, or landed home, measure up, and talk through how you use the space, your budget, and your timeline.",
+    "We come to your HDB flat, condo, or landed home at no cost, measure up, and talk through how you use the space, your budget, and your timeline.",
 };
 
 const quoteStep: ServiceItem = {
-  title: "Itemised quotation",
+  title: "Free itemised quotation",
   description:
-    "You receive a line-by-line quotation so you can see exactly what is included before anything is confirmed. No vague lump sums.",
+    "You receive a free line-by-line quotation so you can see exactly what is included before anything is confirmed. No vague lump sums, no design fee.",
 };
 
 const handoverStep: ServiceItem = {
   title: "Inspection & handover",
   description:
-    "We walk through the finished work with you, fix any snags, clean up the site, and stay reachable on WhatsApp after handover.",
+    "We walk through the finished work with you, fix any snags, and clean up the site. Your workmanship warranty starts here, and we stay reachable on WhatsApp.",
+};
+
+const freeQuoteFaq: ServiceFaq = {
+  question: "Is the site visit and quotation free?",
+  answer:
+    "Yes. The site visit, measurement, and itemised quotation are free, and there is no obligation to go ahead. You can also send photos on WhatsApp first for a quick idea of the scope.",
+};
+
+const noDesignFeeFaq: ServiceFaq = {
+  question: "Are you an interior designer? Do you charge a design fee?",
+  answer:
+    "No. XIII Renovation & Design is a renovation contractor. We help you plan the layout, materials, and carpentry as part of the job, and there is no separate design fee — you pay for the work itself.",
+};
+
+const paymentFaq: ServiceFaq = {
+  question: "Do I need to pay everything upfront?",
+  answer:
+    "No. Payment is progressive: you pay in stages as the work moves forward, so you are not paying far ahead of what has been done.",
 };
 
 export const services: Service[] = [
@@ -76,9 +114,9 @@ export const services: Service[] = [
       "Full kitchen renovation and custom kitchen cabinets for HDB flats, condos, and landed homes — layout, carpentry, countertops, and fitting.",
     eyebrow: "Kitchen Renovation & Kitchen Cabinets",
     h1: "Kitchen Renovation & Kitchen Cabinets in Singapore",
-    metaTitle: "Kitchen Renovation Singapore | Custom Kitchen Cabinets Contractor",
+    metaTitle: "Kitchen Renovation Singapore | Custom Cabinets, Free Quote",
     metaDescription:
-      "Kitchen renovation contractor in Singapore for HDB, condo, and landed homes. Custom kitchen cabinets, countertops, tiling, and appliance fitting. WhatsApp for a quote.",
+      "Kitchen renovation in Singapore: custom kitchen cabinets, countertops, tiling and fitting for HDB and condo homes. Free site visit, no design fee.",
     primaryKeyword: "kitchen renovation singapore",
     keywords: [
       "kitchen renovation singapore",
@@ -87,10 +125,18 @@ export const services: Service[] = [
       "kitchen cabinet contractor",
       "hdb kitchen renovation",
       "kitchen renovation cost singapore",
+      "kitchen renovation contractor",
+      "kitchen cabinet sg",
+      "kitchen carpentry singapore",
+      "custom made kitchen cabinets singapore",
+      "aluminium kitchen cabinet singapore",
+      "kitchen cabinet replacement singapore",
+      "kitchen cabinet door replacement",
+      "kitchen cabinet per foot run singapore",
     ],
     intro: [
       "The kitchen is the hardest-working room in a Singapore home, and the one where poor planning shows fastest. XIII Renovation & Design handles kitchen renovation from hacking out the old units to the final cabinet hinge — so you deal with one contractor, not five.",
-      "We build custom kitchen cabinets to your measurements rather than forcing off-the-shelf modules into your space. That means better use of awkward corners, integrated laundry or utility storage where you need it, and cabinets sized around your actual appliances.",
+      "We build custom kitchen cabinets to your measurements — in laminate, aluminium, or other finishes — rather than forcing off-the-shelf modules into your space. That means better use of awkward corners, integrated laundry or utility storage where you need it, and cabinets sized around your actual appliances.",
       "Whether it is an HDB kitchen in a resale flat, a condo galley, or a landed home with an island, we plan the layout, carpentry, wet works, and fitting together so the schedule holds and the finish is right.",
     ],
     scopeHeading: "What our kitchen renovation covers",
@@ -98,7 +144,12 @@ export const services: Service[] = [
       {
         title: "Custom kitchen cabinets",
         description:
-          "Top and bottom cabinets, tall units, and pull-outs built to measure, with laminate or other finishes chosen with you.",
+          "Top and bottom cabinets, tall units, and pull-outs built to measure, in laminate, aluminium, or other finishes chosen with you.",
+      },
+      {
+        title: "Cabinet door & laminate replacement",
+        description:
+          "If your cabinet carcasses are still sound, we can replace only the doors or re-laminate the fronts for a new look at a lower cost.",
       },
       {
         title: "Kitchen layout planning",
@@ -184,6 +235,23 @@ export const services: Service[] = [
         answer:
           "Yes. Many Singapore kitchens share space with the laundry or service yard, and we often integrate washing machines and utility storage into the kitchen cabinets.",
       },
+      {
+        question: "How are kitchen cabinets priced?",
+        answer:
+          "Kitchen cabinets are usually quoted per foot run, with the finish, internal fittings, and countertop priced as separate lines. Your free itemised quotation shows each cabinet run so you can adjust materials to fit your budget.",
+      },
+      {
+        question: "Do you make aluminium kitchen cabinets?",
+        answer:
+          "Yes. We build kitchen cabinets in aluminium as well as laminate and other finishes. Aluminium is often chosen for wet areas and service yards. We compare the options and their cost with you during the site visit.",
+      },
+      {
+        question: "Can you replace only the kitchen cabinet doors?",
+        answer:
+          "Yes. If the cabinet carcasses are still in good condition, replacing the doors or re-laminating the fronts gives the kitchen a new look for less than a full rebuild. We check the carcasses on site and tell you honestly which option makes sense.",
+      },
+      freeQuoteFaq,
+      noDesignFeeFaq,
     ],
     photos: [
       {
@@ -217,6 +285,74 @@ export const services: Service[] = [
         height: 1024,
       },
     ],
+    highlights: [
+      {
+        id: "cabinets",
+        title: "Custom kitchen cabinets",
+        description:
+          "Top and bottom cabinets, tall units, and pull-outs built to your measurements and your appliances. Choose laminate, aluminium, or another finish.",
+        points: [
+          "Made to measure, not fixed catalogue modules",
+          "Laminate or aluminium kitchen cabinets",
+          "Door or laminate replacement if the carcass is sound",
+          "Each cabinet run priced separately",
+        ],
+        image: {
+          src: "/image/xiii-kitchen-wood-white-l-shape.jpg",
+          alt: "L-shaped HDB kitchen with woodgrain base cabinets, white gloss wall cabinets, and solid-surface countertop",
+          width: 819,
+          height: 1024,
+        },
+        whatsApp: "Hello XIII — I'd like a free quotation for custom kitchen cabinets.",
+      },
+      {
+        id: "hdb-kitchen",
+        title: "HDB, BTO & resale kitchens",
+        description:
+          "Layouts planned around HDB kitchen sizes and rules — from fresh BTO units to resale kitchens that need hacking and re-tiling first.",
+        points: [
+          "BTO: cabinets, countertop, and appliance fitting",
+          "Resale: hacking and wet works, then cabinets",
+          "Noisy works scheduled within HDB hours",
+        ],
+        image: {
+          src: "/image/xiii-kitchen-wood-fridge-tall-unit.jpg",
+          alt: "HDB kitchen with woodgrain fridge tall unit, open appliance niche, and white gloss wall cabinets",
+          width: 819,
+          height: 1024,
+        },
+        whatsApp: "Hello XIII — I'd like a free quotation for my HDB kitchen renovation.",
+      },
+      {
+        id: "utility",
+        title: "Laundry & utility integration",
+        description:
+          "Washing machine, dryer, and service-yard storage built into the kitchen joinery, so the kitchen and laundry work as one space.",
+        points: [
+          "Cabinets sized around your machines",
+          "Service-yard and utility storage",
+          "Planned together with plumbing points",
+        ],
+        image: {
+          src: "/image/kitchen-utility-mustard.jpg",
+          alt: "Custom mustard kitchen cabinets with integrated washing machine — completed Singapore project",
+          width: 1080,
+          height: 1080,
+        },
+        whatsApp: "Hello XIII — I'd like a free quotation for kitchen and laundry cabinets.",
+      },
+    ],
+    pricingHeading: "Kitchen renovation cost in Singapore",
+    priceFactors: [
+      "Kitchen size and number of cabinet runs (priced per foot run)",
+      "Cabinet material: laminate, aluminium, or other finishes",
+      "Internal fittings: drawers, pull-outs, tall units",
+      "Full new cabinets, or door and laminate replacement only",
+      "Countertop material",
+      "Whether old cabinets and tiles need hacking first",
+      "Plumbing or electrical point changes",
+    ],
+    reviewIds: ["lekshmi-kitchen"],
     videoIds: ["kitchen-laundry", "red-kitchen"],
     relatedSlugs: ["carpentry", "tiling", "hdb-renovation"],
   },
@@ -229,7 +365,7 @@ export const services: Service[] = [
     h1: "HDB Renovation Contractor & Full Home Renovation in Singapore",
     metaTitle: "HDB Renovation Contractor Singapore | Full Home Renovation",
     metaDescription:
-      "HDB renovation contractor for BTO and resale flats, plus full home renovation for condos and landed homes in Singapore. One team from hacking to handover. Get a quote.",
+      "HDB renovation contractor for BTO and resale flats, toilets, and full home renovation for condos and landed homes. No design fee, free site visit.",
     primaryKeyword: "hdb renovation contractor",
     keywords: [
       "hdb renovation contractor",
@@ -239,6 +375,12 @@ export const services: Service[] = [
       "4 room bto renovation",
       "5 room hdb renovation",
       "resale flat renovation",
+      "hdb renovation singapore",
+      "4 room hdb renovation",
+      "old hdb 4 room renovation",
+      "5 room bto renovation",
+      "4 room hdb toilet renovation",
+      "hdb renovation package singapore",
     ],
     intro: [
       "A full home renovation involves many trades — hacking, masonry, tiling, carpentry, electrical, plumbing, painting — and the risk is in the gaps between them. XIII Renovation & Design manages the whole job as your single renovation contractor, so one team is accountable for the schedule and the finish.",
@@ -266,6 +408,11 @@ export const services: Service[] = [
         title: "Hacking, masonry & tiling",
         description:
           "Wall and floor hacking, new partitions, screeding, waterproofing, and floor and wall tiling.",
+      },
+      {
+        title: "Toilet & bathroom renovation",
+        description:
+          "Hacking, waterproofing, re-tiling, and new vanity and fittings for HDB toilets and bathrooms.",
       },
       {
         title: "Carpentry & built-ins",
@@ -336,6 +483,14 @@ export const services: Service[] = [
         answer:
           "HDB sets permitted hours for renovation, with stricter hours for noisy works like hacking and drilling, and no work on Sundays and public holidays. We plan the timeline around these rules so neighbours are respected and the job stays on track.",
       },
+      {
+        question: "Do you renovate HDB toilets and bathrooms?",
+        answer:
+          "Yes. A toilet renovation usually means hacking out the old tiles, waterproofing, re-tiling with the correct falls to the floor trap, and fitting a new vanity and fittings. We can do it on its own or as part of a full 3-room, 4-room, or 5-room HDB renovation.",
+      },
+      freeQuoteFaq,
+      noDesignFeeFaq,
+      paymentFaq,
     ],
     photos: [
       {
@@ -363,6 +518,91 @@ export const services: Service[] = [
         height: 1080,
       },
     ],
+    highlights: [
+      {
+        id: "bto",
+        title: "BTO renovation",
+        description:
+          "For new 3-room, 4-room, and 5-room BTO flats: flooring, carpentry, lighting, and finishing planned as one schedule, ready for move-in.",
+        points: [
+          "Flooring, carpentry, and lighting together",
+          "Built-ins sized to your BTO layout",
+          "One team and one itemised quotation",
+        ],
+        image: {
+          src: "/image/xiii-28-08-26.png",
+          alt: "Renovated bedroom with built-in study desk — completed Singapore project",
+          width: 1080,
+          height: 1350,
+        },
+        whatsApp: "Hello XIII — I'd like a free quotation for my BTO renovation.",
+      },
+      {
+        id: "resale",
+        title: "Resale flat renovation",
+        description:
+          "Older flats usually start with hacking out old finishes and checking what is behind them, then rebuilding the home around how you live.",
+        points: [
+          "Hacking, re-tiling, and replacing old services",
+          "Layout changes checked against HDB rules",
+          "Kitchen, toilets, and carpentry in one job",
+        ],
+        image: {
+          src: "/image/xiii-hacking-bedroom-wall-opening.jpg",
+          alt: "HDB bedroom wall hacked to create a wide opening, with floor tiles removed and debris cleared",
+          width: 819,
+          height: 1024,
+        },
+        whatsApp: "Hello XIII — I'd like a free quotation for my resale flat renovation.",
+      },
+      {
+        id: "toilet",
+        title: "HDB toilet & bathroom renovation",
+        description:
+          "A full toilet renovation in one job: hacking out old tiles, waterproofing, re-tiling with proper falls to the floor trap, then the vanity and fittings.",
+        points: [
+          "Hacking and re-tiling of walls and floor",
+          "Waterproofing before new tiles go on",
+          "Vanity, fittings, and finishing",
+        ],
+        image: {
+          src: "/image/bathroom-vanity.jpg",
+          alt: "Renovated bathroom vanity and finishes — completed Singapore project",
+          width: 1080,
+          height: 1080,
+        },
+        whatsApp: "Hello XIII — I'd like a free quotation for my HDB toilet renovation.",
+      },
+      {
+        id: "condo-landed",
+        title: "Condo & landed homes",
+        description:
+          "Full or partial renovation for condominiums, planned around MCST requirements, and larger-scope works for landed homes.",
+        points: [
+          "MCST requirements checked before works",
+          "Full or room-by-room renovation",
+          "Carpentry, tiling, and electrical coordinated",
+        ],
+        image: {
+          src: "/image/xiii-21-08-26.png",
+          alt: "Renovated living room with custom chevron media wall — completed Singapore condominium",
+          width: 1080,
+          height: 1350,
+        },
+        whatsApp: "Hello XIII — I'd like a free quotation for my condo / landed home renovation.",
+      },
+    ],
+    pricingHeading: "HDB renovation cost in Singapore",
+    priceFactors: [
+      "New BTO or resale flat (resale usually needs more hacking and re-tiling)",
+      "Flat size: 3-room, 4-room, 5-room, or larger",
+      "How much carpentry you need",
+      "Toilet renovation: number of toilets, re-tiling, and waterproofing",
+      "Flooring and tiling area",
+      "Electrical, lighting, and false-ceiling works",
+      "Your material and finish choices",
+    ],
+    reviewIds: ["lekshmi-kitchen", "melvin-feature-wall", "puspa-flooring"],
     videoIds: ["dark-bathroom", "bright-study"],
     relatedSlugs: ["kitchen-renovation", "hacking-demolition", "carpentry"],
   },
@@ -373,23 +613,29 @@ export const services: Service[] = [
       "Custom carpentry and built-in furniture — wardrobes, kitchen cabinets, TV feature walls, study desks, and storage made to measure.",
     eyebrow: "Carpentry & Custom Built-in Furniture",
     h1: "Custom Carpentry & Built-in Furniture in Singapore",
-    metaTitle: "Carpentry Singapore | Custom Built-in Wardrobes & Cabinets",
+    metaTitle: "Carpentry Singapore | Built-in Wardrobes, Free Quote",
     metaDescription:
-      "Carpentry contractor in Singapore for custom built-in wardrobes, kitchen cabinets, TV feature walls, study desks, and storage. Made to measure for HDB and condo homes.",
+      "Carpentry contractor in Singapore for built-in wardrobes, feature walls, custom shoe cabinets and study desks. Free site visit, no design fee.",
     primaryKeyword: "carpentry singapore",
     keywords: [
       "carpentry singapore",
+      "carpentry sg",
+      "direct carpentry singapore",
       "carpentry contractor singapore",
       "carpentry services singapore",
       "custom carpentry singapore",
       "built in wardrobe singapore",
       "custom wardrobe singapore",
       "custom cabinet singapore",
+      "carpenter singapore",
+      "custom shoe cabinet singapore",
+      "carpentry price singapore",
+      "carpentry quotation",
     ],
     intro: [
-      "Good carpentry is what makes a Singapore home feel finished. XIII Renovation & Design designs and builds custom built-in furniture to the exact dimensions of your space — so wardrobes reach the ceiling, cabinets fit the alcove, and nothing looks like it was bought to roughly fit.",
+      "Good carpentry is what makes a Singapore home feel finished. If you are looking for a carpenter in Singapore who will measure, build, and install the whole piece, XIII Renovation & Design designs and builds custom built-in furniture to the exact dimensions of your space — so wardrobes reach the ceiling, cabinets fit the alcove, and nothing looks like it was bought to roughly fit.",
       "Our carpentry work ranges from full-height built-in wardrobes and kitchen cabinets to TV feature walls with integrated LED lighting, study desks with shelving, and display cabinets. Every piece is measured on site and planned around how you will actually use it.",
-      "Because we also handle renovation works, carpentry can be coordinated with electrical points, lighting, and flooring — no surprises when the cabinets arrive.",
+      "You deal directly with the team that measures, plans, and installs your carpentry — there is no interior designer in between and no design fee. Because we also handle renovation works, carpentry is coordinated with electrical points, lighting, and flooring, so there are no surprises when the cabinets arrive.",
     ],
     scopeHeading: "Carpentry and built-ins we make",
     scope: [
@@ -441,6 +687,11 @@ export const services: Service[] = [
     ],
     whyUs: [
       {
+        title: "Deal directly with the builders",
+        description:
+          "You talk to the team that measures and installs your carpentry, with no interior designer in between and no design fee.",
+      },
+      {
         title: "Made to measure",
         description:
           "Every piece is built to your space, not adapted from standard catalogue sizes.",
@@ -482,6 +733,17 @@ export const services: Service[] = [
         answer:
           "Yes. We build carpentry for HDB BTO and resale flats, condominiums, and landed homes across Singapore.",
       },
+      {
+        question: "How is built-in wardrobe pricing calculated?",
+        answer:
+          "Built-in wardrobes and cabinets are usually quoted per foot run, with internal fittings, door type, and finish affecting the rate. Your free itemised quotation lists each piece separately so you can compare and adjust.",
+      },
+      {
+        question: "Do I deal directly with the carpentry team?",
+        answer:
+          "Yes. You work directly with XIII, the team that measures, plans, and installs your carpentry — there is no interior designer in between and no design fee.",
+      },
+      freeQuoteFaq,
     ],
     heroImage: {
       src: "/image/xiii-carpentry-feature-wall-hero.jpg",
@@ -527,6 +789,71 @@ export const services: Service[] = [
         height: 1350,
       },
     ],
+    highlights: [
+      {
+        id: "wardrobes",
+        title: "Built-in wardrobes & bedroom carpentry",
+        description:
+          "Full-height swing or sliding wardrobes, headboards, and bedside storage, with internal layouts planned around what you actually store.",
+        points: [
+          "Floor-to-ceiling, made to measure",
+          "Drawers, hanging, and shelving planned with you",
+          "Priced per foot run in your quotation",
+        ],
+        image: {
+          src: "/image/xiii-10-08-26.png",
+          alt: "Bedroom headboard joinery with accent lighting and built-in shelving",
+          width: 1080,
+          height: 1350,
+        },
+        whatsApp: "Hello XIII — I'd like a free quotation for built-in wardrobes.",
+      },
+      {
+        id: "feature-walls",
+        title: "TV feature walls & consoles",
+        description:
+          "Feature walls with panelling, floating shelves, concealed wiring, and integrated LED lighting — the piece most visitors notice first.",
+        points: [
+          "Panelling, shelving, and TV console",
+          "Concealed wiring and LED lighting",
+          "Planned with your power points",
+        ],
+        image: {
+          src: "/image/xiii-12-08-26.png",
+          alt: "Herringbone TV feature wall with floating shelves and LED lighting — custom carpentry, Singapore",
+          width: 1080,
+          height: 1350,
+        },
+        whatsApp: "Hello XIII — I'd like a free quotation for a TV feature wall.",
+      },
+      {
+        id: "study-storage",
+        title: "Study desks, custom shoe cabinets & storage",
+        description:
+          "Built-in study desks, wall shelving, shoe cabinets, display cabinets, and full-height storage that use every centimetre of an HDB or condo room.",
+        points: [
+          "Study corners and work-from-home desks",
+          "Custom shoe and display cabinets",
+          "Lit shelving where it helps",
+        ],
+        image: {
+          src: "/image/xiii-14-08-26.png",
+          alt: "Custom study desk with asymmetrical wall shelving — built-in carpentry",
+          width: 1080,
+          height: 1350,
+        },
+        whatsApp: "Hello XIII — I'd like a free quotation for study / storage carpentry.",
+      },
+    ],
+    pricingHeading: "Carpentry price in Singapore: how we quote",
+    priceFactors: [
+      "Size of each piece (wardrobes and cabinets are priced per foot run)",
+      "Internal fittings: drawers, pull-outs, hanging rails",
+      "Door type: swing, sliding, or open shelving",
+      "Finish: laminate, veneer, or other surfaces",
+      "Integrated LED lighting and power points",
+    ],
+    reviewIds: ["melvin-feature-wall"],
     videoIds: ["console-mirror", "floating-counter"],
     relatedSlugs: ["kitchen-renovation", "hdb-renovation", "electrical"],
   },
@@ -537,9 +864,9 @@ export const services: Service[] = [
       "Floor and wall tiling for kitchens, bathrooms, and living areas — new tiling, tile replacement, hollow tile repair, and regrouting.",
     eyebrow: "Floor & Wall Tiling Services",
     h1: "Floor & Wall Tiling Contractor in Singapore",
-    metaTitle: "Tiling Contractor Singapore | Floor & Wall Tiler",
+    metaTitle: "Tiling Contractor Singapore | Floor & Wall Tiler, Free Quote",
     metaDescription:
-      "Tiling contractor in Singapore for floor and wall tiling, bathroom and kitchen tiles, tile replacement, hollow tile repair, and regrouting. WhatsApp XIII for a quote.",
+      "Tiling contractor in Singapore for floor and wall tiles, toilet re-tiling, hollow tile repair and regrouting. Free site visit and itemised quote.",
     primaryKeyword: "tiling contractor singapore",
     keywords: [
       "tiling contractor singapore",
@@ -646,6 +973,7 @@ export const services: Service[] = [
         answer:
           "Yes. If your tiles are fine but the grout is stained, cracked, or mouldy, regrouting can refresh the area without replacing tiles.",
       },
+      freeQuoteFaq,
     ],
     heroImage: {
       src: "/image/xiii-tiling-kitchen-wall-stripped-hero.jpg",
@@ -673,6 +1001,65 @@ export const services: Service[] = [
         height: 1024,
       },
     ],
+    highlights: [
+      {
+        id: "floor-wall-tiling",
+        title: "Floor & wall tiling",
+        description:
+          "New floor and wall tiles for living areas, bedrooms, kitchens, and balconies, laid level on a properly prepared base.",
+        points: [
+          "Surface checked and levelled first",
+          "Consistent joints and clean edges",
+          "Overlay where the old floor is sound",
+        ],
+        image: {
+          src: "/image/xiii-tiling-kitchen-wall-stripped-hero.jpg",
+          alt: "Kitchen wall with old tiles partly removed and the screed exposed, ready for new wall and floor tiling",
+          width: 1024,
+          height: 576,
+        },
+        whatsApp: "Hello XIII — I'd like a free quotation for floor / wall tiling.",
+      },
+      {
+        id: "toilet-tiling",
+        title: "Toilet & bathroom re-tiling",
+        description:
+          "Wall and floor tiling for bathrooms with the correct falls to the floor trap, prepared with waterproofing in mind.",
+        points: [
+          "Correct falls so water drains away",
+          "Hack-and-retile or overlay, explained",
+          "Floor traps protected during works",
+        ],
+        image: {
+          src: "/image/xiii-hacking-bathroom-floor-stripped.jpg",
+          alt: "Bathroom floor stripped of old tiles down to the screed, with floor traps protected for the next trade",
+          width: 819,
+          height: 1024,
+        },
+        whatsApp: "Hello XIII — I'd like a free quotation for toilet re-tiling.",
+      },
+      {
+        id: "tile-repair",
+        title: "Hollow tiles, cracked tiles & regrouting",
+        description:
+          "Localised repairs when the rest of the floor is fine: lifting and relaying hollow or cracked tiles, and regrouting stained joints.",
+        points: [
+          "Hollow and popping tiles relaid",
+          "Cracked or chipped tiles replaced",
+          "Regrouting without replacing tiles",
+        ],
+        whatsApp: "Hello XIII — I'd like a free quotation for tile repair / regrouting.",
+      },
+    ],
+    pricingHeading: "Tiling cost in Singapore",
+    priceFactors: [
+      "Area to be tiled",
+      "Tile size and type",
+      "Whether old tiles must be hacked first or can be overlaid",
+      "Surface condition: levelling, hollow spots, waterproofing preparation",
+      "Patterns, cuts, and edge trims",
+    ],
+    reviewIds: ["puspa-flooring"],
     videoIds: [],
     relatedSlugs: ["hacking-demolition", "kitchen-renovation", "hdb-renovation"],
   },
@@ -685,7 +1072,7 @@ export const services: Service[] = [
     h1: "Hacking & Demolition Contractor in Singapore",
     metaTitle: "Hacking Contractor Singapore | Wall & Floor Hacking",
     metaDescription:
-      "Hacking contractor in Singapore for wall hacking, floor and tile hacking, and carpentry removal in HDB flats, condos, and landed homes. Planned around HDB rules.",
+      "Hacking contractor in Singapore for wall, floor and tile hacking and carpentry removal in HDB flats, condos and landed homes. Planned around HDB rules.",
     primaryKeyword: "hacking contractor singapore",
     keywords: [
       "hacking contractor singapore",
@@ -795,6 +1182,7 @@ export const services: Service[] = [
         answer:
           "Yes. Debris removal and disposal are included in our hacking scope so the site is clear for the next stage of work.",
       },
+      freeQuoteFaq,
     ],
     heroImage: {
       src: "/image/xiii-hacking-wall-opening-hero.jpg",
@@ -828,6 +1216,14 @@ export const services: Service[] = [
         height: 1024,
       },
     ],
+    pricingHeading: "Hacking cost in Singapore",
+    priceFactors: [
+      "Wall size and material",
+      "Floor or wall tile area to hack",
+      "Access and amount of debris",
+      "Making good needed afterwards",
+    ],
+    reviewIds: [],
     videoIds: [],
     relatedSlugs: ["tiling", "hdb-renovation", "kitchen-renovation"],
   },
@@ -929,6 +1325,7 @@ export const services: Service[] = [
         answer:
           "Yes. We plan LED strips and cove lighting together with feature walls, display cabinets, and headboards so wiring is concealed and switches are where you expect them.",
       },
+      freeQuoteFaq,
     ],
     heroImage: {
       src: "/image/xiii-electrical-ceiling-wiring-hero.jpg",
@@ -962,6 +1359,13 @@ export const services: Service[] = [
         height: 1024,
       },
     ],
+    priceFactors: [
+      "Number of new or relocated points",
+      "How the wiring is run and concealed",
+      "DB box or circuit breaker changes",
+      "Lighting type: downlights, cove, or LED strips",
+    ],
+    reviewIds: [],
     videoIds: [],
     relatedSlugs: ["carpentry", "hdb-renovation", "kitchen-renovation"],
   },

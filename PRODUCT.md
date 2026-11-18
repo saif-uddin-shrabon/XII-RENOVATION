@@ -38,6 +38,23 @@ Site structure:
   - `/electrical` — Electrical Services & Installation (keyword target not yet validated; keep lean)
 - `/sitemap.xml` and `/robots.txt` are generated from the same data.
 
+Positioning decision (17 Nov 2026): market XIII as a **renovation contractor, not an interior design firm**. Homeowners avoid ID firms because they assume they are expensive, so the site leads with contractor value (no design fee, itemised quote, pay by stages) while still showing well-designed finished work.
+
+Owner-confirmed customer promises (single source: `src/data/offer.ts`):
+
+- Free site visit and free itemised quotation, no obligation
+- No design fee
+- Progressive payment (pay by stages)
+- Workmanship warranty (length not confirmed — do not state a period)
+
+Conversion priority (17 Nov 2026): **WhatsApp first, phone second**, on every page and screen size. Owner-confirmed reply time: "Usually replies within 1 hour" (`WHATSAPP_REPLY_TIME` in `src/lib/site.ts`); use it as the honest urgency cue — no fake countdowns or scarcity. Google reviews live in `src/data/reviews.ts`; the owner has more reviews to add later (update `googleSummary` with the real count).
+
+Not offered / not confirmed — do not claim: published prices or packages, 3D drawings as standard, HDB Directory of Renovation Contractors listing.
+
+Also confirmed (17 Nov 2026): aluminium kitchen cabinets; kitchen cabinet door / laminate replacement; HDB toilet and bathroom renovation. Carpentry is made by a **partner workshop** — say "deal directly with the team that measures and installs", never "own factory" or "factory direct".
+
+Google Ads first launch (see `XIII_KEYWORD_RESEARCH/GOOGLE_ADS/`): Kitchen → Carpentry → HDB, with HDB conditional on confirming the DRC listing (Tiling is the reserve). Ad groups land on anchored sections such as `/kitchen-renovation#cabinets` and `/carpentry#wardrobes`, defined as `highlights` in `src/data/services.ts`.
+
 ## Capabilities and Constraints
 
 Currently offered on the site (renovation for Singapore homes): kitchen renovation and cabinets, HDB / condo / landed full renovation, custom carpentry and built-ins, floor and wall tiling, hacking and demolition, electrical works.

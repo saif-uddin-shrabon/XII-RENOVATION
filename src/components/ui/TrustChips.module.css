@@ -1,0 +1,85 @@
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+}
+
+.chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 34px;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 560;
+  line-height: 1.2;
+}
+
+.chip svg {
+  width: 0.85rem;
+  height: 0.85rem;
+  flex: none;
+  fill: none;
+  stroke: var(--brand);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 34px;
+  font-size: 0.78rem;
+  font-weight: 560;
+  text-decoration: none;
+}
+
+.rating:hover span:last-child {
+  text-decoration: underline;
+}
+
+.stars {
+  color: var(--brand);
+  letter-spacing: 0.08em;
+}
+
+/* On hero photography */
+.dark .chip {
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: rgba(20, 17, 13, 0.42);
+  backdrop-filter: blur(6px);
+}
+
+.dark .rating {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* On paper / canvas */
+.light .chip {
+  color: var(--ink);
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.light .rating {
+  color: var(--ink);
+}
+
+@media (max-width: 520px) {
+  .chip {
+    font-size: 0.74rem;
+    padding: 0.35rem 0.65rem;
+  }
+}

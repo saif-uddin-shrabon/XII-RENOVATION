@@ -2,7 +2,63 @@
   display: none;
 }
 
-@media (max-width: 768px) {
+.label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.15;
+  text-align: left;
+}
+
+.label strong {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.label small {
+  margin-top: 0.15rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  opacity: 0.82;
+}
+
+/* Desktop: floating WhatsApp pill, bottom-right */
+.floating {
+  position: fixed;
+  right: max(1.5rem, env(safe-area-inset-right, 0px));
+  bottom: max(1.5rem, env(safe-area-inset-bottom, 0px));
+  z-index: 900;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.75rem 1.15rem 0.75rem 0.95rem;
+  border: 1px solid var(--brand);
+  border-radius: 999px;
+  color: var(--on-brand);
+  background: var(--brand);
+  box-shadow: 0 16px 36px rgba(62, 45, 25, 0.28);
+  text-decoration: none;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.floating:hover {
+  background: var(--brand-light);
+  transform: translateY(-2px);
+}
+
+.floating:focus-visible,
+.whatsapp:focus-visible,
+.call:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+/* Phones, foldables (cover and inner screens) and tablets */
+@media (max-width: 1024px) {
+  .floating {
+    display: none;
+  }
+
   .bar {
     position: fixed;
     left: 0;
@@ -10,15 +66,16 @@
     bottom: 0;
     z-index: 900;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr);
     gap: 0.5rem;
-    padding: 0.6rem max(0.75rem, env(safe-area-inset-left, 0px))
-      max(0.6rem, env(safe-area-inset-bottom, 0px))
+    padding: 0.55rem max(0.75rem, env(safe-area-inset-left, 0px))
+      max(0.55rem, env(safe-area-inset-bottom, 0px))
       max(0.75rem, env(safe-area-inset-right, 0px));
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     border-top: 1px solid var(--glass-border);
+    box-shadow: 0 -8px 24px rgba(62, 45, 25, 0.08);
   }
 
   .whatsapp,
@@ -26,17 +83,17 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    min-height: 3rem;
+    gap: 0.55rem;
+    min-width: 0;
+    min-height: 3.25rem;
+    padding: 0.4rem 0.6rem;
     border-radius: var(--radius-control);
-    font-size: 0.85rem;
-    font-weight: 650;
     text-decoration: none;
   }
 
   .whatsapp {
-    background: var(--brand);
     color: var(--on-brand);
+    background: var(--brand);
     border: 1px solid var(--brand);
   }
 
@@ -44,11 +101,31 @@
     color: var(--ink);
     border: 1px solid rgba(28, 25, 21, 0.22);
     background: var(--paper);
+    font-size: 0.88rem;
+    font-weight: 650;
   }
+}
 
-  .whatsapp:focus-visible,
-  .call:focus-visible {
-    outline: 2px solid var(--brand);
-    outline-offset: 2px;
+/* Tablets: the bar is wider, so keep it centred and calmer */
+@media (min-width: 721px) and (max-width: 1024px) {
+  .bar {
+    padding-left: max(1.5rem, calc((100% - 720px) / 2));
+    padding-right: max(1.5rem, calc((100% - 720px) / 2));
+  }
+}
+
+/* Folded phones (cover screens ~280px): drop the secondary line, icon-only call */
+@media (max-width: 340px) {
+  .label small {
+    display: none;
+  }
+  .label strong {
+    font-size: 0.82rem;
+  }
+  .callText {
+    display: none;
+  }
+  .bar {
+    grid-template-columns: minmax(0, 1fr) 3.25rem;
   }
 }

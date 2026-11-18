@@ -190,3 +190,10 @@
     stroke-dashoffset: 0;
   }
 }
+
+/* Tablets also get the sticky WhatsApp bar (see MobileCallBar) */
+@media (min-width: 721px) and (max-width: 1024px) {
+  .footer {
+    padding-bottom: calc(6rem + env(safe-area-inset-bottom, 0px));
+  }
+}

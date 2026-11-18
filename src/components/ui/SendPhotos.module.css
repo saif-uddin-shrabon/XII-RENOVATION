@@ -1,0 +1,137 @@
+.panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr) auto;
+  gap: 1.5rem 2.5rem;
+  align-items: center;
+  margin-top: 1.25rem;
+  padding: 1.75rem 2rem;
+  border-radius: var(--radius-card);
+  color: #fff;
+  background: var(--ink);
+}
+
+.kicker {
+  margin-bottom: 0.4rem;
+  color: var(--brand);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.title {
+  color: #fff;
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.reply {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.7rem;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.78rem;
+}
+
+.dot {
+  flex: none;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #25d366;
+}
+
+.steps {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.steps li {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+}
+
+.stepNumber {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border: 1px solid var(--brand);
+  border-radius: 50%;
+  color: var(--brand);
+  font-size: 0.78rem;
+  font-weight: 650;
+}
+
+.steps strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-size: 0.88rem;
+  font-weight: 650;
+}
+
+.steps small {
+  display: block;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 52px;
+  padding: 0.85rem 1.35rem;
+  border-radius: var(--radius-control);
+  color: var(--on-brand);
+  background: var(--brand);
+  font-size: 0.88rem;
+  font-weight: 650;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.button:hover {
+  background: var(--brand-light);
+  transform: translateY(-2px);
+}
+
+.button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+@media (max-width: 1080px) {
+  .panel {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .steps {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 720px) {
+  .panel {
+    grid-template-columns: 1fr;
+    padding: 1.5rem 1.25rem;
+  }
+  .steps {
+    grid-template-columns: 1fr;
+    grid-row: auto;
+    gap: 0.9rem;
+  }
+  .button {
+    width: 100%;
+    white-space: normal;
+  }
+}

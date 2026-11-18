@@ -1,0 +1,136 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.whatsapp,
+.call {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 52px;
+  padding: 0.85rem 1.3rem;
+  border-radius: var(--radius-control);
+  font-size: 0.86rem;
+  font-weight: 650;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.whatsapp {
+  color: var(--on-brand);
+  background: var(--brand);
+  border: 1px solid var(--brand);
+  box-shadow: 0 10px 26px rgba(184, 111, 23, 0.28);
+}
+
+.whatsapp:hover {
+  background: var(--brand-light);
+  border-color: var(--brand-light);
+  transform: translateY(-2px);
+}
+
+.call {
+  border: 1px solid transparent;
+}
+
+.dark .call {
+  color: var(--ink);
+  background: #fff;
+}
+
+.dark .call:hover {
+  background: var(--sand);
+}
+
+.light .call {
+  color: var(--ink);
+  background: transparent;
+  border-color: rgba(28, 25, 21, 0.24);
+}
+
+.light .call:hover {
+  border-color: var(--ink);
+}
+
+.whatsapp:focus-visible,
+.call:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+}
+
+.reply {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.dark .reply {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.light .reply {
+  color: var(--muted);
+}
+
+/* "Online" dot in WhatsApp green, so the reply promise reads as live */
+.dot {
+  position: relative;
+  flex: none;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #25d366;
+}
+
+.dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #25d366;
+  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes ping {
+  75%,
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .whatsapp,
+  .call {
+    width: 100%;
+  }
+  .reply {
+    align-items: flex-start;
+  }
+  .dot {
+    margin-top: 0.3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dot::after {
+    animation: none;
+  }
+}
