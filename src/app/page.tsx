@@ -115,7 +115,7 @@ const faqItems = [
   {
     question: "Are you an interior designer or a renovation contractor?",
     answer:
-      "XIII Renovation & Design is a renovation contractor. We still help you plan the layout, materials, and carpentry, but there is no separate design fee — you pay for the renovation work itself, built by our own team.",
+      "XIII Renovation & Design is a renovation contractor. We still help you plan the layout, materials, and carpentry, but there is no separate design fee — you pay for the renovation work itself.",
   },
   {
     question: "How much does a renovation cost in Singapore?",
@@ -192,7 +192,7 @@ export default function Home() {
         <section id="services" className={styles.servicesSection}>
           <div className={styles.splitHeading}>
             <Reveal>
-              <h2>What we can do for your home</h2>
+              <h2>Renovation services for your home</h2>
             </Reveal>
             <Reveal delay={100}>
               <p>

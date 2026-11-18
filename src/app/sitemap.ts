@@ -6,7 +6,7 @@ import { absoluteUrl } from "@/lib/site";
  * Date the homepage content last changed (YYYY-MM-DD). Update by hand when you edit the homepage.
  * Never use the build time: Google ignores lastmod values that change on every deploy.
  */
-const HOME_CONTENT_UPDATED = "2026-11-18";
+const HOME_CONTENT_UPDATED = "2026-11-19";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
