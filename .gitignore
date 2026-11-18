@@ -46,8 +46,7 @@ yarn-error.log*
 next-env.d.ts
 
 # local agent / IDE caches (keep committed skill configs under .cursor if already tracked)
-.claude/*
-!.claude/skills/
+.claude/
 .codex/
 .idea/
 .vscode/
@@ -69,6 +68,60 @@ Keyword/
 .impeccable/config.local.json
 .impeccable/live/
 
-# Google OAuth client files and API credentials - never commit
+# ---- Not part of the website: keep local, never push ----
+
+# AI coding-tool configs and generated skill copies
+.cursor/
+.codex/
+.agents/
+.windsurf/
+.gemini/
+.aider*
+CLAUDE.local.md
+
+# Marketing / SEO / Google Ads research, exports and reports
+/XIII_KEYWORD_RESEARCH/
+/goole_ads/
+/google_ads/
+*.csv
+*.xlsx
+*.xls
+/xiiirenovation.com.sg-audit/
+
+# Planning notes and scratch docs
+/implementation_plan.md
+/XIII R&D Overview.md
+*.scratch.md
+.scratchpad/
+
+# Generated impeccable state (keep config.json + design.json)
+.impeccable/live/
+.impeccable/*.cache.json
+**/.impeccable/hook.cache.json
+
+# Local env / secrets / keys
+.env
+.env.*
+!.env.example
+*.key
+*.p12
+service-account*.json
+
+# Logs, OS and editor noise
+*.log
+.DS_Store
+.vercel
+.turbo/
+.cache/
+
+# Google OAuth / service-account credentials
 client_secret*.json
+*.apps.googleusercontent.com.json
+
+# Raw footage / photo source folders (optimised copies live in public/)
+/Web footage*/
+*.zip
+
+# Google Ads API kit (local tool with account data; secrets in its .env) and its OAuth file
+/google-ads-agent/
 credentials.json

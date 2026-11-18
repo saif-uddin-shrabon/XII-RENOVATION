@@ -1,4 +1,0 @@
-google-ads>=32.0.0
-python-dotenv
-google-auth-oauthlib
-playwright
