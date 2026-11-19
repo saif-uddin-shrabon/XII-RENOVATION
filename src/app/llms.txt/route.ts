@@ -43,6 +43,7 @@ export function GET() {
     "",
     "## Optional",
     "",
+    `- [Privacy Policy](${absoluteUrl("/privacy-policy")}): How enquiry details and website analytics are used`,
     `- [Google Business Profile](${BUSINESS.googleMaps}): Reviews and location`,
     `- [Instagram](${BUSINESS.socials.instagram}): Latest project photos and reels`,
     `- [Facebook](${BUSINESS.socials.facebook}): Project updates`,

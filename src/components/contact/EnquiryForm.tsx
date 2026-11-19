@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { services } from "@/data/services";
 import { BUSINESS, buildEnquiryWhatsAppUrl } from "@/lib/site";
 import { trackLead } from "@/lib/analytics";
@@ -242,6 +243,11 @@ export default function EnquiryForm({ defaultService }: EnquiryFormProps) {
           <button type="submit" className={styles.formSubmitBtn}>
             Continue on WhatsApp
           </button>
+          <p className={styles.privacyNote}>
+            By continuing, you agree we may use your details to reply to this
+            enquiry. Read our{" "}
+            <Link href="/privacy-policy">Privacy Policy</Link>.
+          </p>
         </form>
       )}
     </div>

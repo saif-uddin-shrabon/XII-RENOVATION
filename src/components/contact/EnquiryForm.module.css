@@ -98,6 +98,24 @@
   outline-offset: 3px;
 }
 
+.privacyNote {
+  margin: 0.15rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.privacyNote a {
+  color: var(--accent-gold);
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+.privacyNote a:hover {
+  color: var(--brand-dark);
+}
+
 .formError {
   margin: 0;
   font-size: 0.85rem;

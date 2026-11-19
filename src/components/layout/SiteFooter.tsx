@@ -110,7 +110,12 @@ export default function SiteFooter() {
         <span>
           &copy; {new Date().getFullYear()} {BUSINESS.name}
         </span>
-        <span>UEN {BUSINESS.uen}</span>
+        <span className={styles.footerBottomMeta}>
+          <span>UEN {BUSINESS.uen}</span>
+          <Link href="/privacy-policy" className={styles.footerLegalLink}>
+            Privacy Policy
+          </Link>
+        </span>
       </div>
     </footer>
   );

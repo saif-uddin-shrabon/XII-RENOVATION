@@ -1,0 +1,89 @@
+.page {
+  flex: 1;
+  padding: 8.5rem max(1.5rem, calc((100% - 720px) / 2)) 5rem;
+  background: var(--canvas);
+}
+
+.inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.title {
+  margin: 0 0 1rem;
+  color: var(--ink);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.meta {
+  margin: 0 0 2.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.section h2 {
+  margin: 0 0 0.75rem;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.section p,
+.section li {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  font-weight: 500;
+}
+
+.section ul {
+  margin: 0.5rem 0 1rem;
+  padding-left: 1.25rem;
+}
+
+.section li {
+  margin-bottom: 0.35rem;
+}
+
+.section a {
+  color: var(--accent-gold);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.section a:hover {
+  color: var(--brand-dark);
+}
+
+.back {
+  margin: 2.5rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.back a {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.back a:hover {
+  color: var(--brand-dark);
+}
+
+@media (max-width: 720px) {
+  .page {
+    padding: 7rem 1rem max(5.5rem, calc(4.5rem + env(safe-area-inset-bottom, 0px)));
+  }
+}

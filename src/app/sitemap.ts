@@ -7,6 +7,7 @@ import { absoluteUrl } from "@/lib/site";
  * Never use the build time: Google ignores lastmod values that change on every deploy.
  */
 const HOME_CONTENT_UPDATED = "2026-11-19";
+const PRIVACY_CONTENT_UPDATED = "2026-11-20";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -26,5 +27,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ? { images: service.photos.map((photo) => absoluteUrl(photo.src)) }
         : {}),
     })),
+    {
+      url: absoluteUrl("/privacy-policy"),
+      lastModified: PRIVACY_CONTENT_UPDATED,
+      changeFrequency: "yearly",
+      priority: 0.2,
+    },
   ];
 }
