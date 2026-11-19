@@ -51,7 +51,7 @@ export default function SiteFooter() {
             <strong>{BUSINESS.name}</strong>
           </div>
           <p>
-            Renovation contractor for HDB flats, condos, and landed homes across Singapore —
+            Renovation contractor for condos and landed homes across Singapore —
             kitchens, carpentry, tiling, hacking, and electrical works under one team.
           </p>
           <div className={styles.socialLinks} aria-label="XIII social profiles">

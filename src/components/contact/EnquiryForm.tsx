@@ -11,8 +11,6 @@ import styles from "./EnquiryForm.module.css";
 const OTHER_SERVICE = "Other / not sure yet";
 
 const PROPERTY_TYPES = [
-  "HDB BTO Flat",
-  "HDB Resale Flat",
   "Condominium",
   "Landed Property",
   "Commercial Space",

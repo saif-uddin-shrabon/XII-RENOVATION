@@ -17,7 +17,7 @@ export function businessJsonLd(): Record<string, unknown> {
     name: BUSINESS.name,
     alternateName: ["XIII Renovation", "XIII"],
     description:
-      "Singapore renovation contractor for HDB flats, condominiums, and landed homes, handling kitchen renovation, custom carpentry, tiling, hacking, and electrical works as one team.",
+      "Singapore renovation contractor for condominiums and landed homes, handling kitchen renovation, custom carpentry, tiling, hacking, and electrical works as one team.",
     url: absoluteUrl("/"),
     logo: absoluteUrl(BUSINESS.squareLogo),
     image: [absoluteUrl("/image/xiii-12-08-26.png"), absoluteUrl("/image/xiii-21-08-26.png")],
@@ -47,7 +47,6 @@ export function businessJsonLd(): Record<string, unknown> {
       availableLanguage: ["English"],
     },
     knowsAbout: [
-      "HDB renovation",
       "Condominium renovation",
       "Landed home renovation",
       "Kitchen renovation",

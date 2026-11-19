@@ -57,7 +57,7 @@ const reasons = [
   },
   {
     number: "04",
-    title: "Planned around HDB & MCST rules",
+    title: "Planned around MCST rules",
     description: "We check approvals, hacking limits, and permitted work hours before scheduling.",
     image: "/image/bathroom-vanity.jpg",
     alt: "Completed bathroom vanity and fittings",
@@ -65,13 +65,6 @@ const reasons = [
 ];
 
 const scopeCards = [
-  {
-    title: "HDB Renovation",
-    description: "BTO and resale flats — flooring, carpentry, kitchens, and full renovations.",
-    image: "/image/xiii-30-07-26.png",
-    alt: "Completed living room renovation with media console",
-    prompt: "Hello XIII — I would like a free quotation for an HDB renovation.",
-  },
   {
     title: "Condominium",
     description: "Renovation and custom carpentry planned around MCST requirements.",
@@ -133,9 +126,9 @@ const faqItems = [
       "No. Payment is progressive — you pay in stages as the work moves forward, and your workmanship is covered by a warranty after handover.",
   },
   {
-    question: "Do you work around HDB and MCST rules?",
+    question: "Do you work around MCST rules?",
     answer:
-      "Yes. Before work starts we tell you which parts of your scope need HDB or MCST approval, which walls can be hacked, and when noisy works are allowed, then plan the schedule around those rules.",
+      "Yes. Before work starts we tell you which parts of your scope need MCST approval, which walls can be hacked, and when noisy works are allowed, then plan the schedule around those rules.",
   },
   {
     question: "Can you build custom carpentry and kitchen cabinets?",
@@ -166,15 +159,15 @@ export default function Home() {
           <div className={styles.heroShade} />
           <div className={styles.heroInner}>
             <div className={styles.heroLabel}>
-              <span /> Renovation contractor · HDB · Condo · Landed · Island-wide
+              <span /> Renovation contractor · Condo · Landed · Island-wide
             </div>
             <h1 id="hero-title" className={styles.heroTitle}>
               Your renovation contractor
               <br /> in Singapore
             </h1>
             <p className={styles.heroCopy}>
-              Kitchens, custom carpentry, tiling, hacking, and electrical works for HDB flats,
-              condos, and landed homes — built by one accountable team. No design fee: you pay
+              Kitchens, custom carpentry, tiling, hacking, and electrical works for condos
+              and landed homes — built by one accountable team. No design fee: you pay
               for the work, and the site visit and quotation are free.
             </p>
             <ContactActions

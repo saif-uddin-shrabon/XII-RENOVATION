@@ -18,7 +18,7 @@ export function GET() {
   const body = [
     `# ${BUSINESS.name}`,
     "",
-    `> ${BUSINESS.name} is a renovation contractor based in ${BUSINESS.address.area}, Singapore, serving HDB flats, condominiums, and landed homes island-wide. One team handles kitchen renovation, custom carpentry, tiling, hacking, and electrical works, with itemised quotations after a site visit.`,
+    `> ${BUSINESS.name} is a renovation contractor based in ${BUSINESS.address.area}, Singapore, serving condominiums and landed homes island-wide. One team handles kitchen renovation, custom carpentry, tiling, hacking, and electrical works, with itemised quotations after a site visit.`,
     "",
     "Key facts:",
     "",
@@ -27,7 +27,7 @@ export function GET() {
     `- Phone / WhatsApp: ${BUSINESS.phoneDisplay}`,
     `- Email: ${BUSINESS.primaryEmail}`,
     "- Service area: all of Singapore",
-    "- Property types: HDB BTO and resale flats, condominiums, landed homes",
+    "- Property types: condominiums, landed homes",
     "- Pricing: no fixed packages and no design fee; a free itemised quotation is given after a free site visit",
     "- Payment: progressive (in stages as work is completed); workmanship warranty after handover",
     "- Fastest contact: WhatsApp +65 8723 1313 (usually replies within 1 hour)",

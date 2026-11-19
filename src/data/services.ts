@@ -75,7 +75,7 @@ export interface Service {
 const consultStep: ServiceItem = {
   title: "Free site visit & measurement",
   description:
-    "We come to your HDB flat, condo, or landed home at no cost, measure up, and talk through how you use the space, your budget, and your timeline.",
+    "We come to your condo or landed home at no cost, measure up, and talk through how you use the space, your budget, and your timeline.",
 };
 
 const quoteStep: ServiceItem = {
@@ -108,24 +108,23 @@ const paymentFaq: ServiceFaq = {
     "No. Payment is progressive: you pay in stages as the work moves forward, so you are not paying far ahead of what has been done.",
 };
 
-export const services: Service[] = [
+const allServices: Service[] = [
   {
     slug: "kitchen-renovation",
     navLabel: "Kitchen Renovation",
     cardSummary:
-      "Full kitchen renovation and custom kitchen cabinets for HDB flats, condos, and landed homes — layout, carpentry, countertops, and fitting.",
+      "Full kitchen renovation and custom kitchen cabinets for condos and landed homes — layout, carpentry, countertops, and fitting.",
     eyebrow: "Kitchen Renovation & Kitchen Cabinets",
     h1: "Kitchen Renovation & Kitchen Cabinets in Singapore",
     metaTitle: "Kitchen Renovation Singapore | Custom Cabinets, Free Quote",
     metaDescription:
-      "Kitchen renovation contractor in Singapore: custom kitchen cabinets in laminate or aluminium, countertops and fitting for HDB and condos. Free site visit.",
+      "Kitchen renovation contractor in Singapore: custom kitchen cabinets in laminate or aluminium, countertops and fitting for condos and landed homes. Free site visit.",
     primaryKeyword: "kitchen renovation singapore",
     keywords: [
       "kitchen renovation singapore",
       "kitchen renovation contractor singapore",
       "kitchen cabinet singapore",
       "kitchen cabinet contractor",
-      "hdb kitchen renovation",
       "kitchen renovation cost singapore",
       "kitchen renovation contractor",
       "kitchen cabinet sg",
@@ -142,7 +141,7 @@ export const services: Service[] = [
     intro: [
       "The kitchen is the hardest-working room in a Singapore home, and the one where poor planning shows fastest. As a kitchen renovation contractor in Singapore, XIII Renovation & Design handles the whole job, from hacking out the old units to the final cabinet hinge — so you deal with one contractor, not five.",
       "We build custom-made kitchen cabinets to your measurements — in laminate, aluminium, or other finishes — rather than forcing off-the-shelf modules into your space. That means better use of awkward corners, integrated laundry or utility storage where you need it, and cabinets sized around your actual appliances.",
-      "Whether it is an HDB kitchen renovation in a BTO or resale flat, a condo galley, or a landed home with an island, we plan the layout, carpentry, wet works, and fitting together so the schedule holds and the finish is right.",
+      "Whether it is a condo galley or a landed home with an island, we plan the layout, carpentry, wet works, and fitting together so the schedule holds and the finish is right.",
     ],
     scopeHeading: "What our kitchen renovation covers",
     scope: [
@@ -159,7 +158,7 @@ export const services: Service[] = [
       {
         title: "Kitchen layout planning",
         description:
-          "Galley, L-shape, U-shape, or island layouts planned around your cooking habits, appliances, and HDB or condo constraints.",
+          "Galley, L-shape, U-shape, or island layouts planned around your cooking habits, appliances, and condo constraints.",
       },
       {
         title: "Countertops & backsplash",
@@ -223,12 +222,12 @@ export const services: Service[] = [
       {
         question: "Do you offer kitchen renovation packages?",
         answer:
-          "We do not sell fixed kitchen renovation packages, because two HDB kitchens of the same size can need very different work. Instead you get a free itemised quotation after the site visit, with each cabinet run, countertop and works item priced separately, so you can compare it line by line with any package you have seen.",
+          "We do not sell fixed kitchen renovation packages, because two kitchens of the same size can need very different work. Instead you get a free itemised quotation after the site visit, with each cabinet run, countertop and works item priced separately, so you can compare it line by line with any package you have seen.",
       },
       {
-        question: "Can you renovate an HDB kitchen?",
+        question: "Can you renovate a condo kitchen?",
         answer:
-          "Yes. We renovate kitchens in HDB BTO and resale flats as well as condos and landed homes. Some works in HDB flats have rules on what can be hacked and when noisy works can happen, and we plan the schedule around those rules.",
+          "Yes. We renovate kitchens in condos and landed homes. Some works in condos have MCST rules on what can be hacked and when noisy works can happen, and we plan the schedule around those rules.",
       },
       {
         question: "Do you only build kitchen cabinets, or the whole kitchen?",
@@ -278,7 +277,7 @@ export const services: Service[] = [
       },
       {
         src: "/image/xiii-kitchen-wood-white-l-shape.jpg",
-        alt: "L-shaped HDB kitchen with woodgrain base cabinets, white gloss wall cabinets, and solid-surface countertop",
+        alt: "L-shaped kitchen with woodgrain base cabinets, white gloss wall cabinets, and solid-surface countertop",
         width: 819,
         height: 1024,
       },
@@ -290,7 +289,7 @@ export const services: Service[] = [
       },
       {
         src: "/image/xiii-kitchen-wood-fridge-tall-unit.jpg",
-        alt: "HDB kitchen with woodgrain fridge tall unit, open appliance niche, and white gloss wall cabinets",
+        alt: "Kitchen with woodgrain fridge tall unit, open appliance niche, and white gloss wall cabinets",
         width: 819,
         height: 1024,
       },
@@ -309,29 +308,11 @@ export const services: Service[] = [
         ],
         image: {
           src: "/image/xiii-kitchen-wood-white-l-shape.jpg",
-          alt: "L-shaped HDB kitchen with woodgrain base cabinets, white gloss wall cabinets, and solid-surface countertop",
+          alt: "L-shaped kitchen with woodgrain base cabinets, white gloss wall cabinets, and solid-surface countertop",
           width: 819,
           height: 1024,
         },
         whatsApp: "Hello XIII — I'd like a free quotation for custom kitchen cabinets.",
-      },
-      {
-        id: "hdb-kitchen",
-        title: "HDB, BTO & resale kitchens",
-        description:
-          "Layouts planned around HDB kitchen sizes and rules — from fresh BTO units to resale kitchens that need hacking and re-tiling first.",
-        points: [
-          "BTO: cabinets, countertop, and appliance fitting",
-          "Resale: hacking and wet works, then cabinets",
-          "Noisy works scheduled within HDB hours",
-        ],
-        image: {
-          src: "/image/xiii-kitchen-wood-fridge-tall-unit.jpg",
-          alt: "HDB kitchen with woodgrain fridge tall unit, open appliance niche, and white gloss wall cabinets",
-          width: 819,
-          height: 1024,
-        },
-        whatsApp: "Hello XIII — I'd like a free quotation for my HDB kitchen renovation.",
       },
       {
         id: "utility",
@@ -572,7 +553,7 @@ export const services: Service[] = [
         ],
         image: {
           src: "/image/xiii-hacking-bedroom-wall-opening.jpg",
-          alt: "HDB bedroom wall hacked to create a wide opening, with floor tiles removed and debris cleared",
+          alt: "Bedroom wall hacked to create a wide opening, with floor tiles removed and debris cleared",
           width: 819,
           height: 1024,
         },
@@ -657,7 +638,6 @@ export const services: Service[] = [
       "carpentry quotation",
       "carpentry work singapore",
       "custom made wardrobe singapore",
-      "hdb built in wardrobe",
       "built in wardrobe singapore price",
     ],
     intro: [
@@ -757,9 +737,9 @@ export const services: Service[] = [
           "Custom carpentry is fabricated after the design and measurements are confirmed, then installed on site. We give you a schedule once the scope is agreed.",
       },
       {
-        question: "Do you do carpentry for HDB flats and condos?",
+        question: "Do you do carpentry for condos and landed homes?",
         answer:
-          "Yes. We build carpentry for HDB BTO and resale flats, condominiums, and landed homes across Singapore.",
+          "Yes. We build carpentry for condominiums and landed homes across Singapore.",
       },
       {
         question: "How is built-in wardrobe pricing calculated?",
@@ -840,7 +820,7 @@ export const services: Service[] = [
         id: "wardrobes",
         title: "Built-in wardrobes & bedroom carpentry",
         description:
-          "Full-height swing or sliding built-in wardrobes for HDB flats and condos, plus headboards and bedside storage, with internal layouts planned around what you actually store.",
+          "Full-height swing or sliding built-in wardrobes for condos and landed homes, plus headboards and bedside storage, with internal layouts planned around what you actually store.",
         points: [
           "Floor-to-ceiling, made to measure",
           "Drawers, hanging, and shelving planned with you",
@@ -876,7 +856,7 @@ export const services: Service[] = [
         id: "study-storage",
         title: "Study desks, custom shoe cabinets & storage",
         description:
-          "Built-in study desks, wall shelving, shoe cabinets, display cabinets, and full-height storage that use every centimetre of an HDB or condo room.",
+          "Built-in study desks, wall shelving, shoe cabinets, display cabinets, and full-height storage that use every centimetre of a condo room.",
         points: [
           "Study corners and work-from-home desks",
           "Custom shoe and display cabinets",
@@ -931,7 +911,7 @@ export const services: Service[] = [
     ],
     intro: [
       "Tiling is one of the most visible parts of a renovation and one of the hardest to fix once it is done badly. Uneven tiles, poor falls in the bathroom, and hollow spots show up quickly. As a tiling contractor in Singapore, XIII Renovation & Design carries out floor tiling and wall tiling with careful surface preparation so the finish stays flat and sound.",
-      "We tile kitchens, bathrooms, living areas, and balconies in HDB flats, condos, and landed homes. That includes new tiling as part of a renovation, tile repair for cracked or hollow tiles, overlaying existing floors where suitable, and regrouting tired joints.",
+      "We tile kitchens, bathrooms, living areas, and balconies in condos and landed homes. That includes new tiling as part of a renovation, tile repair for cracked or hollow tiles, overlaying existing floors where suitable, and regrouting tired joints.",
       "Our clients have trusted us with their flooring — one of our Google reviews is from a homeowner who had their flooring done with us and described the workmanship and detailing as outstanding.",
     ],
     scopeHeading: "Tiling services we provide",
@@ -1042,7 +1022,7 @@ export const services: Service[] = [
       },
       {
         src: "/image/xiii-tiling-prep-hacked-partition-debris.jpg",
-        alt: "Partition wall hacked in an HDB flat with debris bagged and floor protection down before tiling works",
+        alt: "Partition wall hacked in a home with debris bagged and floor protection down before tiling works",
         width: 768,
         height: 1024,
       },
@@ -1120,18 +1100,17 @@ export const services: Service[] = [
     slug: "hacking-demolition",
     navLabel: "Hacking & Demolition",
     cardSummary:
-      "Wall hacking, floor and tile hacking, and removal of old carpentry — carried out carefully and planned around HDB and MCST rules.",
+      "Wall hacking, floor and tile hacking, and removal of old carpentry — carried out carefully and planned around MCST rules.",
     eyebrow: "Hacking & Demolition Services",
     h1: "Hacking & Demolition Contractor in Singapore",
     metaTitle: "Hacking Contractor Singapore | Wall & Floor Hacking",
     metaDescription:
-      "Hacking contractor in Singapore for wall, floor and tile hacking and carpentry removal in HDB flats, condos and landed homes. Planned around HDB rules.",
+      "Hacking contractor in Singapore for wall, floor and tile hacking and carpentry removal in condos and landed homes. Planned around MCST rules.",
     primaryKeyword: "hacking contractor singapore",
     keywords: [
       "hacking contractor singapore",
       "wall hacking singapore",
       "wall hacking contractor singapore",
-      "hdb hacking contractor",
       "floor hacking singapore",
       "hacking floor tiles cost singapore",
       "demolition contractor singapore",
@@ -1140,7 +1119,7 @@ export const services: Service[] = [
     intro: [
       "Hacking is the first step of most renovations and the one with the least room for error. Hacking the wrong wall, damaging pipes, or leaving debris behind creates problems for every trade that follows. XIII Renovation & Design plans hacking and demolition as part of the whole renovation, not as an isolated job.",
       "We carry out wall hacking to open up layouts, floor and wall tile hacking before re-tiling, and dismantling of old kitchen cabinets, built-in wardrobes, and other carpentry. Debris is cleared and the site is left ready for the next stage of work.",
-      "In HDB flats, only certain walls can be hacked and noisy works are restricted to set hours. We check what is allowed for your flat before quoting and schedule the work to match.",
+      "In condos, only certain walls can be hacked and noisy works are restricted to set hours. We check what is allowed for your home before quoting and schedule the work to match.",
     ],
     scopeHeading: "Hacking and demolition works",
     scope: [
@@ -1180,7 +1159,7 @@ export const services: Service[] = [
       {
         title: "Check what can be hacked",
         description:
-          "We confirm which walls and finishes can be removed and which works need HDB or MCST approval before scheduling.",
+          "We confirm which walls and finishes can be removed and which works need MCST approval before scheduling.",
       },
       quoteStep,
       {
@@ -1198,7 +1177,7 @@ export const services: Service[] = [
       {
         title: "Planned around the rules",
         description:
-          "We check HDB and MCST requirements before hacking starts, so the job is not stopped halfway.",
+          "We check MCST requirements before hacking starts, so the job is not stopped halfway.",
       },
       {
         title: "Part of the full renovation",
@@ -1218,14 +1197,14 @@ export const services: Service[] = [
           "Wall hacking cost depends on the wall size and material, access, the amount of debris, and the making good needed afterwards. We quote after checking the wall on site.",
       },
       {
-        question: "Can I hack any wall in my HDB flat?",
+        question: "Can I hack any wall in my home?",
         answer:
-          "No. Structural walls cannot be hacked, and HDB rules govern which walls and finishes can be removed. We check your flat's layout and requirements before confirming what is possible.",
+          "No. Structural walls cannot be hacked, and building rules govern which walls and finishes can be removed. We check your home's layout and requirements before confirming what is possible.",
       },
       {
-        question: "When can hacking be done in an HDB flat?",
+        question: "When can hacking be done in a condo?",
         answer:
-          "Noisy works such as hacking are restricted to set weekday hours under HDB rules, and are not allowed on Sundays and public holidays. We schedule the work within these hours.",
+          "Noisy works such as hacking are usually restricted to set hours by your condo's management rules, so we confirm the allowed hours with your MCST and schedule the work within them.",
       },
       {
         question: "Do you hack floor tiles before re-tiling?",
@@ -1241,7 +1220,7 @@ export const services: Service[] = [
     ],
     heroImage: {
       src: "/image/xiii-hacking-wall-opening-hero.jpg",
-      alt: "HDB flat after hacking, with a partition wall removed to open up the rooms and the floor stripped bare",
+      alt: "Home after hacking, with a partition wall removed to open up the rooms and the floor stripped bare",
       width: 1024,
       height: 576,
     },
@@ -1260,7 +1239,7 @@ export const services: Service[] = [
       },
       {
         src: "/image/xiii-hacking-bedroom-wall-opening.jpg",
-        alt: "HDB bedroom wall hacked to create a wide opening, with floor tiles removed and debris cleared",
+        alt: "Bedroom wall hacked to create a wide opening, with floor tiles removed and debris cleared",
         width: 819,
         height: 1024,
       },
@@ -1385,7 +1364,7 @@ export const services: Service[] = [
     ],
     heroImage: {
       src: "/image/xiii-electrical-ceiling-wiring-hero.jpg",
-      alt: "Electrician running ceiling wiring for new lighting points during an HDB renovation",
+      alt: "Electrician running ceiling wiring for new lighting points during a home renovation",
       width: 1024,
       height: 576,
     },
@@ -1410,7 +1389,7 @@ export const services: Service[] = [
       },
       {
         src: "/image/xiii-electrical-room-lighting-points.jpg",
-        alt: "Ceiling lighting points and socket wiring in place during an HDB room renovation",
+        alt: "Ceiling lighting points and socket wiring in place during a room renovation",
         width: 819,
         height: 1024,
       },
@@ -1427,6 +1406,17 @@ export const services: Service[] = [
     relatedSlugs: ["carpentry", "hdb-renovation", "kitchen-renovation"],
   },
 ];
+
+/**
+ * HDB page on hold (20 Nov 2026): HDB rules say flat owners must use a contractor on HDB's Directory of
+ * Renovation Contractors, and XIII's listing is not confirmed. Set to false only after that is verified.
+ * While true the page is hidden from the site, the menu and the sitemap, and /hdb-renovation redirects home.
+ */
+export const HDB_PAGE_ON_HOLD = true;
+
+export const services: Service[] = allServices.filter(
+  (s) => !(HDB_PAGE_ON_HOLD && s.slug === "hdb-renovation"),
+);
 
 export const serviceSlugs = services.map((s) => s.slug);
 

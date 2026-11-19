@@ -23,7 +23,7 @@ const outfit = Outfit({
 
 const DEFAULT_TITLE = "Renovation Contractor Singapore | XIII Renovation & Design";
 const DEFAULT_DESCRIPTION =
-  "Renovation contractor in Singapore for HDB, condo and landed homes: kitchens, carpentry, tiling and hacking. No design fee, free site visit and quote.";
+  "Renovation contractor in Singapore for condo and landed homes: kitchens, carpentry, tiling and hacking. No design fee, free site visit and quote.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

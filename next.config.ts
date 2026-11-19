@@ -15,6 +15,10 @@ const nextConfig: NextConfig = {
     /* AVIF first (smaller), WebP fallback */
     formats: ["image/avif", "image/webp"],
   },
+  /* HDB page on hold until HDB contractor list status is verified. Remove with HDB_PAGE_ON_HOLD in services.ts. */
+  async redirects() {
+    return [{ source: "/hdb-renovation", destination: "/", permanent: false }];
+  },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },

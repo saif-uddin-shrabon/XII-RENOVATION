@@ -12,7 +12,7 @@ interface ContactSectionProps {
 
 export default function ContactSection({
   heading = "Get a Free Renovation Quotation",
-  intro = "Tell us about your HDB flat, condo, or landed home. Message us on WhatsApp, call, or email — or fill in the form and we will open WhatsApp with your details. The site visit and quotation are free.",
+  intro = "Tell us about your condo or landed home. Message us on WhatsApp, call, or email — or fill in the form and we will open WhatsApp with your details. The site visit and quotation are free.",
   defaultService,
   whatsAppMessage = "Hello XIII — I'd like a free renovation quotation.",
 }: ContactSectionProps) {

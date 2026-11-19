@@ -200,7 +200,6 @@ export default function ServicePageTemplate({ service }: ServicePageTemplateProp
               <aside className={styles.introAside} aria-label="Who we work with">
                 <h2 className={styles.asideTitle}>We renovate</h2>
                 <ul>
-                  <li>HDB BTO & resale flats</li>
                   <li>Condominiums</li>
                   <li>Landed homes</li>
                 </ul>
